@@ -203,21 +203,20 @@ export function ContactSection() {
                   <span className="truncate">Instagram</span>
                 </a>
 
-                {/* LinkedIn Configurable with Verification Pending Notice */}
-                <button
-                  onClick={() => {
-                    sound.playClick();
-                    setLinkedinModalOpen(true);
-                  }}
+                {/* LinkedIn Direct Verified Profile */}
+                <a
+                  href="https://www.linkedin.com/in/korikana-saipraneeth/"
+                  target="_blank"
+                  rel="noreferrer"
                   onMouseEnter={() => sound.playHover()}
-                  className="p-2.5 rounded border border-border-subtle bg-bg-secondary hover:border-accent-red text-text-muted hover:text-text-primary flex items-center justify-between transition-colors text-left"
+                  className="p-2.5 rounded border border-border-subtle bg-bg-secondary hover:border-accent-red text-text-secondary hover:text-text-primary flex items-center justify-between transition-colors"
                 >
                   <div className="flex items-center gap-2">
                     <Linkedin className="w-4 h-4 text-blue-400" />
                     <span className="truncate">LinkedIn</span>
                   </div>
-                  <span className="text-[9px] text-yellow-400">PENDING</span>
-                </button>
+                  <span className="text-[9px] text-emerald-400 font-mono font-semibold">VERIFIED</span>
+                </a>
               </div>
             </div>
           </div>

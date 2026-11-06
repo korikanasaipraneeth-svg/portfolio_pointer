@@ -39,11 +39,11 @@ test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
     await expect(profile).toBeVisible();
 
     // Click on Academic Foundation
-    await page.locator("button:has-text('ACADEMIC FOUNDATION')").click();
+    await page.locator("#profile button:has-text('ACADEMIC FOUNDATION')").click();
     await expect(profile).toContainText("Sri Sivani College of Engineering");
 
-    // Click on Vibe Coding Paradigm
-    await page.locator("button:has-text('VIBE CODING PARADIGM')").click();
+    // Click on Vibe Coder Paradigm
+    await page.locator("#profile button:has-text('VIBE CODER PARADIGM'), #profile button:has-text('VIBE CODING')").first().click();
     await expect(profile).toContainText("The Engineering Discipline Behind Vibe Coding");
   });
 

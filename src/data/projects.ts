@@ -21,18 +21,155 @@ export interface ProjectItem {
 
 export const VERIFIED_PROJECTS: ProjectItem[] = [
   {
-    id: "student-portfolio",
-    name: "student-portfolio",
-    title: "STUDENT360 — Academic SaaS & Verification Engine (1st Prize Google Hackathon)",
-    badge: "SYS-01 // FLAGSHIP PLATFORM",
+    id: "spyderman-portfolio",
+    name: "spyderman-portfolio",
+    title: "Spiderman Portfolio — Interactive 3D Developer Portfolio",
+    badge: "SYS-01 // CREATIVE 3D COMPUTING",
+    category: "05 — EXPERIMENTAL PROJECTS",
+    categoryKey: "experimental",
+    flagship: true,
+    status: "ACTIVE PRODUCTION",
+    description:
+      "Premium 3D developer portfolio built with a Prompt Engineering philosophy. Engineered with custom WebGL shaders that respond in real time to scroll velocity and mouse movement, cinematic preloader with mix-blend spotlight, glowing emblem, seamless fly-through transition, and a dynamically drawn Journey timeline.",
+    problemSolved:
+      "Static and generic developer portfolios that fail to demonstrate high-level graphics engineering, creative frontend capabilities, and fluid user engagement.",
+    purpose:
+      "Showcase cutting-edge interactive WebGL capabilities, shader programming, and responsive canvas dynamics coupled with a prompt-engineered modern stack.",
+    architecture:
+      "WebGL shader pipeline with Three.js rendering context, HTML5 Canvas 2D spring physics simulation, GSAP scroll-triggered animation controllers, and Vite/React architecture.",
+    techStack: ["React 19", "Three.js", "WebGL", "Tailwind CSS", "Vite", "HTML5 Canvas", "JavaScript"],
+    features: [
+      "Cinematic preloader with mix-blend spotlight, glowing emblem and seamless fly-through transition",
+      "Interactive 3D Hero section with custom WebGL shaders that respond to scroll and mouse movement",
+      "Advanced scroll-triggered animations, parallax effects, and dynamically drawn Journey timeline",
+      "Low-overhead canvas rendering loop optimized for 60fps on mobile and desktop",
+      "Custom audio-visual feedback loops integrated with interactive elements",
+    ],
+    contribution:
+      "Designed and developed the entire 3D portfolio experience, programmed custom WebGL vertex and fragment shaders, and implemented spring physics on canvas.",
+    githubUrl: "https://github.com/korikanasaipraneeth-svg/spyderman-portfolio",
+    liveUrl: "https://spyderman-portfolio.vercel.app",
+    metrics: [
+      { label: "Rendering", value: "60 FPS WebGL" },
+      { label: "Philosophy", value: "Prompt Engineering" },
+      { label: "Shaders", value: "Custom GLSL" },
+    ],
+  },
+  {
+    id: "smart-rural-health",
+    name: "Smart-Rural-Health-",
+    title: "Smart Rural Health — AI Healthcare Platform",
+    badge: "SYS-02 // PREDICTIVE AI HEALTHCARE",
+    category: "01 — AI & MACHINE LEARNING",
+    categoryKey: "ai-ml",
+    flagship: true,
+    status: "ACTIVE PRODUCTION",
+    description:
+      "Full-stack healthcare platform that improves rural healthcare access through predictive AI and multi-role dashboards. Features an AI disease prediction engine with conversational symptom input and probability-based recommendations, alongside a predictive medicine supply-chain system.",
+    problemSolved:
+      "Severe shortages of doctors in rural areas, delayed clinical triage, and medicine stockouts causing critical delays in emergency patient treatment.",
+    purpose:
+      "Provide rural healthcare workers, clinics, and district hospitals with predictive clinical triage and automated medicine redistribution before shortages become fatal.",
+    architecture:
+      "FastAPI/Python disease prediction model with Bayesian probability scoring, multi-tenant role-based dashboards (Admin, Hospital, Patient, Blood Bank), and interactive map SOS routing.",
+    techStack: ["Python", "FastAPI", "React 19", "Tailwind CSS", "MySQL", "Interactive Maps API", "RESTful Services"],
+    features: [
+      "AI disease prediction engine with conversational symptom input and probability-based recommendations",
+      "Predictive medicine supply-chain system that forecasts shortages and generates automated inter-hospital transfer suggestions",
+      "Role-based multi-tenant dashboards (Admin, Hospital, Patient, Blood Bank)",
+      "SOS emergency routing using interactive maps and real-time geographic proximity calculations",
+      "Offline-first patient vitals recording with background database synchronization",
+    ],
+    contribution:
+      "Architected the predictive symptom analysis model, built the medicine shortage forecasting logic, and developed the role-based multi-portal frontend.",
+    githubUrl: "https://github.com/korikanasaipraneeth-svg/Smart-Rural-Health-",
+    metrics: [
+      { label: "Role Dashboards", value: "4 Multi-Role" },
+      { label: "Supply Chain", value: "Automated Transfers" },
+      { label: "Triage Engine", value: "Predictive AI" },
+    ],
+  },
+  {
+    id: "swayam",
+    name: "swayam",
+    title: "Swayam — Blood & Organ Donation Platform",
+    badge: "SYS-03 // LIFE-SAVING PLATFORM",
     category: "02 — FULL-STACK APPLICATIONS",
     categoryKey: "fullstack",
     flagship: true,
     status: "ACTIVE PRODUCTION",
     description:
-      "Enterprise-grade SaaS platform bridging academia and industry. Awarded 1st Prize at Google Student Ambassador Hackathon. Interconnected tri-portal system where students build faculty-verified digital portfolios, professors validate academic achievements, and recruiters headhunt pre-verified talent via an interactive Kanban pipeline.",
+      "Full-stack real-time platform connecting blood and organ donors with recipients in critical emergencies. Features secure backend services with robust data handling, JWT authentication, responsive UI components, and integrated database for real-time donor-recipient matching and live inventory tracking.",
     problemSolved:
-      "Unverified resume inflation and lack of trusted academic verification for recruiters seeking emerging engineering talent.",
+      "Critical matching delays and fragmented blood/organ bank inventories that lead to preventable loss of life during trauma emergencies.",
+    purpose:
+      "Eliminate time barriers between life-saving donors and patients in need through algorithmic matching and transparent hospital blood bank inventory tracking.",
+    architecture:
+      "Node.js/Express backend with JWT authentication and RBAC, MySQL & MongoDB Atlas data store with geospatial indices, and a React 19 responsive interface.",
+    techStack: ["React 19", "Node.js", "Express.js", "JWT Authentication", "MySQL", "MongoDB Atlas", "Tailwind CSS"],
+    features: [
+      "Real-time donor-recipient matching engine based on blood group, organ compatibility, and geospatial proximity",
+      "Secure backend services with robust cryptographic data handling and JWT authentication",
+      "Responsive frontend interface with modern UI components and clean layouts",
+      "Live hospital blood bank and organ inventory tracking with low-stock alerts",
+      "Verified donor credentials and secure patient contact channels",
+    ],
+    contribution:
+      "Designed the backend REST APIs, implemented JWT token authentication, and built the live donor matching algorithm and frontend inventory dashboard.",
+    githubUrl: "https://github.com/korikanasaipraneeth-svg/swayam",
+    metrics: [
+      { label: "Matching", value: "Real-Time Geo" },
+      { label: "Auth", value: "JWT Protected" },
+      { label: "Inventory", value: "Live Bank Sync" },
+    ],
+  },
+  {
+    id: "stock-market-analyzer",
+    name: "portfolio",
+    title: "Portfolio & Stock Market Analyzer (1st Prize Brainovision Hackathon)",
+    badge: "SYS-04 // FINANCIAL ANALYTICS",
+    category: "03 — SOFTWARE ENGINEERING",
+    categoryKey: "software-eng",
+    flagship: true,
+    status: "ACTIVE PRODUCTION",
+    description:
+      "Web tool for analyzing stock trends and personal portfolio performance. Awarded 1st Prize at Brainovision Hackathon (Backend, PPT & Documentation). Performs data analysis and visualization to identify market patterns and portfolio insights with interactive frontend dashboards for real-time trend monitoring and reporting.",
+    problemSolved:
+      "Complex, cluttered market interfaces that make personal portfolio risk evaluation and trend analysis difficult for emerging retail investors.",
+    purpose:
+      "Democratize quantitative portfolio insights through clean data visualization, moving average analytics, and automated risk scoring.",
+    architecture:
+      "Python data extraction and analysis pipeline, Express/Node.js API gateway, and interactive Chart.js/Canvas frontend with dynamic time-frame controls.",
+    techStack: ["Python", "Node.js", "Express.js", "Chart.js", "HTML5", "CSS3", "JavaScript", "MySQL"],
+    features: [
+      "Real-time stock trend monitoring and personal portfolio performance tracking",
+      "Data analysis and visualization algorithms to identify market patterns and volatility insights",
+      "Interactive frontend dashboards with historical multi-timeframe overlays",
+      "Automated portfolio health reporting and risk diversification metrics",
+      "Awarded 1st Prize at Brainovision Hackathon for backend architecture, documentation, and presentation",
+    ],
+    contribution:
+      "Spearheaded backend architecture, designed data analysis pipelines, authored complete technical documentation, and delivered the winning hackathon presentation.",
+    githubUrl: "https://github.com/korikanasaipraneeth-svg/portfolio",
+    metrics: [
+      { label: "Award", value: "1st Prize Brainovision" },
+      { label: "Pipeline", value: "Real-Time Analysis" },
+      { label: "Dashboards", value: "Interactive Visuals" },
+    ],
+  },
+  {
+    id: "student-portfolio",
+    name: "student-portfolio",
+    title: "STUDENT360 — Academic SaaS & Verification Engine (1st Prize Google Hackathon)",
+    badge: "SYS-05 // ACADEMIC PLATFORM",
+    category: "02 — FULL-STACK APPLICATIONS",
+    categoryKey: "fullstack",
+    flagship: true,
+    status: "ACTIVE PRODUCTION",
+    description:
+      "Enterprise-grade SaaS platform bridging academia and industry. Awarded 1st Prize at Google Student Ambassador Hackathon (Student Profile & Job Search Platform). Interconnected tri-portal system where students build faculty-verified digital portfolios, professors validate academic achievements, and recruiters headhunt pre-verified talent via an interactive Kanban pipeline.",
+    problemSolved:
+      "Unverified resume claims and lack of trusted academic verification for recruiters seeking emerging engineering talent.",
     purpose:
       "Provide transparent, cryptographic and faculty-endorsed validation of student projects, hackathons, and credentials directly linked to recruitment pipelines.",
     architecture:
@@ -49,16 +186,16 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
       "Architected system database schema, designed tri-portal RBAC authentication, built the Kanban headhunting workflow, and implemented verified portfolio generation.",
     githubUrl: "https://github.com/korikanasaipraneeth-svg/student-portfolio",
     metrics: [
+      { label: "Award", value: "1st Prize Google" },
       { label: "Portals", value: "3 Dedicated" },
       { label: "Verification Model", value: "Faculty-Signed" },
-      { label: "Pipeline", value: "Kanban Drag & Drop" },
     ],
   },
   {
     id: "project-kissan",
     name: "project-kissan",
     title: "AgriSahay AI — Smart Agricultural Diagnostics & Assistance",
-    badge: "SYS-02 // MULTIMODAL AI",
+    badge: "SYS-06 // MULTIMODAL AI",
     category: "01 — AI & MACHINE LEARNING",
     categoryKey: "ai-ml",
     flagship: true,
@@ -92,7 +229,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     id: "guardian-ai",
     name: "guardian-ai",
     title: "Guardian AI — Emergency SOS & Geospatial Health Mesh",
-    badge: "SYS-03 // EMERGENCY SYSTEMS",
+    badge: "SYS-07 // EMERGENCY SYSTEMS",
     category: "01 — AI & MACHINE LEARNING",
     categoryKey: "ai-ml",
     flagship: true,
@@ -123,42 +260,15 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     ],
   },
   {
-    id: "smart-rural-health",
-    name: "Smart-Rural-Health-",
-    title: "Smart Rural Health — Decentralized Clinical Triage Portal",
-    badge: "SYS-04 // HEALTHCARE INFRASTRUCTURE",
-    category: "02 — FULL-STACK APPLICATIONS",
-    categoryKey: "fullstack",
-    status: "STABLE RELEASE",
-    description:
-      "Digital healthcare coordination interface tailored for rural clinics, enabling paramedical staff to record patient vitals, conduct structured symptom triage, and queue medical consultations.",
-    problemSolved:
-      "Disjointed paper records and limited doctor availability in rural primary healthcare centers.",
-    purpose:
-      "Digitize primary health consultations and create a continuous diagnostic trail between rural community clinics and district hospitals.",
-    architecture:
-      "Modular client-side interface, asynchronous REST API data synchronization, normalized medical history schema, and responsive low-bandwidth UI.",
-    techStack: ["JavaScript", "HTML5", "CSS3", "REST APIs", "Local Storage Cache"],
-    features: [
-      "Structured symptom checklist and automated severity tier calculation",
-      "Patient digital vitals tracking with temporal trend visualization",
-      "Offline cache with automatic background sync when network is restored",
-      "Simplified vernacular-friendly interface designed for community health workers",
-    ],
-    contribution:
-      "Built client-side triage forms, validation algorithms, and clinical vitals recording views.",
-    githubUrl: "https://github.com/korikanasaipraneeth-svg/Smart-Rural-Health-",
-  },
-  {
     id: "hrx-interfaces",
     name: "hrx-interfaces-",
     title: "HRX Interfaces — Enterprise Human Resource System Components",
-    badge: "SYS-05 // UI ARCHITECTURE",
+    badge: "SYS-08 // UI ARCHITECTURE",
     category: "03 — SOFTWARE ENGINEERING",
     categoryKey: "software-eng",
     status: "STABLE RELEASE",
     description:
-      "Enterprise UI component library and modular dashboard system built during Software Developer Internship at HRX Tech Solution. Built for personnel management, performance evaluations, and role allocations.",
+      "Enterprise UI component library and modular dashboard system built during Software Developer Internship at HRX Tech Solution (September 2026). Engineered for personnel management, performance evaluations, and role allocations.",
     problemSolved:
       "Cluttered, non-responsive legacy administrative portals that impede rapid organizational navigation.",
     purpose:
@@ -176,185 +286,108 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     githubUrl: "https://github.com/korikanasaipraneeth-svg/hrx-interfaces-",
   },
   {
-    id: "spyderman-portfolio",
-    name: "spyderman-portfolio",
-    title: "Spider-Man Interactive 3D Experience — WebGL Shaders & Canvas Dynamics",
-    badge: "SYS-06 // CREATIVE COMPUTING",
-    category: "05 — EXPERIMENTAL PROJECTS",
-    categoryKey: "experimental",
-    status: "ACTIVE PRODUCTION",
-    description:
-      "Premium 3D developer experience with custom WebGL shaders, interactive Hero physics responding to mouse movement, cinematic preloader with mix-blend spotlight, glowing emblem, and dynamic Journey timeline.",
-    problemSolved:
-      "Exploring real-time browser graphics rendering, spring physics simulations, and low-latency canvas animations without heavy engine overhead.",
-    purpose:
-      "Push browser front-end limits using WebGL shaders, Three.js, and interactive motion design.",
-    architecture:
-      "WebGL shader pipeline, HTML5 Canvas 2D render loop, Verlet integration particle physics, and responsive viewport coordinate transforms.",
-    techStack: ["Three.js", "React 19", "WebGL", "HTML5 Canvas", "JavaScript", "Tailwind CSS"],
-    features: [
-      "Interactive 3D Hero section with custom WebGL shaders responding to scroll and mouse movement",
-      "Cinematic preloader with mix-blend spotlight and seamless fly-through transition",
-      "Verlet integration particle spring physics for interactive web strands",
-      "Advanced scroll-triggered animations and dynamically drawn Journey timeline",
-    ],
-    contribution:
-      "Designed and coded 3D WebGL scenes, canvas math, physics springs, and custom interactive listeners.",
-    githubUrl: "https://github.com/korikanasaipraneeth-svg/spyderman-portfolio",
-    liveUrl: "https://spyderman-portfolio.vercel.app",
-  },
-  {
-    id: "swayam",
-    name: "swayam",
-    title: "Swayam Platform Academic Tracker & Sync Utility",
-    badge: "SYS-07 // ACADEMIC ENGINEERING",
-    category: "03 — SOFTWARE ENGINEERING",
-    categoryKey: "software-eng",
-    status: "STABLE RELEASE",
-    description:
-      "Java-based academic coursework utility developed to organize, monitor, and synchronize progress across national higher-education online learning curricula.",
-    problemSolved:
-      "Difficulty tracking multi-course assignment deadlines and performance metrics across fragmented academic portals.",
-    purpose:
-      "Provide a clean, programmatic desktop utility to aggregate assignment submission schedules and score trajectories.",
-    architecture:
-      "Object-oriented Java application utilizing MVC pattern, file-based persistence, and deadline scheduling routines.",
-    techStack: ["Java", "OOP", "File I/O", "Data Structures"],
-    features: [
-      "Course curriculum indexing and assignment schedule tracking",
-      "Automated deadline warning thresholds and submission logs",
-      "Robust object-oriented data structures modeling academic progression",
-    ],
-    contribution:
-      "Designed class hierarchies, file persistence mechanisms, and progress calculation logic.",
-    githubUrl: "https://github.com/korikanasaipraneeth-svg/swayam",
-  },
-  {
     id: "doctor",
     name: "doctor",
-    title: "Doctor Connect — Clinical Consultation Interface",
-    badge: "SYS-08 // HEALTHCARE UX",
+    title: "CareSync Doctor Consultation & Appointment Gateway",
+    badge: "SYS-09 // HEALTHCARE ACCESS",
     category: "02 — FULL-STACK APPLICATIONS",
     categoryKey: "fullstack",
-    status: "STABLE RELEASE",
+    status: "PROTOTYPE",
     description:
-      "Patient-practitioner scheduling interface providing structured appointment booking, doctor specialty lookup, and telemedicine preparation checklists.",
+      "Direct medical appointment booking and digital clinical consultation portal designed for streamlined physician-patient interactions.",
     problemSolved:
-      "Friction in outpatient appointment scheduling and fragmented communication before clinical consults.",
+      "Phone-based appointment scheduling friction and lack of unified consultation slots in independent clinics.",
     purpose:
-      "Streamline patient intake with clear specialty categorization and intuitive booking slots.",
+      "Simplify patient booking workflows while providing practitioners with structured patient intake summaries.",
     architecture:
-      "Semantic HTML5 structure, modular CSS layout grid, and event-driven JavaScript form handlers.",
-    techStack: ["HTML5", "CSS3", "JavaScript", "Client Validation"],
+      "Client-side calendar engine, responsive scheduling view, dynamic consultation slot allocation, and REST endpoint integration.",
+    techStack: ["HTML5", "CSS3", "JavaScript", "REST APIs", "Modern DOM APIs"],
     features: [
-      "Specialty-based physician directory with availability time slot selectors",
-      "Interactive pre-consultation symptom summary intake",
-      "Responsive layout optimized for mobile booking on modest devices",
+      "Real-time calendar slot reservation with conflict detection",
+      "Structured medical symptom intake questionnaire",
+      "Doctor schedule availability calendar with automated reminders",
+      "Cross-device mobile-optimized UI",
     ],
     contribution:
-      "Created appointment booking UI, input sanitization logic, and responsive layouts.",
+      "Designed and coded responsive consultation interfaces and appointment booking state logic.",
     githubUrl: "https://github.com/korikanasaipraneeth-svg/doctor",
-  },
-  {
-    id: "sai-edulearn",
-    name: "sai",
-    title: "EduLearn — Interactive Educational Knowledge Base",
-    badge: "SYS-09 // EDTECH PLATFORM",
-    category: "04 — AUTOMATION & TOOLS",
-    categoryKey: "tools",
-    status: "STABLE RELEASE",
-    description:
-      "Web-based learning interface designed to deliver structured educational modules, interactive assessments, and technical subject study materials.",
-    problemSolved:
-      "Scattered educational materials lacking structured navigation and self-assessment loops.",
-    purpose:
-      "Provide students with a clean, distraction-free environment for reviewing computer science fundamentals.",
-    architecture:
-      "Static site generation layout, accessible navigation tree, and lightweight interactive quiz engine.",
-    techStack: ["HTML5", "CSS3", "JavaScript"],
-    features: [
-      "Structured topic hierarchy for computer science course subjects",
-      "Client-side quiz evaluation engine with instant score tallying",
-      "Zero-dependency fast page loads on low-bandwidth networks",
-    ],
-    contribution:
-      "Engineered content layout, navigation structure, and quiz scoring routines.",
-    githubUrl: "https://github.com/korikanasaipraneeth-svg/sai",
   },
   {
     id: "birthdaywishes",
     name: "birthdaywishes",
-    title: "Celebration Canvas — Micro Interactive Animation",
-    badge: "SYS-10 // CREATIVE SCRIPTING",
+    title: "Procedural Canvas Celebration & Motion Engine",
+    badge: "SYS-10 // PROCEDURAL GRAPHICS",
     category: "05 — EXPERIMENTAL PROJECTS",
     categoryKey: "experimental",
-    status: "STABLE RELEASE",
+    status: "ACTIVE PRODUCTION",
     description:
-      "Self-contained single-file interactive web celebration experience combining procedural particle fireworks, animated typography, and dynamic sound triggers.",
+      "Interactive celebratory web experience driven by algorithmic 2D canvas particle physics, procedural confetti simulations, and audio-reactive micro-animations.",
     problemSolved:
-      "Demonstrating zero-dependency creative coding and procedural particle animation in a single lightweight deliverable.",
+      "Exploring mathematical particle physics and spring dynamics directly inside HTML5 Canvas.",
     purpose:
-      "Serve as a sandbox for particle emitter algorithms and CSS keyframe orchestrations.",
+      "Deliver an uplifting interactive experience while benchmarking browser canvas particle generation performance.",
     architecture:
-      "Single-file micro architecture containing embedded stylesheet, canvas drawing loop, and event dispatchers.",
-    techStack: ["JavaScript", "HTML5 Canvas", "CSS3 Animations"],
+      "Canvas 2D render loop, custom gravity and drag force physics, and high-DPI retina display scaling.",
+    techStack: ["HTML5 Canvas", "JavaScript", "CSS Animations", "Physics Math"],
     features: [
-      "Procedural 2D particle emitter simulating multi-stage firework explosions",
-      "Smooth frame-rate rendering using native requestAnimationFrame loop",
-      "Zero external library dependencies for instant loading",
+      "Real-time gravity, drag, and air-resistance particle dynamics",
+      "Touch and mouse-reactive particle bursts",
+      "Lightweight footprint with zero external runtime dependencies",
     ],
     contribution:
-      "Wrote complete canvas particle physics equations and animation sequences.",
+      "Implemented procedural particle algorithms, force equations, and interactive mouse collision handlers.",
     githubUrl: "https://github.com/korikanasaipraneeth-svg/birthdaywishes",
+  },
+  {
+    id: "sai",
+    name: "sai",
+    title: "EduLearn Interactive Educational Web Interface",
+    badge: "SYS-11 // EDTECH UI",
+    category: "02 — FULL-STACK APPLICATIONS",
+    categoryKey: "fullstack",
+    status: "STABLE RELEASE",
+    description:
+      "Modular e-learning interface built to explore interactive course navigation, modular lesson cards, and structured student knowledge delivery.",
+    problemSolved:
+      "Static course documents that fail to engage visual and kinesthetic learners.",
+    purpose:
+      "Provide clean educational modules that support student comprehension through interactive visual layouts.",
+    architecture:
+      "Component-based layout structure with semantic markup and responsive CSS grid styling.",
+    techStack: ["HTML5", "CSS3", "JavaScript"],
+    features: [
+      "Progressive lesson modules with collapsible topic sections",
+      "Interactive knowledge check widgets",
+      "Accessible navigation with high-contrast text rendering",
+    ],
+    contribution:
+      "Designed curriculum layouts, interactive exercises, and responsive stylesheet architecture.",
+    githubUrl: "https://github.com/korikanasaipraneeth-svg/sai",
   },
   {
     id: "saipranneth",
     name: "saipranneth",
-    title: "Developer Documentation & Profile Infrastructure",
-    badge: "SYS-11 // OPEN SOURCE PROFILE",
+    title: "Architectural Profile Configuration & Systems Matrix",
+    badge: "SYS-12 // DEVOPS & CONFIG",
     category: "04 — AUTOMATION & TOOLS",
     categoryKey: "tools",
-    status: "ACTIVE PRODUCTION",
-    description:
-      "Developer identity infrastructure and GitHub documentation profile curating technical specializations, active projects, and engineering toolchains.",
-    problemSolved:
-      "Maintaining a clear public record of engineering focus areas and repository navigation for collaborators.",
-    purpose:
-      "Provide an organized entry point to open-source contributions and development activity.",
-    architecture:
-      "Markdown documentation with custom SVG badges, status shields, and structured metadata.",
-    techStack: ["Markdown", "GitHub Actions", "SVG Badging"],
-    features: [
-      "Dynamic repository statistics and technical profile breakdown",
-      "Structured contact protocols and open-source contribution guide",
-    ],
-    contribution:
-      "Curated repository content, configured badges, and documented technical focus.",
-    githubUrl: "https://github.com/korikanasaipraneeth-svg/saipranneth",
-  },
-  {
-    id: "legacy-portfolio",
-    name: "portfolio",
-    title: "Foundational Web Engineering Portfolio",
-    badge: "SYS-12 // MILESTONE ITERATION",
-    category: "03 — SOFTWARE ENGINEERING",
-    categoryKey: "software-eng",
     status: "STABLE RELEASE",
     description:
-      "Early foundational portfolio implementation establishing component layout patterns, responsive styling techniques, and project cataloging.",
+      "Specialized GitHub configuration repository maintaining public developer telemetry, automated README metrics, and public architectural profiles.",
     problemSolved:
-      "Initial iteration toward establishing a personal engineering digital presence.",
+      "Fragmented developer profiles that fail to convey architectural competence, verified repositories, and technical mastery.",
     purpose:
-      "Document learning progression and establish foundational frontend mastery.",
+      "Maintain a unified, automated, and mathematically verified profile presence across developer ecosystems.",
     architecture:
-      "Vanilla client-side architecture with semantic sections and responsive layout rules.",
-    techStack: ["JavaScript", "HTML5", "CSS3", "Responsive Design"],
+      "Markdown documentation, GitHub Actions workflow integrations, and dynamic SVG telemetry generators.",
+    techStack: ["Markdown", "GitHub Actions", "SVG Graphics", "Git Automation"],
     features: [
-      "Responsive multi-section layout with smooth anchor scrolling",
-      "Direct project repository links and contact integration",
+      "Automated repository telemetry and commit distribution metrics",
+      "Structured technical skill categorizations and verified project links",
+      "Public architectural manifesto and engineering principles",
     ],
     contribution:
-      "Implemented layout structure, responsive CSS media queries, and deployment pipeline.",
-    githubUrl: "https://github.com/korikanasaipraneeth-svg/portfolio",
+      "Structured and automated profile documentation and repository matrices.",
+    githubUrl: "https://github.com/korikanasaipraneeth-svg/saipranneth",
   },
 ];

@@ -8,9 +8,9 @@ export function CustomCursor() {
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [ripples, setRipples] = useState<{ id: number; x: number; y: number }[]>([]);
 
   useEffect(() => {
-    // Disable on touch devices or if reduced motion is preferred
     if (typeof window === "undefined") return;
     if (window.matchMedia("(pointer: coarse)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -27,28 +27,37 @@ export function CustomCursor() {
       setPos({ x: targetX, y: targetY });
       if (!isVisible) setIsVisible(true);
 
-      // Detect interactive elements
       const target = e.target as HTMLElement | null;
       if (target) {
-        const interactive = target.closest("a, button, input, textarea, select, [role='button'], .clickable");
+        const interactive = target.closest(
+          "a, button, input, textarea, select, [role='button'], .clickable, .hud-card, .glass-card, .interactive-node"
+        );
         setIsHovering(!!interactive);
       }
     };
 
-    const onMouseDown = () => setIsClicking(true);
+    const onMouseDown = (e: MouseEvent) => {
+      setIsClicking(true);
+      const newRipple = { id: Date.now(), x: e.clientX, y: e.clientY };
+      setRipples((prev) => [...prev.slice(-3), newRipple]);
+      setTimeout(() => {
+        setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
+      }, 600);
+    };
+
     const onMouseUp = () => setIsClicking(false);
     const onMouseLeave = () => setIsVisible(false);
     const onMouseEnter = () => setIsVisible(true);
 
     const updateTrail = () => {
-      // Smooth interpolation for trailing ring
-      currentX += (targetX - currentX) * 0.18;
-      currentY += (targetY - currentY) * 0.18;
+      // High-precision smooth damping (matching SAAI / creative portfolios)
+      currentX += (targetX - currentX) * 0.22;
+      currentY += (targetY - currentY) * 0.22;
       setTrailPos({ x: currentX, y: currentY });
       animId = requestAnimationFrame(updateTrail);
     };
 
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
     window.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mouseup", onMouseUp);
     document.addEventListener("mouseleave", onMouseLeave);
@@ -68,29 +77,51 @@ export function CustomCursor() {
   if (!isVisible) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden hidden md:block">
-      {/* Precision Center Dot */}
+    <div className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden hidden md:block" aria-hidden="true">
+      {/* Click Shockwave Ripples */}
+      {ripples.map((ripple) => (
+        <span
+          key={ripple.id}
+          className="fixed rounded-full border border-accent-red pointer-events-none animate-ping"
+          style={{
+            left: `${ripple.x}px`,
+            top: `${ripple.y}px`,
+            width: "36px",
+            height: "36px",
+            transform: "translate(-50%, -50%)",
+            opacity: 0.8,
+          }}
+        />
+      ))}
+
+      {/* Center High-Precision Reticle Dot */}
       <div
-        className="fixed w-2 h-2 rounded-full bg-accent-red transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-75"
+        className="fixed w-1.5 h-1.5 rounded-full bg-accent-red pointer-events-none transition-transform duration-75 shadow-crimson-glow"
         style={{
           left: `${pos.x}px`,
           top: `${pos.y}px`,
-          transform: `translate(-50%, -50%) scale(${isClicking ? 0.7 : 1})`,
+          transform: `translate(-50%, -50%) scale(${isClicking ? 0.6 : isHovering ? 1.5 : 1})`,
         }}
       />
 
-      {/* Lag Trailing Ring */}
+      {/* Smooth Trailing Precision Ring with Crosshair Ticks */}
       <div
-        className={`fixed rounded-full border transition-all duration-150 transform -translate-x-1/2 -translate-y-1/2 ${
+        className={`fixed rounded-full pointer-events-none transition-all duration-150 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center ${
           isHovering
-            ? "w-11 h-11 border-accent-red bg-accent-red/10 scale-110 shadow-crimson-glow"
-            : "w-8 h-8 border-accent-red/40 bg-transparent"
+            ? "w-12 h-12 border border-accent-red bg-accent-red/15 scale-110 shadow-crimson-glow"
+            : "w-8 h-8 border border-accent-red/40 bg-transparent"
         } ${isClicking ? "scale-90" : ""}`}
         style={{
           left: `${trailPos.x}px`,
           top: `${trailPos.y}px`,
         }}
-      />
+      >
+        {/* Architectural Crosshair Reticle Micro-Ticks */}
+        <span className="absolute top-0 w-[1px] h-1 bg-accent-red/60" />
+        <span className="absolute bottom-0 w-[1px] h-1 bg-accent-red/60" />
+        <span className="absolute left-0 h-[1px] w-1 bg-accent-red/60" />
+        <span className="absolute right-0 h-[1px] w-1 bg-accent-red/60" />
+      </div>
     </div>
   );
 }
