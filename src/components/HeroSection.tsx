@@ -41,9 +41,9 @@ export function HeroSection() {
       </div>
 
       {/* 3-Column Hero Stage Grid (Exact SAAI.pro 3-column layout) */}
-      <div className="w-full max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mt-2 lg:mt-0">
-        {/* LEFT FLANK (5 cols): Script, Solid Red Box, Pill, Description, CTAs, Stats */}
-        <div className="lg:col-span-5 flex flex-col space-y-4 text-left pb-2">
+      <div className="w-full max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(340px,1.2fr)_minmax(280px,360px)_minmax(320px,1fr)] gap-8 items-end mt-2 lg:mt-0">
+        {/* LEFT FLANK: Script, Solid Red Box, Pill, Description, CTAs, Stats */}
+        <div className="flex flex-col space-y-4 text-left pb-2 min-w-0">
           {/* Cursive Script (Caveat font) */}
           <div className="font-script text-white text-3xl sm:text-4xl tracking-wide select-none leading-none">
             Hello, I&apos;m
@@ -118,8 +118,8 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* CENTER COLUMN (3.5 cols): Iconic Portrait Cutout Card */}
-        <div className="lg:col-span-3.5 flex justify-center items-end my-4 lg:my-0">
+        {/* CENTER COLUMN: Iconic Portrait Cutout Card */}
+        <div className="flex justify-center items-end my-4 lg:my-0 min-w-0">
           <div className="relative w-full max-w-[340px] aspect-[4/5] bg-gradient-to-b from-[#050505] via-[#111111] to-[#050505] border border-white/10 overflow-visible group">
             {/* Offset Red Accent Panel (Exact SAAI.pro styling) */}
             <div
@@ -137,7 +137,7 @@ export function HeroSection() {
                   src="/praneeth-cutout.png"
                   alt="Korikana Sai Praneeth"
                   onError={() => setImgError(true)}
-                  className="relative z-10 w-full h-full object-contain object-bottom filter contrast-110 brightness-105 grayscale"
+                  className="relative z-10 w-full h-full object-cover object-top filter contrast-110 brightness-105"
                   style={{
                     WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
                     maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
@@ -187,10 +187,10 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT FLANK (3.5 cols): Stack of 3 Technical HUD Cards */}
-        <div className="lg:col-span-3.5 flex flex-col space-y-3 pb-2">
+        {/* RIGHT FLANK: Stack of 3 Technical HUD Cards */}
+        <div className="flex flex-col space-y-3 pb-2 min-w-0 w-full">
           {/* Card 01 */}
-          <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5">
+          <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5 w-full">
             <div className="flex items-center justify-between font-mono text-[11px]">
               <span className="text-white font-bold">01.</span>
               <span className="px-1.5 py-0.5 border border-white/20 text-[9px] text-accent-red uppercase tracking-wider font-semibold">
@@ -206,7 +206,7 @@ export function HeroSection() {
           </div>
 
           {/* Card 02 */}
-          <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5">
+          <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5 w-full">
             <div className="flex items-center justify-between font-mono text-[11px]">
               <span className="text-white font-bold">02.</span>
               <span className="px-1.5 py-0.5 border border-white/20 text-[9px] text-emerald-400 uppercase tracking-wider font-semibold">
@@ -222,7 +222,7 @@ export function HeroSection() {
           </div>
 
           {/* Card 03 */}
-          <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5">
+          <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5 w-full">
             <div className="flex items-center justify-between font-mono text-[11px]">
               <span className="text-white font-bold">03.</span>
               <span className="px-1.5 py-0.5 border border-white/20 text-[9px] text-cyan-400 uppercase tracking-wider font-semibold">
