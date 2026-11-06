@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { sound } from "@/lib/audio";
 import { ArrowRight, Download, MousePointer2 } from "lucide-react";
+import { Interactive3DTilt } from "@/components/Interactive3DTilt";
 
 export function HeroSection() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
@@ -45,13 +46,13 @@ export function HeroSection() {
         {/* LEFT FLANK: Script, Solid Red Box, Pill, Description, CTAs, Stats */}
         <div className="flex flex-col space-y-4 text-left pb-2 min-w-0">
           {/* Cursive Script (Caveat font) */}
-          <div className="font-script text-white text-3xl sm:text-4xl tracking-wide select-none leading-none">
+          <div className="font-script text-white text-3xl sm:text-4xl tracking-wide select-none leading-none -mb-1">
             Hello, I&apos;m
           </div>
 
           {/* Solid Red Name Box (Bebas Neue on #C72C46 / #DC2626) */}
           <div>
-            <h1 className="hero-name-badge inline-block font-bebas text-white text-6xl sm:text-7xl lg:text-8xl bg-accent-red px-3.5 py-1 tracking-wider leading-none shadow-crimson-glow">
+            <h1 className="hero-name-badge inline-block font-bebas text-white text-6xl sm:text-7xl lg:text-8xl bg-accent-red px-3 sm:px-3.5 py-0.5 sm:py-1 tracking-wider leading-none shadow-crimson-glow">
               PRANEETH<span className="text-white">.</span>
             </h1>
           </div>
@@ -118,133 +119,156 @@ export function HeroSection() {
           </div>
         </div>
 
-        {/* CENTER COLUMN: Iconic Portrait Cutout Card */}
+        {/* CENTER COLUMN: Iconic 3D Portrait Cutout Card */}
         <div className="flex justify-center items-end my-4 lg:my-0 min-w-0">
-          <div className="relative w-full max-w-[340px] aspect-[4/5] bg-gradient-to-b from-[#050505] via-[#111111] to-[#050505] border border-white/10 overflow-visible group">
-            {/* Offset Red Accent Panel (Exact SAAI.pro styling) */}
+          <Interactive3DTilt
+            maxTilt={7}
+            scale={1.02}
+            glare={false}
+            className="w-full max-w-[340px]"
+          >
             <div
-              className="absolute inset-[18%_6%_0] z-0 bg-accent-red transform translate-x-3.5 -translate-y-3.5 opacity-90 transition-transform group-hover:translate-x-4 group-hover:-translate-y-4"
-              aria-hidden="true"
+              className="relative w-full aspect-[4/5] bg-gradient-to-b from-[#050505] via-[#111111] to-[#050505] border border-white/10 overflow-visible group"
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <div className="absolute inset-0 border border-white/35 transform -translate-x-3.5 translate-y-3.5" />
-            </div>
+              {/* Offset Red Accent Panel (Exact SAAI.pro styling) */}
+              <div
+                className="absolute inset-[18%_6%_0] z-0 bg-accent-red transform translate-x-3.5 -translate-y-3.5 opacity-90 transition-transform group-hover:translate-x-4 group-hover:-translate-y-4"
+                style={{ transform: "translateZ(14px)" }}
+                aria-hidden="true"
+              >
+                <div className="absolute inset-0 border border-white/35 transform -translate-x-3.5 translate-y-3.5" />
+              </div>
 
-            {/* Cutout Portrait or High-Fidelity Silhouette */}
-            <div className="relative z-10 w-full h-full flex flex-col justify-end items-center overflow-hidden">
-              {!imgError ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src="/praneeth-cutout.png"
-                  alt="Korikana Sai Praneeth"
-                  onError={() => setImgError(true)}
-                  className="relative z-10 w-full h-full object-cover object-top filter contrast-110 brightness-105"
-                  style={{
-                    WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
-                    maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
-                  }}
-                />
-              ) : (
-                <svg
-                  viewBox="0 0 340 425"
-                  className="w-full h-full object-cover filter contrast-125 grayscale"
-                  preserveAspectRatio="xMidYMid slice"
-                >
-                  <rect width="340" height="425" fill="#08090B" />
-                  <radialGradient id="cutoutGrad" cx="50%" cy="40%" r="50%">
-                    <stop offset="0%" stopColor="#C72C46" stopOpacity="0.85" />
-                    <stop offset="60%" stopColor="#8A172D" stopOpacity="0.4" />
-                    <stop offset="100%" stopColor="#08090B" stopOpacity="0" />
-                  </radialGradient>
-                  <circle cx="170" cy="180" r="140" fill="url(#cutoutGrad)" />
-                  <path
-                    d="M170 85 C145 85 125 105 125 135 C125 155 135 170 145 180 C110 195 85 230 80 280 L260 280 C255 230 230 195 195 180 C205 170 215 155 215 135 C215 105 195 85 170 85 Z"
-                    fill="#0e0f14"
-                    stroke="#292A31"
-                    strokeWidth="2"
+              {/* Cutout Portrait or High-Fidelity Silhouette */}
+              <div
+                className="relative z-10 w-full h-full flex flex-col justify-end items-center overflow-hidden"
+                style={{ transform: "translateZ(28px)" }}
+              >
+                {!imgError ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src="/praneeth-cutout.png"
+                    alt="Korikana Sai Praneeth"
+                    onError={() => setImgError(true)}
+                    className="relative z-10 w-full h-full object-cover object-top filter contrast-110 brightness-105"
+                    style={{
+                      WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
+                      maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
+                    }}
                   />
-                  <path
-                    d="M140 100 Q155 80 170 82 Q185 80 200 100 Q205 120 195 135 Q170 145 145 135 Z"
-                    fill="#181920"
-                  />
-                  <circle cx="155" cy="125" r="3" fill="#E05269" />
-                  <circle cx="185" cy="125" r="3" fill="#E05269" />
-                  <path d="M150 200 L170 240 L190 200" stroke="#C72C46" strokeWidth="2" fill="none" />
-                  <path d="M170 240 L170 300" stroke="#E05269" strokeWidth="1.5" />
-                  <rect y="320" width="340" height="105" fill="url(#bottomFade)" />
-                  <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#08090B" stopOpacity="0" />
-                    <stop offset="100%" stopColor="#08090B" stopOpacity="1" />
-                  </linearGradient>
-                </svg>
-              )}
-            </div>
+                ) : (
+                  <svg
+                    viewBox="0 0 340 425"
+                    className="w-full h-full object-cover filter contrast-125 grayscale"
+                    preserveAspectRatio="xMidYMid slice"
+                  >
+                    <rect width="340" height="425" fill="#08090B" />
+                    <radialGradient id="cutoutGrad" cx="50%" cy="40%" r="50%">
+                      <stop offset="0%" stopColor="#C72C46" stopOpacity="0.85" />
+                      <stop offset="60%" stopColor="#8A172D" stopOpacity="0.4" />
+                      <stop offset="100%" stopColor="#08090B" stopOpacity="0" />
+                    </radialGradient>
+                    <circle cx="170" cy="180" r="140" fill="url(#cutoutGrad)" />
+                    <path
+                      d="M170 85 C145 85 125 105 125 135 C125 155 135 170 145 180 C110 195 85 230 80 280 L260 280 C255 230 230 195 195 180 C205 170 215 155 215 135 C215 105 195 85 170 85 Z"
+                      fill="#0e0f14"
+                      stroke="#292A31"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M140 100 Q155 80 170 82 Q185 80 200 100 Q205 120 195 135 Q170 145 145 135 Z"
+                      fill="#181920"
+                    />
+                    <circle cx="155" cy="125" r="3" fill="#E05269" />
+                    <circle cx="185" cy="125" r="3" fill="#E05269" />
+                    <path d="M150 200 L170 240 L190 200" stroke="#C72C46" strokeWidth="2" fill="none" />
+                    <path d="M170 240 L170 300" stroke="#E05269" strokeWidth="1.5" />
+                    <rect y="320" width="340" height="105" fill="url(#bottomFade)" />
+                    <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#08090B" stopOpacity="0" />
+                      <stop offset="100%" stopColor="#08090B" stopOpacity="1" />
+                    </linearGradient>
+                  </svg>
+                )}
+              </div>
 
-            {/* Bottom Status Pill (Exact SAAI.pro styling) */}
-            <div className="absolute -left-2 bottom-3.5 z-20 px-3 py-1.5 bg-black border border-accent-red font-mono font-bold text-xs text-white tracking-wider flex items-center gap-2 shadow-xl">
-              <span className="w-2 h-2 rounded-full bg-accent-red animate-pulse" />
-              <span>SOVEREIGN SILICON ACTIVE</span>
+              {/* Bottom Status Pill (Exact SAAI.pro styling) */}
+              <div
+                className="absolute -left-2 bottom-3.5 z-20 px-3 py-1.5 bg-black border border-accent-red font-mono font-bold text-xs text-white tracking-wider flex items-center gap-2 shadow-xl"
+                style={{ transform: "translateZ(42px)" }}
+              >
+                <span className="w-2 h-2 rounded-full bg-accent-red animate-pulse" />
+                <span>SOVEREIGN SILICON ACTIVE</span>
+              </div>
             </div>
-          </div>
+          </Interactive3DTilt>
         </div>
 
-        {/* RIGHT FLANK: Stack of 3 Technical HUD Cards */}
+        {/* RIGHT FLANK: Stack of 3 Technical HUD Cards with 3D Interaction */}
         <div className="flex flex-col space-y-3 pb-2 min-w-0 w-full">
           {/* Card 01 */}
-          <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5 w-full">
-            <div className="flex items-center justify-between font-mono text-[11px]">
-              <span className="text-white font-bold">01.</span>
-              <span className="px-1.5 py-0.5 border border-white/20 text-[9px] text-accent-red uppercase tracking-wider font-semibold">
-                RUNTIME
-              </span>
+          <Interactive3DTilt maxTilt={6} scale={1.02} glare={true} className="w-full">
+            <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5 w-full">
+              <div className="flex items-center justify-between font-mono text-[11px]">
+                <span className="text-white font-bold">01.</span>
+                <span className="px-1.5 py-0.5 border border-white/20 text-[9px] text-accent-red uppercase tracking-wider font-semibold">
+                  RUNTIME
+                </span>
+              </div>
+              <h4 className="font-heading font-bold text-base text-white leading-tight">
+                Autonomous Core
+              </h4>
+              <p className="font-sans text-xs text-[#a8a8b0] leading-relaxed">
+                Local-first agent runtime with multi-provider model routing. Zero cloud lock-in.
+              </p>
             </div>
-            <h4 className="font-heading font-bold text-base text-white leading-tight">
-              Autonomous Core
-            </h4>
-            <p className="font-sans text-xs text-[#a8a8b0] leading-relaxed">
-              Local-first agent runtime with multi-provider model routing. Zero cloud lock-in.
-            </p>
-          </div>
+          </Interactive3DTilt>
 
           {/* Card 02 */}
-          <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5 w-full">
-            <div className="flex items-center justify-between font-mono text-[11px]">
-              <span className="text-white font-bold">02.</span>
-              <span className="px-1.5 py-0.5 border border-white/20 text-[9px] text-emerald-400 uppercase tracking-wider font-semibold">
-                PRODUCTION
-              </span>
+          <Interactive3DTilt maxTilt={6} scale={1.02} glare={true} className="w-full">
+            <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5 w-full">
+              <div className="flex items-center justify-between font-mono text-[11px]">
+                <span className="text-white font-bold">02.</span>
+                <span className="px-1.5 py-0.5 border border-white/20 text-[9px] text-emerald-400 uppercase tracking-wider font-semibold">
+                  PRODUCTION
+                </span>
+              </div>
+              <h4 className="font-heading font-bold text-base text-white leading-tight">
+                Spiderman 3D Portfolio
+              </h4>
+              <p className="font-sans text-xs text-[#a8a8b0] leading-relaxed">
+                Interactive 3D WebGL developer portfolio with custom shaders and scroll-triggered physics.
+              </p>
             </div>
-            <h4 className="font-heading font-bold text-base text-white leading-tight">
-              Spiderman 3D Portfolio
-            </h4>
-            <p className="font-sans text-xs text-[#a8a8b0] leading-relaxed">
-              Interactive 3D WebGL developer portfolio with custom shaders and scroll-triggered physics.
-            </p>
-          </div>
+          </Interactive3DTilt>
 
           {/* Card 03 */}
-          <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5 w-full">
-            <div className="flex items-center justify-between font-mono text-[11px]">
-              <span className="text-white font-bold">03.</span>
-              <span className="px-1.5 py-0.5 border border-white/20 text-[9px] text-cyan-400 uppercase tracking-wider font-semibold">
-                EXECUTION
-              </span>
-            </div>
-            <h4 className="font-heading font-bold text-base text-white leading-tight">
-              Smart Rural Health &amp; Swayam
-            </h4>
-            <p className="font-sans text-xs text-[#a8a8b0] leading-relaxed">
-              Predictive AI disease triage, medicine supply chain &amp; real-time donor matching.
-            </p>
-
-            {/* Stack Chips */}
-            <div className="pt-2 flex flex-wrap gap-1 font-mono text-[9px] text-[#a8a8b0]">
-              {["Python", "React 19", "FastAPI", "Next.js", "Three.js", "MySQL"].map((tech) => (
-                <span key={tech} className="px-1.5 py-0.5 border border-white/10 bg-white/5">
-                  {tech}
+          <Interactive3DTilt maxTilt={6} scale={1.02} glare={true} className="w-full">
+            <div className="p-4 bg-[#0f0f10] border border-white/10 hover:border-accent-red/50 transition-colors space-y-1.5 w-full">
+              <div className="flex items-center justify-between font-mono text-[11px]">
+                <span className="text-white font-bold">03.</span>
+                <span className="px-1.5 py-0.5 border border-white/20 text-[9px] text-cyan-400 uppercase tracking-wider font-semibold">
+                  EXECUTION
                 </span>
-              ))}
+              </div>
+              <h4 className="font-heading font-bold text-base text-white leading-tight">
+                Smart Rural Health &amp; Swayam
+              </h4>
+              <p className="font-sans text-xs text-[#a8a8b0] leading-relaxed">
+                Predictive AI disease triage, medicine supply chain &amp; real-time donor matching.
+              </p>
+
+              {/* Stack Chips */}
+              <div className="pt-2 flex flex-wrap gap-1 font-mono text-[9px] text-[#a8a8b0]">
+                {["Python", "React 19", "FastAPI", "Next.js", "Three.js", "MySQL"].map((tech) => (
+                  <span key={tech} className="px-1.5 py-0.5 border border-white/10 bg-white/5">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          </Interactive3DTilt>
         </div>
       </div>
 

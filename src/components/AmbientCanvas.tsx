@@ -2,11 +2,13 @@
 
 import React, { useEffect, useRef } from "react";
 
-interface Particle {
+interface Particle3D {
   x: number;
   y: number;
+  z: number;
   vx: number;
   vy: number;
+  vz: number;
   size: number;
   baseAlpha: number;
 }
@@ -27,34 +29,54 @@ export function AmbientCanvas() {
     let animId: number;
     let width = 0;
     let height = 0;
-    let particles: Particle[] = [];
-    let mouse = { x: 0.5, y: 0.5, targetX: 0.5, targetY: 0.5, rawX: -1000, rawY: -1000, radius: 160 };
+    let centerX = 0;
+    let centerY = 0;
+    let particles: Particle3D[] = [];
+    const CAMERA_DIST = 600;
+
+    let mouse = {
+      x: 0,
+      y: 0,
+      targetX: 0,
+      targetY: 0,
+      rawX: -1000,
+      rawY: -1000,
+      radius: 180,
+    };
     let isVisible = true;
 
     // Atmospheric Crimson Aurora Orbs (SAAI.pro Noir & Crimson focus)
     const orbs = [
-      { x: 0.35, y: 0.40, radius: 0.50, vx: 0.0003, vy: 0.0002, color: "rgba(239, 68, 68, 0.14)" },
-      { x: 0.70, y: 0.45, radius: 0.42, vx: -0.0002, vy: 0.0003, color: "rgba(185, 28, 28, 0.10)" },
-      { x: 0.50, y: 0.80, radius: 0.48, vx: 0.0002, vy: -0.0002, color: "rgba(255, 255, 255, 0.03)" },
+      { x: 0.35, y: 0.40, radius: 0.50, vx: 0.0003, vy: 0.0002, color: "rgba(239, 68, 68, 0.12)" },
+      { x: 0.70, y: 0.45, radius: 0.42, vx: -0.0002, vy: 0.0003, color: "rgba(185, 28, 28, 0.09)" },
+      { x: 0.50, y: 0.80, radius: 0.48, vx: 0.0002, vy: -0.0002, color: "rgba(255, 255, 255, 0.025)" },
     ];
 
     const resize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
+      centerX = width / 2;
+      centerY = height / 2;
       initParticles();
     };
 
     const initParticles = () => {
-      const count = Math.min(Math.floor((width * height) / 14000), 85);
+      const count = Math.min(Math.floor((width * height) / 13000), 95);
       particles = [];
+      const spreadX = width * 0.9;
+      const spreadY = height * 0.9;
+      const spreadZ = 500;
+
       for (let i = 0; i < count; i++) {
         particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          size: Math.random() * 1.5 + 0.8,
-          baseAlpha: Math.random() * 0.35 + 0.15,
+          x: (Math.random() - 0.5) * spreadX,
+          y: (Math.random() - 0.5) * spreadY,
+          z: (Math.random() - 0.5) * spreadZ,
+          vx: (Math.random() - 0.5) * 0.5,
+          vy: (Math.random() - 0.5) * 0.5,
+          vz: (Math.random() - 0.5) * 0.4,
+          size: Math.random() * 1.6 + 0.8,
+          baseAlpha: Math.random() * 0.4 + 0.2,
         });
       }
     };
@@ -62,22 +84,41 @@ export function AmbientCanvas() {
     const onMouseMove = (e: MouseEvent) => {
       mouse.rawX = e.clientX;
       mouse.rawY = e.clientY;
-      mouse.targetX = e.clientX / (width || 1);
-      mouse.targetY = e.clientY / (height || 1);
+      // Mouse angle in radians between -0.2 and 0.2
+      mouse.targetX = ((e.clientX - centerX) / centerX) * 0.22;
+      mouse.targetY = ((e.clientY - centerY) / centerY) * 0.18;
     };
 
     const onMouseLeave = () => {
       mouse.rawX = -1000;
       mouse.rawY = -1000;
+      mouse.targetX = 0;
+      mouse.targetY = 0;
     };
+
+    // Pre-allocated projected array to prevent GC pauses
+    interface ProjectedPoint {
+      px: number;
+      py: number;
+      pz: number;
+      scale: number;
+      alpha: number;
+      size: number;
+    }
+    let projected: ProjectedPoint[] = [];
 
     const render = () => {
       if (!isVisible) return;
       ctx.clearRect(0, 0, width, height);
 
-      // Smooth mouse parallax easing
-      mouse.x += (mouse.targetX - mouse.x) * 0.04;
-      mouse.y += (mouse.targetY - mouse.y) * 0.04;
+      // Smooth mouse 3D camera rotation interpolation
+      mouse.x += (mouse.targetX - mouse.x) * 0.05;
+      mouse.y += (mouse.targetY - mouse.y) * 0.05;
+
+      const cosY = Math.cos(mouse.x);
+      const sinY = Math.sin(mouse.x);
+      const cosX = Math.cos(-mouse.y);
+      const sinX = Math.sin(-mouse.y);
 
       // 1. Render Atmospheric Crimson Aurora Orbs
       orbs.forEach((orb) => {
@@ -87,8 +128,8 @@ export function AmbientCanvas() {
         if (orb.x < 0.1 || orb.x > 0.9) orb.vx *= -1;
         if (orb.y < 0.1 || orb.y > 0.9) orb.vy *= -1;
 
-        const px = (orb.x + (mouse.x - 0.5) * 0.06) * width;
-        const py = (orb.y + (mouse.y - 0.5) * 0.06) * height;
+        const px = (orb.x + mouse.x * 0.2) * width;
+        const py = (orb.y + mouse.y * 0.2) * height;
         const r = orb.radius * Math.min(width, height);
 
         const gradient = ctx.createRadialGradient(px, py, 0, px, py, r);
@@ -99,7 +140,7 @@ export function AmbientCanvas() {
         ctx.fillRect(0, 0, width, height);
       });
 
-      // 2. High-precision mouse backlight
+      // 2. High-precision interactive mouse aura
       if (mouse.rawX > 0 && mouse.rawY > 0) {
         const radGrad = ctx.createRadialGradient(
           mouse.rawX,
@@ -107,58 +148,104 @@ export function AmbientCanvas() {
           0,
           mouse.rawX,
           mouse.rawY,
-          300
+          280
         );
-        radGrad.addColorStop(0, "rgba(239, 68, 68, 0.09)");
-        radGrad.addColorStop(0.5, "rgba(185, 28, 28, 0.03)");
+        radGrad.addColorStop(0, "rgba(224, 82, 105, 0.08)");
+        radGrad.addColorStop(0.5, "rgba(199, 44, 70, 0.02)");
         radGrad.addColorStop(1, "rgba(8, 9, 11, 0)");
         ctx.fillStyle = radGrad;
         ctx.fillRect(0, 0, width, height);
       }
 
-      // 3. Update & Draw Connected Particle Network
+      const boundX = width * 0.55;
+      const boundY = height * 0.55;
+      const boundZ = 280;
+
+      // 3. Project 3D particles into 2D camera viewport
+      projected = [];
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
         p.x += p.vx;
         p.y += p.vy;
+        p.z += p.vz;
 
-        if (p.x < 0) p.x = width;
-        else if (p.x > width) p.x = 0;
-        if (p.y < 0) p.y = height;
-        else if (p.y > height) p.y = 0;
+        // Wrap boundaries in 3D box
+        if (p.x < -boundX) p.x = boundX;
+        else if (p.x > boundX) p.x = -boundX;
+        if (p.y < -boundY) p.y = boundY;
+        else if (p.y > boundY) p.y = -boundY;
+        if (p.z < -boundZ) p.z = boundZ;
+        else if (p.z > boundZ) p.z = -boundZ;
 
-        // Mouse deflection
-        const dx = mouse.rawX - p.x;
-        const dy = mouse.rawY - p.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < mouse.radius) {
-          const force = (1 - dist / mouse.radius) * 0.8;
-          p.x -= (dx / dist) * force;
-          p.y -= (dy / dist) * force;
+        // 3D Matrix Rotation (Y axis then X axis)
+        const rotX = p.x * cosY + p.z * sinY;
+        const rotZ1 = -p.x * sinY + p.z * cosY;
+        const rotY = p.y * cosX - rotZ1 * sinX;
+        const rotZ = p.y * sinX + rotZ1 * cosX;
+
+        // Perspective division
+        const depth = CAMERA_DIST + rotZ;
+        if (depth <= 20) continue; // Behind camera plane
+
+        const scale = CAMERA_DIST / depth;
+        const projX = centerX + rotX * scale;
+        const projY = centerY + rotY * scale;
+
+        // Mouse 3D repulsion
+        if (mouse.rawX > 0 && mouse.rawY > 0) {
+          const dx = mouse.rawX - projX;
+          const dy = mouse.rawY - projY;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const force = (1 - dist / mouse.radius) * 1.5;
+            p.x -= (dx / dist) * force * 2;
+            p.y -= (dy / dist) * force * 2;
+            p.z += force * 3;
+          }
         }
 
-        // Draw particle dot
+        const alpha = Math.min(1, Math.max(0.08, p.baseAlpha * scale * 0.95));
+        const renderedSize = Math.max(0.6, p.size * scale);
+
+        projected.push({
+          px: projX,
+          py: projY,
+          pz: rotZ,
+          scale,
+          alpha,
+          size: renderedSize,
+        });
+
+        // Draw particle dot with depth-shaded glow
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(224, 82, 105, ${p.baseAlpha})`;
+        ctx.arc(projX, projY, renderedSize, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(224, 82, 105, ${alpha})`;
         ctx.fill();
+      }
 
-        // Connect nearby particles
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const cdx = p.x - p2.x;
-          const cdy = p.y - p2.y;
-          const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
+      // 4. Render 3D Neural Constellation Interconnects
+      for (let i = 0; i < projected.length; i++) {
+        const p1 = projected[i];
+        for (let j = i + 1; j < projected.length; j++) {
+          const p2 = projected[j];
+          const dx = p1.px - p2.px;
+          const dy = p1.py - p2.py;
+          const dist2d = Math.sqrt(dx * dx + dy * dy);
 
-          if (cdist < 130) {
-            const alpha = (1 - cdist / 130) * 0.15;
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(199, 44, 70, ${alpha})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
+          if (dist2d < 125) {
+            const depthDiff = Math.abs(p1.pz - p2.pz);
+            if (depthDiff < 140) {
+              const lineAlpha = (1 - dist2d / 125) * (1 - depthDiff / 140) * 0.18 * p1.scale;
+              if (lineAlpha > 0.015) {
+                ctx.beginPath();
+                ctx.moveTo(p1.px, p1.py);
+                ctx.lineTo(p2.px, p2.py);
+                ctx.strokeStyle = `rgba(199, 44, 70, ${lineAlpha})`;
+                ctx.lineWidth = Math.max(0.4, 0.7 * p1.scale);
+                ctx.stroke();
+              }
+            }
           }
         }
       }
@@ -199,7 +286,7 @@ export function AmbientCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-90"
+      className="fixed inset-0 pointer-events-none z-0 opacity-95"
       aria-hidden="true"
     />
   );

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { sound } from "@/lib/audio";
 import { VERIFIED_PROJECTS, ProjectItem } from "@/data/projects";
 import { ProjectModal } from "@/components/ProjectModal";
+import { Interactive3DTilt } from "@/components/Interactive3DTilt";
 import {
   Github,
   ExternalLink,
@@ -145,53 +146,60 @@ export function ProjectShowcase() {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {VERIFIED_PROJECTS.filter((p) => p.flagship).map((project) => (
-                <div
+                <Interactive3DTilt
                   key={project.id}
-                  onClick={() => openProjectModal(project)}
-                  onMouseEnter={() => sound.playHover()}
-                  className="group cursor-pointer rounded-lg border border-border-subtle bg-bg-panel p-6 shadow-panel-subtle hover:border-accent-red/80 hover:shadow-crimson-glow transition-all duration-200 flex flex-col justify-between space-y-4 relative overflow-hidden"
+                  maxTilt={8}
+                  scale={1.02}
+                  glare={true}
+                  className="h-full rounded-lg"
                 >
-                  {/* Crimson Top Accent Bar */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-crimson via-accent-red to-accent-red-hover opacity-80 group-hover:opacity-100 transition-opacity" />
+                  <div
+                    onClick={() => openProjectModal(project)}
+                    onMouseEnter={() => sound.playHover()}
+                    className="group cursor-pointer rounded-lg border border-border-subtle bg-bg-panel p-6 shadow-panel-subtle hover:border-accent-red/80 hover:shadow-crimson-glow transition-all duration-200 flex flex-col justify-between space-y-4 relative overflow-hidden h-full"
+                  >
+                    {/* Crimson Top Accent Bar */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-crimson via-accent-red to-accent-red-hover opacity-80 group-hover:opacity-100 transition-opacity" />
 
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between text-xs font-mono">
-                      <span className="text-accent-red font-semibold tracking-wider">
-                        {project.badge}
-                      </span>
-                      <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                        {project.status}
-                      </span>
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between text-xs font-mono">
+                        <span className="text-accent-red font-semibold tracking-wider">
+                          {project.badge}
+                        </span>
+                        <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                          {project.status}
+                        </span>
+                      </div>
+
+                      <h3 className="font-heading font-black text-xl text-text-primary group-hover:text-accent-red transition-colors">
+                        {project.title}
+                      </h3>
+
+                      <p className="text-xs text-text-secondary line-clamp-3 leading-relaxed font-sans">
+                        {project.description}
+                      </p>
+
+                      {/* Metrics Strip */}
+                      {project.metrics && (
+                        <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border-subtle/60 font-mono text-[10px]">
+                          {project.metrics.map((m, idx) => (
+                            <div key={idx} className="p-1.5 rounded bg-bg-secondary text-center">
+                              <div className="text-accent-red font-bold">{m.value}</div>
+                              <div className="text-text-muted truncate">{m.label}</div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </div>
 
-                    <h3 className="font-heading font-black text-xl text-text-primary group-hover:text-accent-red transition-colors">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-xs text-text-secondary line-clamp-3 leading-relaxed font-sans">
-                      {project.description}
-                    </p>
-
-                    {/* Metrics Strip */}
-                    {project.metrics && (
-                      <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border-subtle/60 font-mono text-[10px]">
-                        {project.metrics.map((m, idx) => (
-                          <div key={idx} className="p-1.5 rounded bg-bg-secondary text-center">
-                            <div className="text-accent-red font-bold">{m.value}</div>
-                            <div className="text-text-muted truncate">{m.label}</div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
+                    <div className="pt-3 border-t border-border-subtle/60 flex items-center justify-between text-xs font-mono text-text-muted">
+                      <span className="truncate max-w-[150px]">{project.techStack.slice(0, 3).join(" • ")}</span>
+                      <span className="text-accent-red group-hover:translate-x-1 transition-transform flex items-center gap-1 font-semibold">
+                        INSPECT →
+                      </span>
+                    </div>
                   </div>
-
-                  <div className="pt-3 border-t border-border-subtle/60 flex items-center justify-between text-xs font-mono text-text-muted">
-                    <span className="truncate max-w-[150px]">{project.techStack.slice(0, 3).join(" • ")}</span>
-                    <span className="text-accent-red group-hover:translate-x-1 transition-transform flex items-center gap-1 font-semibold">
-                      INSPECT →
-                    </span>
-                  </div>
-                </div>
+                </Interactive3DTilt>
               ))}
             </div>
           </div>
