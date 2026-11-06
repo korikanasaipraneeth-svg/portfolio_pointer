@@ -23,14 +23,14 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
   {
     id: "student-portfolio",
     name: "student-portfolio",
-    title: "STUDENT360 — Academic SaaS & Verification Engine",
+    title: "STUDENT360 — Academic SaaS & Verification Engine (1st Prize Google Hackathon)",
     badge: "SYS-01 // FLAGSHIP PLATFORM",
     category: "02 — FULL-STACK APPLICATIONS",
     categoryKey: "fullstack",
     flagship: true,
     status: "ACTIVE PRODUCTION",
     description:
-      "Enterprise-grade SaaS platform bridging academia and industry. Interconnected tri-portal system where students build faculty-verified digital portfolios, professors validate academic achievements, and recruiters headhunt pre-verified talent via an interactive Kanban pipeline.",
+      "Enterprise-grade SaaS platform bridging academia and industry. Awarded 1st Prize at Google Student Ambassador Hackathon. Interconnected tri-portal system where students build faculty-verified digital portfolios, professors validate academic achievements, and recruiters headhunt pre-verified talent via an interactive Kanban pipeline.",
     problemSolved:
       "Unverified resume inflation and lack of trusted academic verification for recruiters seeking emerging engineering talent.",
     purpose:
@@ -158,48 +158,50 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     categoryKey: "software-eng",
     status: "STABLE RELEASE",
     description:
-      "Architectural UI component library and modular dashboard system built for modern enterprise personnel management, performance evaluations, and role allocations.",
+      "Enterprise UI component library and modular dashboard system built during Software Developer Internship at HRX Tech Solution. Built for personnel management, performance evaluations, and role allocations.",
     problemSolved:
       "Cluttered, non-responsive legacy administrative portals that impede rapid organizational navigation.",
     purpose:
       "Deliver a clean, high-density component suite providing instant visual feedback on personnel allocations and payroll states.",
     architecture:
       "Atomic design component hierarchy, CSS custom properties design tokens, and decoupled state management.",
-    techStack: ["JavaScript", "HTML5", "CSS3 / Modern CSS", "DOM APIs"],
+    techStack: ["JavaScript", "HTML5", "CSS3 / Modern CSS", "DOM APIs", "HRX Tech Solution"],
     features: [
       "High-density responsive data tables with client-side sorting and filtering",
       "Modular employee status cards with interactive lifecycle indicators",
       "Accessible modal dialogues and keyboard-navigable operational forms",
     ],
     contribution:
-      "Authored component styles, layout structures, and DOM interaction hooks.",
+      "Authored component styles, layout structures, and DOM interaction hooks during HRX Tech Solution internship.",
     githubUrl: "https://github.com/korikanasaipraneeth-svg/hrx-interfaces-",
   },
   {
     id: "spyderman-portfolio",
     name: "spyderman-portfolio",
-    title: "Spider-Man Interactive Experience — Motion & Canvas Dynamics",
+    title: "Spider-Man Interactive 3D Experience — WebGL Shaders & Canvas Dynamics",
     badge: "SYS-06 // CREATIVE COMPUTING",
     category: "05 — EXPERIMENTAL PROJECTS",
     categoryKey: "experimental",
-    status: "STABLE RELEASE",
+    status: "ACTIVE PRODUCTION",
     description:
-      "Themed interactive web experience featuring custom HTML5 Canvas particle physics, dynamic web-strand rendering, and mouse-reactive particle acceleration.",
+      "Premium 3D developer experience with custom WebGL shaders, interactive Hero physics responding to mouse movement, cinematic preloader with mix-blend spotlight, glowing emblem, and dynamic Journey timeline.",
     problemSolved:
-      "Exploring real-time browser graphics rendering, spring physics simulations, and low-latency canvas animations without heavy 3D engine overhead.",
+      "Exploring real-time browser graphics rendering, spring physics simulations, and low-latency canvas animations without heavy engine overhead.",
     purpose:
-      "Push browser front-end limits using vanilla canvas physics and interactive motion design.",
+      "Push browser front-end limits using WebGL shaders, Three.js, and interactive motion design.",
     architecture:
-      "HTML5 Canvas 2D context render loop (requestAnimationFrame), Verlet integration particle physics, and responsive viewport coordinate transforms.",
-    techStack: ["JavaScript", "HTML5 Canvas", "CSS3", "Physics Simulation"],
+      "WebGL shader pipeline, HTML5 Canvas 2D render loop, Verlet integration particle physics, and responsive viewport coordinate transforms.",
+    techStack: ["Three.js", "React 19", "WebGL", "HTML5 Canvas", "JavaScript", "Tailwind CSS"],
     features: [
+      "Interactive 3D Hero section with custom WebGL shaders responding to scroll and mouse movement",
+      "Cinematic preloader with mix-blend spotlight and seamless fly-through transition",
       "Verlet integration particle spring physics for interactive web strands",
-      "Mouse tracking repulsion and dynamic particle tethering",
-      "Themed chromatic aberration and atmospheric dark visual effects",
+      "Advanced scroll-triggered animations and dynamically drawn Journey timeline",
     ],
     contribution:
-      "Designed and coded canvas math, physics springs, and custom interactive listeners.",
+      "Designed and coded 3D WebGL scenes, canvas math, physics springs, and custom interactive listeners.",
     githubUrl: "https://github.com/korikanasaipraneeth-svg/spyderman-portfolio",
+    liveUrl: "https://spyderman-portfolio.vercel.app",
   },
   {
     id: "swayam",

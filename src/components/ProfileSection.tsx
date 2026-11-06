@@ -2,12 +2,12 @@
 
 import React, { useState } from "react";
 import { sound } from "@/lib/audio";
-import { User, GraduationCap, Cpu, Layers, Rocket, ShieldCheck, Award } from "lucide-react";
+import { User, GraduationCap, Cpu, Layers, Rocket, Briefcase, Award, Target, Sparkles } from "lucide-react";
 
 export function ProfileSection() {
-  const [activeTab, setActiveTab] = useState<"who" | "academic" | "philosophy" | "what-i-build" | "future">("who");
+  const [activeTab, setActiveTab] = useState<"who" | "academic" | "internship" | "philosophy" | "what-i-build" | "future">("who");
 
-  const handleTabChange = (tab: "who" | "academic" | "philosophy" | "what-i-build" | "future") => {
+  const handleTabChange = (tab: "who" | "academic" | "internship" | "philosophy" | "what-i-build" | "future") => {
     sound.playTabSwitch();
     setActiveTab(tab);
   };
@@ -28,30 +28,56 @@ export function ProfileSection() {
           </h2>
         </div>
 
-        {/* 2-Column Overview (Identical to Screenshot 1) */}
+        {/* 2-Column Overview */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column (7 cols): Full Narrative Bio with Bold Highlights */}
+          {/* Left Column (7 cols): Full Narrative Bio in Authentic Voice */}
           <div className="lg:col-span-7 space-y-5 text-sm sm:text-base font-sans text-text-secondary leading-relaxed">
             <p>
-              I am <strong className="text-text-primary">Korikana Sai Praneeth</strong> — an independent AI and software developer based in Andhra Pradesh, India. I am currently a 3rd-year undergraduate pursuing my <strong className="text-text-primary">B.Tech in Artificial Intelligence and Machine Learning</strong> at <strong className="text-text-primary">Sri Sivani College of Engineering</strong> (Roll No: 24W61A6119).
+              Hi, I&apos;m <strong className="text-text-primary">Korikana Sai Praneeth</strong>, a passionate Software Developer and a 3rd-year B.Tech student specializing in <strong className="text-text-primary">Artificial Intelligence and Machine Learning</strong> at <strong className="text-text-primary">Sri Sivani College of Engineering</strong> (Roll No: 24W61A6119).
             </p>
             <p>
-              My engineering capabilities were forged in the terminal: developing real-world full-stack architectures, writing high-throughput REST microservices in <strong className="text-text-primary">Python</strong>, <strong className="text-text-primary">Node.js</strong>, and <strong className="text-text-primary">FastAPI</strong>, and designing multi-role applications in <strong className="text-text-primary">React 19</strong>, <strong className="text-text-primary">Next.js</strong>, and <strong className="text-text-primary">Flutter</strong>.
+              I love learning new technologies, building websites, and creating useful applications. I enjoy turning creative ideas into real-world projects and finding simple, robust solutions to technical problems. I work with programming languages like <strong className="text-text-primary">Python, Java, C, and C++</strong>, along with <strong className="text-text-primary">HTML, CSS, JavaScript, React 19, and SQL</strong>.
             </p>
             <p>
-              I view <strong className="text-text-primary">Vibe Coding</strong> as an engineering multiplier: pairing generative AI speed with deep fundamentals in algorithms, relational DBMS schemas, and automated testing to build production systems that operate with total reliability.
+              I also have industry experience as a <strong className="text-text-primary">Software Developer Intern at HRX Tech Solution</strong>, where I get the opportunity to learn and engineer real-world interfaces and production features.
             </p>
+            <p>
+              Apart from coding, I actively participate in technical hackathons, collaborate with teams as a <strong className="text-text-primary">Microsoft Student Ambassador</strong>, and share knowledge through induction mentoring.
+            </p>
+
+            {/* Core Goal & Belief Callouts */}
+            <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
+              <div className="p-3.5 rounded-sm border border-accent-red/30 bg-accent-red/5 space-y-1">
+                <div className="flex items-center gap-1.5 text-accent-red font-bold">
+                  <Target className="w-3.5 h-3.5" />
+                  <span>MY GOAL</span>
+                </div>
+                <p className="font-sans text-xs text-text-secondary leading-relaxed">
+                  To become a skilled Software Developer, build meaningful projects, and create technology that makes people&apos;s lives easier.
+                </p>
+              </div>
+
+              <div className="p-3.5 rounded-sm border border-emerald-500/30 bg-emerald-500/5 space-y-1">
+                <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>MY BELIEF</span>
+                </div>
+                <p className="font-sans text-xs text-text-primary font-semibold leading-relaxed">
+                  &quot;Keep Learning. Keep Building. Keep Growing.&quot;
+                </p>
+              </div>
+            </div>
           </div>
 
-          {/* Right Column (5 cols): Numbered Technical Pillars (01, 02, 03) */}
-          <div className="lg:col-span-5 space-y-4 font-mono text-xs">
+          {/* Right Column (5 cols): Numbered Technical Pillars (01, 02, 03, 04) */}
+          <div className="lg:col-span-5 space-y-3 font-mono text-xs">
             <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/80 space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="text-accent-red font-bold text-sm">01</span>
-                <span className="font-bold text-text-primary text-sm">Sovereign Silicon</span>
+                <span className="font-bold text-text-primary text-sm">HRX Tech Solution Intern</span>
               </div>
               <p className="font-sans text-xs text-text-secondary leading-relaxed">
-                Zero reliance on third-party cloud wrappers or hosted black-boxes. Fully local execution pipelines, edge inference, and offline-first mobile databases.
+                Hands-on industry experience building enterprise user dashboard systems, modular components, and production-tested interfaces.
               </p>
             </div>
 
@@ -61,17 +87,27 @@ export function ProfileSection() {
                 <span className="font-bold text-text-primary text-sm">Microsoft Student Ambassador</span>
               </div>
               <p className="font-sans text-xs text-text-secondary leading-relaxed">
-                Officially onboarded community leader and technical mentor; conducting induction classes, workshops, and mentoring junior engineering students.
+                Officially onboarded community ambassador; conducting induction classes, workshops, and mentoring junior engineering students.
               </p>
             </div>
 
             <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/80 space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="text-cyan-400 font-bold text-sm">03</span>
-                <span className="font-bold text-text-primary text-sm">Hackathon Champion</span>
+                <span className="font-bold text-text-primary text-sm">Hackathon Champion (2x)</span>
               </div>
               <p className="font-sans text-xs text-text-secondary leading-relaxed">
-                1st Prize at Google Student Ambassador Hackathon (STUDENT360 Platform) and 1st Prize at Brainovision Hackathon (Stock Market Analyzer).
+                1st Prize at Google Student Ambassador Hackathon (STUDENT360) and 1st Prize at Brainovision Hackathon (Stock Market Analyzer).
+              </p>
+            </div>
+
+            <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/80 space-y-1.5">
+              <div className="flex items-center gap-2">
+                <span className="text-purple-400 font-bold text-sm">04</span>
+                <span className="font-bold text-text-primary text-sm">Sovereign Edge Engineering</span>
+              </div>
+              <p className="font-sans text-xs text-text-secondary leading-relaxed">
+                Local-first development using AI-assisted Vibe Coding workflows to design, build, test, and ship practical software systems.
               </p>
             </div>
           </div>
@@ -82,6 +118,7 @@ export function ProfileSection() {
           <div className="flex flex-wrap gap-2 font-mono text-xs">
             {[
               { id: "who", label: "WHO I AM", icon: User },
+              { id: "internship", label: "INDUSTRY INTERNSHIP", icon: Briefcase },
               { id: "academic", label: "ACADEMIC FOUNDATION", icon: GraduationCap },
               { id: "philosophy", label: "VIBE CODING PARADIGM", icon: Cpu },
               { id: "what-i-build", label: "SYSTEMS BUILT", icon: Layers },
@@ -111,19 +148,19 @@ export function ProfileSection() {
             {activeTab === "who" && (
               <div className="space-y-3">
                 <h3 className="font-heading font-bold text-xl text-text-primary">
-                  AI Systems Builder &amp; Full-Stack Software Developer
+                  Software Developer &amp; AIML Student Builder
                 </h3>
                 <p className="text-sm text-text-secondary leading-relaxed">
-                  Based in Andhra Pradesh, India, I specialize in full-stack architecture and AI systems integration. From emergency geospatial routing algorithms in <strong className="text-text-primary">Guardian AI</strong> to real-time multimodal diagnostics in <strong className="text-text-primary">AgriSahay AI</strong>, I build systems engineered for tangible utility.
+                  I love learning new technologies, building websites, and creating useful applications. My journey is driven by curiosity, consistent problem-solving, and transforming creative ideas into dependable software systems that solve real problems for real people.
                 </p>
                 <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-xs">
                   <div className="p-2.5 rounded bg-bg-secondary border border-border-subtle">
-                    <span className="text-text-muted text-[10px]">ENROLLMENT</span>
-                    <div className="font-bold text-text-primary mt-0.5">24W61A6119</div>
+                    <span className="text-text-muted text-[10px]">CURRENT ROLE</span>
+                    <div className="font-bold text-text-primary mt-0.5">Software Dev Intern</div>
                   </div>
                   <div className="p-2.5 rounded bg-bg-secondary border border-border-subtle">
-                    <span className="text-text-muted text-[10px]">STATUS</span>
-                    <div className="font-bold text-accent-red mt-0.5">3rd-Year B.Tech</div>
+                    <span className="text-text-muted text-[10px]">ACADEMIC STATUS</span>
+                    <div className="font-bold text-accent-red mt-0.5">3rd-Year B.Tech AIML</div>
                   </div>
                   <div className="p-2.5 rounded bg-bg-secondary border border-border-subtle">
                     <span className="text-text-muted text-[10px]">CAMPUS</span>
@@ -137,6 +174,33 @@ export function ProfileSection() {
               </div>
             )}
 
+            {activeTab === "internship" && (
+              <div className="space-y-4">
+                <div className="flex items-center gap-2 font-mono text-xs text-accent-red font-semibold">
+                  <Briefcase className="w-4 h-4" />
+                  <span>PROFESSIONAL INDUSTRY EXPERIENCE</span>
+                </div>
+                <h3 className="font-heading font-bold text-xl text-text-primary">
+                  Software Developer Intern — HRX Tech Solution
+                </h3>
+                <div className="p-3.5 rounded bg-bg-secondary border border-accent-red/30 font-mono text-xs flex flex-col sm:flex-row justify-between gap-1">
+                  <div>
+                    <span className="text-text-primary font-bold">HRX Tech Solution</span>
+                    <div className="text-text-muted text-[11px]">Enterprise User Dashboard &amp; Administrative Interfaces</div>
+                  </div>
+                  <span className="text-accent-red font-semibold">Internship</span>
+                </div>
+                <p className="text-sm text-text-secondary leading-relaxed">
+                  At HRX Tech Solution, I work on real-world software engineering projects, authoring modular frontend components, connecting asynchronous REST APIs, and designing responsive, high-density dashboard layouts (<code className="text-accent-red font-mono">hrx-interfaces-</code>).
+                </p>
+                <ul className="text-xs sm:text-sm text-text-secondary space-y-1.5 list-disc pl-5">
+                  <li>Engineering modular, accessible UI components and dashboard layouts.</li>
+                  <li>Collaborating in team sprints, reviewing git pull requests, and following clean code conventions.</li>
+                  <li>Bridging backend API data payloads with responsive, interactive client views.</li>
+                </ul>
+              </div>
+            )}
+
             {activeTab === "academic" && (
               <div className="space-y-3">
                 <h3 className="font-heading font-bold text-xl text-text-primary">
@@ -145,8 +209,8 @@ export function ProfileSection() {
                 <div className="space-y-3 font-mono text-xs">
                   <div className="p-3 rounded bg-bg-secondary border border-border-subtle flex flex-col sm:flex-row justify-between gap-1">
                     <div>
-                      <strong className="text-text-primary">Sri Sivani College of Engineering</strong>
-                      <div className="text-text-muted text-[11px]">B.Tech in Artificial Intelligence &amp; Machine Learning</div>
+                      <strong className="text-text-primary">Sri Sivani College of Engineering, Chilakapalem, Srikakulam</strong>
+                      <div className="text-text-muted text-[11px]">B.Tech in Artificial Intelligence &amp; Machine Learning (Roll No: 24W61A6119)</div>
                     </div>
                     <span className="text-accent-red font-semibold">2024 — Present</span>
                   </div>
@@ -174,10 +238,10 @@ export function ProfileSection() {
                   The Engineering Discipline Behind Vibe Coding
                 </h3>
                 <blockquote className="p-4 rounded border-l-2 border-accent-red bg-bg-secondary font-mono text-xs text-text-primary leading-relaxed">
-                  &quot;Vibe coding is not reckless script generation. It is the art of orchestrating multi-agent systems, rapid prototype synthesis, and immediate compiler validation to reach architectural objectives with maximum velocity.&quot;
+                  &quot;Keep Learning. Keep Building. Keep Growing.&quot;
                 </blockquote>
                 <p className="text-sm text-text-secondary leading-relaxed">
-                  By directing AI agents through rigorous specifications, type checking, and boundary constraints, I maintain full cognitive ownership over data contracts, component hierarchies, and application security.
+                  Vibe coding is an engineering accelerator: pairing generative AI speed with strong fundamentals in Python, Java, C/C++, HTML/CSS/JavaScript, and SQL. It allows me to prototype fast, run immediate automated compiler tests, and spend time engineering clean architecture and delightful user experiences.
                 </p>
               </div>
             )}
@@ -185,11 +249,11 @@ export function ProfileSection() {
             {activeTab === "what-i-build" && (
               <div className="space-y-3">
                 <h3 className="font-heading font-bold text-xl text-text-primary">
-                  Systems Portfolio from Verified Resume
+                  Systems Portfolio from Verified Resume &amp; GitHub
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                   <div className="p-3.5 rounded bg-bg-secondary border border-border-subtle space-y-1">
-                    <div className="font-mono text-xs text-accent-red font-bold">SPIDERMAN PORTFOLIO</div>
+                    <div className="font-mono text-xs text-accent-red font-bold">SPIDERMAN 3D PORTFOLIO</div>
                     <p className="text-xs text-text-secondary">
                       Interactive 3D WebGL developer experience with custom shaders, parallax effects, and dynamic timeline at <span className="text-text-primary">spyderman-portfolio.vercel.app</span>.
                     </p>
@@ -197,7 +261,7 @@ export function ProfileSection() {
                   <div className="p-3.5 rounded bg-bg-secondary border border-border-subtle space-y-1">
                     <div className="font-mono text-xs text-accent-red font-bold">SMART RURAL HEALTH</div>
                     <p className="text-xs text-text-secondary">
-                      AI disease prediction engine with symptom input, predictive medicine supply forecasting, and SOS emergency routing across 4 role-based portals.
+                      AI disease prediction engine with conversational symptom input, predictive medicine supply forecasting, and SOS emergency routing across 4 role-based portals.
                     </p>
                   </div>
                   <div className="p-3.5 rounded bg-bg-secondary border border-border-subtle space-y-1">
@@ -219,10 +283,10 @@ export function ProfileSection() {
             {activeTab === "future" && (
               <div className="space-y-3">
                 <h3 className="font-heading font-bold text-xl text-text-primary">
-                  Continuous Horizons &amp; Leadership
+                  Future Direction &amp; Leadership
                 </h3>
                 <p className="text-sm text-text-secondary leading-relaxed">
-                  As a Microsoft Student Ambassador, I am expanding peer workshops on Prompt Engineering and Agentic Workflows, while engineering sovereign edge AI models that operate completely offline on localized silicon.
+                  My goal is to become a skilled Software Developer, build meaningful projects, and create technology that makes people&apos;s lives easier. As a Microsoft Student Ambassador and Student Coordinator, I continue to teach, share knowledge, and explore autonomous AI agents and modern web development.
                 </p>
               </div>
             )}
