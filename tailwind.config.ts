@@ -26,6 +26,8 @@ const config: Config = {
         sans: ["var(--font-inter)", "sans-serif"],
         heading: ["var(--font-space-grotesk)", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "monospace"],
+        bebas: ["var(--font-bebas-neue)", "Impact", "sans-serif"],
+        script: ["var(--font-caveat)", "cursive"],
       },
       boxShadow: {
         "crimson-glow": "0 0 25px -5px rgba(199, 44, 70, 0.35)",

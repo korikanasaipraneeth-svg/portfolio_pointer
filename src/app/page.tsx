@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { ProfileSection } from "@/components/ProfileSection";
 import { SkillsMatrix } from "@/components/SkillsMatrix";
 import { AutonomousDevEnvironment } from "@/components/AutonomousDevEnvironment";
+import { LayerExplorer } from "@/components/LayerExplorer";
 import { ProjectShowcase } from "@/components/ProjectShowcase";
 import { ArchitectureSection } from "@/components/ArchitectureSection";
 import { TimelineSection } from "@/components/TimelineSection";
@@ -14,6 +15,7 @@ export default function Home() {
       <ProfileSection />
       <SkillsMatrix />
       <AutonomousDevEnvironment />
+      <LayerExplorer />
       <ProjectShowcase />
       <ArchitectureSection />
       <TimelineSection />

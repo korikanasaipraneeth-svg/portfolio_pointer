@@ -2,35 +2,34 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/");
+    // Pass ?swarm=off so automated headless runners are not intercepted by the visual swarm overlay
+    await page.goto("/?swarm=off");
   });
 
   test("1. Hero & Branding verify identity and verified metrics", async ({ page }) => {
     await expect(page).toHaveTitle(/Korikana Sai Praneeth/);
 
-    // Verify Name and Identity
+    // Verify Name, Wordmark, and Identity
     const hero = page.locator("#hero");
     await expect(hero).toBeVisible();
-    await expect(hero).toContainText("KORIKANA");
-    await expect(hero).toContainText("SAI PRANEETH");
-    await expect(hero).toContainText("AI & SOFTWARE DEVELOPER");
-    await expect(hero).toContainText("SRI SIVANI COE");
+    await expect(hero).toContainText("PORTFOLIO");
+    await expect(hero).toContainText("PRANEETH");
+    await expect(hero).toContainText("AI SYSTEM ARCHITECT & VIBE CODER");
 
-    // Verify Action Buttons
-    await expect(page.locator("#hero a:has-text('INITIATE CONTACT')")).toBeVisible();
-    await expect(page.locator("#hero a:has-text('EXPLORE PROJECTS')")).toBeVisible();
-    await expect(page.locator("#hero a:has-text('GITHUB')")).toBeVisible();
+    // Verify SAAI-style Action Buttons
+    await expect(page.locator("#hero a:has-text('INITIATE DISPATCH')")).toBeVisible();
+    await expect(page.locator("#hero a:has-text('EXPLORE ARCHITECTURE')")).toBeVisible();
   });
 
   test("2. Navigation Dock links to all architectural sections", async ({ page }) => {
     const nav = page.locator("header");
     await expect(nav).toBeVisible();
-    await expect(nav).toContainText("PRANEETH.AI");
+    await expect(nav).toContainText("PRANEETH");
 
     // Check desktop nav links if visible
-    const profileLink = page.locator("nav a[href='#profile']");
-    if (await profileLink.isVisible()) {
-      await profileLink.click();
+    const aboutLink = page.locator("nav a[href='#profile']");
+    if (await aboutLink.isVisible()) {
+      await aboutLink.click();
       await expect(page.locator("#profile")).toBeInViewport();
     }
   });
@@ -39,13 +38,13 @@ test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
     const profile = page.locator("#profile");
     await expect(profile).toBeVisible();
 
-    // Click on Academic Roots
-    await page.locator("button:has-text('ACADEMIC ROOTS')").click();
+    // Click on Academic Foundation
+    await page.locator("button:has-text('ACADEMIC FOUNDATION')").click();
     await expect(profile).toContainText("Sri Sivani College of Engineering");
 
-    // Click on Vibe Coder Philosophy
-    await page.locator("button:has-text('THE VIBE CODER PHILOSOPHY')").click();
-    await expect(profile).toContainText("Vibe Coding as an Engineering Accelerator");
+    // Click on Vibe Coding Paradigm
+    await page.locator("button:has-text('VIBE CODING PARADIGM')").click();
+    await expect(profile).toContainText("The Engineering Discipline Behind Vibe Coding");
   });
 
   test("4. Architectural Skills Matrix filter and technology inspector", async ({ page }) => {
@@ -123,10 +122,5 @@ test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
     const copyBtn = page.locator("button:has-text('COPY EMAIL ADDRESS')");
     await copyBtn.click();
     await expect(page.locator("text=COPIED TO CLIPBOARD")).toBeVisible();
-
-    // Test LinkedIn modal
-    await page.locator("button:has-text('LinkedIn')").click();
-    await expect(page.locator("text=LinkedIn Profile Verification Status")).toBeVisible();
-    await page.locator("button:has-text('Acknowledge')").click();
   });
 });

@@ -20,7 +20,6 @@ export function AmbientCanvas() {
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    // Respect reduced motion
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       return;
     }
@@ -29,8 +28,15 @@ export function AmbientCanvas() {
     let width = 0;
     let height = 0;
     let particles: Particle[] = [];
-    let mouse = { x: -1000, y: -1000, radius: 150 };
+    let mouse = { x: 0.5, y: 0.5, targetX: 0.5, targetY: 0.5, rawX: -1000, rawY: -1000, radius: 160 };
     let isVisible = true;
+
+    // Atmospheric Crimson Aurora Orbs (SAAI.pro Noir & Crimson focus)
+    const orbs = [
+      { x: 0.35, y: 0.40, radius: 0.50, vx: 0.0003, vy: 0.0002, color: "rgba(239, 68, 68, 0.14)" },
+      { x: 0.70, y: 0.45, radius: 0.42, vx: -0.0002, vy: 0.0003, color: "rgba(185, 28, 28, 0.10)" },
+      { x: 0.50, y: 0.80, radius: 0.48, vx: 0.0002, vy: -0.0002, color: "rgba(255, 255, 255, 0.03)" },
+    ];
 
     const resize = () => {
       width = canvas.width = window.innerWidth;
@@ -39,69 +45,92 @@ export function AmbientCanvas() {
     };
 
     const initParticles = () => {
-      const count = Math.min(Math.floor((width * height) / 14000), 90);
+      const count = Math.min(Math.floor((width * height) / 14000), 85);
       particles = [];
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * width,
           y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.45,
-          vy: (Math.random() - 0.5) * 0.45,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
           size: Math.random() * 1.5 + 0.8,
-          baseAlpha: Math.random() * 0.4 + 0.2,
+          baseAlpha: Math.random() * 0.35 + 0.15,
         });
       }
     };
 
     const onMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
+      mouse.rawX = e.clientX;
+      mouse.rawY = e.clientY;
+      mouse.targetX = e.clientX / (width || 1);
+      mouse.targetY = e.clientY / (height || 1);
     };
 
     const onMouseLeave = () => {
-      mouse.x = -1000;
-      mouse.y = -1000;
+      mouse.rawX = -1000;
+      mouse.rawY = -1000;
     };
 
-    // Render loop
     const render = () => {
       if (!isVisible) return;
       ctx.clearRect(0, 0, width, height);
 
-      // Subtle ambient red glow at mouse coordinates
-      if (mouse.x > 0 && mouse.y > 0) {
+      // Smooth mouse parallax easing
+      mouse.x += (mouse.targetX - mouse.x) * 0.04;
+      mouse.y += (mouse.targetY - mouse.y) * 0.04;
+
+      // 1. Render Atmospheric Crimson Aurora Orbs
+      orbs.forEach((orb) => {
+        orb.x += orb.vx;
+        orb.y += orb.vy;
+
+        if (orb.x < 0.1 || orb.x > 0.9) orb.vx *= -1;
+        if (orb.y < 0.1 || orb.y > 0.9) orb.vy *= -1;
+
+        const px = (orb.x + (mouse.x - 0.5) * 0.06) * width;
+        const py = (orb.y + (mouse.y - 0.5) * 0.06) * height;
+        const r = orb.radius * Math.min(width, height);
+
+        const gradient = ctx.createRadialGradient(px, py, 0, px, py, r);
+        gradient.addColorStop(0, orb.color);
+        gradient.addColorStop(1, "transparent");
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+      });
+
+      // 2. High-precision mouse backlight
+      if (mouse.rawX > 0 && mouse.rawY > 0) {
         const radGrad = ctx.createRadialGradient(
-          mouse.x,
-          mouse.y,
+          mouse.rawX,
+          mouse.rawY,
           0,
-          mouse.x,
-          mouse.y,
-          320
+          mouse.rawX,
+          mouse.rawY,
+          300
         );
-        radGrad.addColorStop(0, "rgba(199, 44, 70, 0.08)");
-        radGrad.addColorStop(0.5, "rgba(199, 44, 70, 0.025)");
+        radGrad.addColorStop(0, "rgba(239, 68, 68, 0.09)");
+        radGrad.addColorStop(0.5, "rgba(185, 28, 28, 0.03)");
         radGrad.addColorStop(1, "rgba(8, 9, 11, 0)");
         ctx.fillStyle = radGrad;
         ctx.fillRect(0, 0, width, height);
       }
 
-      // Update & Draw Particles
+      // 3. Update & Draw Connected Particle Network
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
 
-        // Move
         p.x += p.vx;
         p.y += p.vy;
 
-        // Bounce on boundaries
         if (p.x < 0) p.x = width;
         else if (p.x > width) p.x = 0;
         if (p.y < 0) p.y = height;
         else if (p.y > height) p.y = 0;
 
         // Mouse deflection
-        const dx = mouse.x - p.x;
-        const dy = mouse.y - p.y;
+        const dx = mouse.rawX - p.x;
+        const dy = mouse.rawY - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < mouse.radius) {
           const force = (1 - dist / mouse.radius) * 0.8;
@@ -115,7 +144,7 @@ export function AmbientCanvas() {
         ctx.fillStyle = `rgba(224, 82, 105, ${p.baseAlpha})`;
         ctx.fill();
 
-        // Connect nearby particles with subtle crimson lines
+        // Connect nearby particles
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const cdx = p.x - p2.x;
@@ -123,7 +152,7 @@ export function AmbientCanvas() {
           const cdist = Math.sqrt(cdx * cdx + cdy * cdy);
 
           if (cdist < 130) {
-            const alpha = (1 - cdist / 130) * 0.16;
+            const alpha = (1 - cdist / 130) * 0.15;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
@@ -137,7 +166,6 @@ export function AmbientCanvas() {
       animId = requestAnimationFrame(render);
     };
 
-    // Intersection observer to freeze canvas when off-screen
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -152,8 +180,8 @@ export function AmbientCanvas() {
     );
     observer.observe(canvas);
 
-    window.addEventListener("resize", resize);
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("resize", resize, { passive: true });
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
     document.addEventListener("mouseleave", onMouseLeave);
 
     resize();
@@ -171,7 +199,7 @@ export function AmbientCanvas() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-80"
+      className="fixed inset-0 pointer-events-none z-0 opacity-90"
       aria-hidden="true"
     />
   );

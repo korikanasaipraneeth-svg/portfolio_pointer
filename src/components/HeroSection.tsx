@@ -1,227 +1,238 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { sound } from "@/lib/audio";
-import { ArrowUpRight, Github, Send, Terminal, Sparkles, Cpu, Layers, Code2, Download } from "lucide-react";
+import { ArrowRight, Download, MousePointer2 } from "lucide-react";
 
 export function HeroSection() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false);
-  const [latency, setLatency] = useState(24);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLatency(20 + Math.floor(Math.random() * 8));
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 md:px-8 pt-28 pb-16 overflow-hidden border-b border-border-subtle"
+      className="relative min-h-screen flex flex-col justify-start items-center px-4 sm:px-6 md:px-8 pt-24 pb-16 overflow-hidden border-b border-border-subtle"
     >
-      {/* Background Architectural Grid Pattern */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.035] bg-[linear-gradient(to_right,#ffffff_1px,transparent_1px),linear-gradient(to_bottom,#ffffff_1px,transparent_1px)] bg-[size:40px_40px]"
-        aria-hidden="true"
-      />
+      {/* 3 Vertical Hairline Grid Lines (SAAI.pro style) */}
+      <div className="absolute inset-0 pointer-events-none flex justify-around max-w-7xl mx-auto z-0" aria-hidden="true">
+        <div className="w-[1px] h-full bg-white/[0.04]" />
+        <div className="w-[1px] h-full bg-white/[0.04]" />
+        <div className="w-[1px] h-full bg-white/[0.04]" />
+      </div>
 
-      {/* Radial Crimson Ambient Glow in Background */}
+      {/* Massive Outlined PORTFOLIO Wordmark across the top (Exact SAAI.pro styling) */}
       <div
-        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent-red/10 rounded-full blur-[140px] pointer-events-none"
         aria-hidden="true"
-      />
+        className="w-full max-w-7xl mx-auto relative z-1 select-none pointer-events-none mb-[-3.2vw] pt-2"
+      >
+        <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 215" className="w-full block">
+          <text
+            x="0"
+            y="205"
+            fontSize="270"
+            textLength="1000"
+            lengthAdjust="spacingAndGlyphs"
+            className="font-bebas fill-[#c93a3a]/[0.22] stroke-[#c93a3a] stroke-[1.5]"
+            style={{ paintOrder: "stroke" }}
+          >
+            PORTFOLIO
+          </text>
+        </svg>
+      </div>
 
-      <div className="w-full max-w-6xl mx-auto flex flex-col z-10">
-        {/* Top Telemetry Header Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-6 mb-8 border-b border-border-subtle/70 font-mono text-xs text-text-muted">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent-red animate-pulse" />
-            <span className="text-text-secondary tracking-wider font-semibold">
-              KORIKANA SAI PRANEETH // SYSTEMS ARCHITECT
-            </span>
+      {/* 3-Column Hero Stage Grid */}
+      <div className="w-full max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mt-2 lg:mt-0">
+        {/* LEFT FLANK (5 cols): Script, Name Box, Pill, Description, CTAs, Stats */}
+        <div className="lg:col-span-5 flex flex-col space-y-4 text-left">
+          {/* Cursive Script (Caveat font) */}
+          <div className="font-script text-white text-3xl sm:text-4xl tracking-wide select-none leading-none">
+            Hello, I&apos;m
           </div>
 
-          <div className="flex items-center gap-4 text-[11px]">
-            <span className="hidden sm:inline-block">
-              INSTITUTION: <span className="text-text-primary">SRI SIVANI COE</span>
-            </span>
-            <span>
-              PING: <span className="text-accent-red">{latency}ms</span>
-            </span>
-            <span className="px-2 py-0.5 rounded border border-accent-red/40 bg-accent-red/10 text-accent-red">
-              ACTIVE
-            </span>
+          {/* Solid Red Name Box (Bebas Neue on #C72C46) */}
+          <div>
+            <h1 className="hero-name-badge inline-block font-bebas text-white text-5xl sm:text-7xl lg:text-8xl bg-accent-red px-3 py-0.5 tracking-wider leading-none shadow-crimson-glow">
+              PRANEETH<span className="text-white">.</span>
+            </h1>
+          </div>
+
+          {/* Role Pill */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-border-subtle bg-bg-panel/90 w-fit font-mono text-[11px] text-text-primary tracking-wider">
+            <span className="text-accent-red font-bold text-xs animate-pulse">●</span>
+            <span>AI SYSTEM ARCHITECT &amp; VIBE CODER</span>
+          </div>
+
+          {/* Description */}
+          <p className="font-sans text-sm sm:text-base text-text-secondary leading-relaxed max-w-md">
+            Architecting <strong className="text-text-primary">24/7 intelligent software ecosystems</strong>, multi-agent swarms, and <strong className="text-text-primary">AI-assisted engineering models</strong> from first principles — zero frameworks, total autonomy.
+          </p>
+
+          {/* Actions */}
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <a
+              href="#contact"
+              onClick={() => sound.playClick()}
+              onMouseEnter={() => sound.playHover()}
+              className="px-5 py-3 rounded-sm bg-accent-red text-white font-mono text-xs sm:text-sm tracking-wider font-semibold hover:bg-accent-red-hover hover:shadow-crimson-glow transition-all duration-200 flex items-center gap-2 group shadow-sm"
+            >
+              <span>INITIATE DISPATCH</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </a>
+
+            <a
+              href="#projects"
+              onClick={() => sound.playClick()}
+              onMouseEnter={() => sound.playHover()}
+              className="px-5 py-3 rounded-sm border border-border-subtle bg-bg-panel/70 hover:bg-bg-panel text-text-primary font-mono text-xs sm:text-sm tracking-wider hover:border-accent-red/60 transition-all duration-200"
+            >
+              EXPLORE ARCHITECTURE
+            </a>
+
+            <button
+              onClick={() => {
+                sound.playClick();
+                setResumeModalOpen(true);
+              }}
+              onMouseEnter={() => sound.playHover()}
+              className="p-3 rounded-sm border border-border-subtle bg-bg-panel/40 text-text-muted hover:text-text-primary hover:border-border-subtle transition-colors"
+              title="View & Download Verified Resume"
+            >
+              <Download className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Stats Row (3 Columns) */}
+          <div className="grid grid-cols-3 gap-2 pt-6 border-t border-border-subtle/60 font-mono text-xs">
+            <div className="space-y-0.5">
+              <div className="font-heading font-black text-2xl sm:text-3xl text-accent-red">12</div>
+              <div className="text-[10px] text-text-muted tracking-tight">Public Repos</div>
+            </div>
+            <div className="space-y-0.5">
+              <div className="font-heading font-black text-2xl sm:text-3xl text-text-primary">7-Layer</div>
+              <div className="text-[10px] text-text-muted tracking-tight">AIML Stack</div>
+            </div>
+            <div className="space-y-0.5">
+              <div className="font-heading font-black text-2xl sm:text-3xl text-emerald-400">100%</div>
+              <div className="text-[10px] text-text-muted tracking-tight">Verified Evidence</div>
+            </div>
           </div>
         </div>
 
-        {/* Main Hero Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Typography & CTAs (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col space-y-6 text-left">
-            {/* Super Title */}
-            <div className="space-y-1">
-              <div className="font-mono text-xs sm:text-sm text-accent-red tracking-widest uppercase font-semibold flex items-center gap-2">
-                <span>[ HELLO, I&apos;M ]</span>
-              </div>
-
-              {/* Massive Name Display */}
-              <h1 className="font-heading font-black text-4xl sm:text-6xl md:text-7xl text-text-primary tracking-tight leading-[1.05]">
-                KORIKANA <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-text-primary via-accent-red-hover to-accent-red">
-                  SAI PRANEETH
-                </span>
-              </h1>
+        {/* CENTER COLUMN (3.5 cols): The Iconic Portrait Cutout Card */}
+        <div className="lg:col-span-3.5 flex justify-center items-center my-4 lg:my-0">
+          <div className="relative w-full max-w-[340px] aspect-[4/5] bg-gradient-to-b from-[#0a0a0c] via-[#121216] to-[#08090B] border border-border-subtle overflow-visible group">
+            {/* Offset Red Accent Panel (Exact SAAI.pro styling) */}
+            <div
+              className="absolute inset-[15%_6%_0] z-0 bg-accent-red transform translate-x-3.5 -translate-y-3.5 opacity-90 transition-transform group-hover:translate-x-4 group-hover:-translate-y-4"
+              aria-hidden="true"
+            >
+              <div className="absolute inset-0 border border-white/30 transform -translate-x-3.5 translate-y-3.5" />
             </div>
 
-            {/* Professional Subtitles & Badges */}
-            <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-              <span className="px-3 py-1 rounded bg-bg-panel border border-accent-red/50 text-text-primary font-semibold tracking-wider">
-                AI & SOFTWARE DEVELOPER
-              </span>
-              <span className="px-3 py-1 rounded bg-bg-panel/70 border border-border-subtle text-text-secondary">
-                VIBE CODER
-              </span>
-              <span className="px-3 py-1 rounded bg-bg-panel/70 border border-border-subtle text-accent-red font-medium">
-                AIML ENGINEER
-              </span>
+            {/* Stylized Monochrome Silhouette Portrait */}
+            <div className="relative z-10 w-full h-full flex flex-col justify-end items-center overflow-hidden">
+              <svg
+                viewBox="0 0 340 425"
+                className="w-full h-full object-cover filter contrast-125 grayscale"
+                preserveAspectRatio="xMidYMid slice"
+              >
+                {/* Background Shadow */}
+                <rect width="340" height="425" fill="#08090B" />
+                {/* Crimson Backlight Gradient */}
+                <radialGradient id="cutoutGrad" cx="50%" cy="40%" r="50%">
+                  <stop offset="0%" stopColor="#C72C46" stopOpacity="0.8" />
+                  <stop offset="60%" stopColor="#8A172D" stopOpacity="0.4" />
+                  <stop offset="100%" stopColor="#08090B" stopOpacity="0" />
+                </radialGradient>
+                <circle cx="170" cy="180" r="140" fill="url(#cutoutGrad)" />
+                {/* Developer Silhouette */}
+                <path
+                  d="M170 85 C145 85 125 105 125 135 C125 155 135 170 145 180 C110 195 85 230 80 280 L260 280 C255 230 230 195 195 180 C205 170 215 155 215 135 C215 105 195 85 170 85 Z"
+                  fill="#0e0f14"
+                  stroke="#292A31"
+                  strokeWidth="2"
+                />
+                {/* Head curls and stylized facial structure */}
+                <path
+                  d="M140 100 Q155 80 170 82 Q185 80 200 100 Q205 120 195 135 Q170 145 145 135 Z"
+                  fill="#181920"
+                />
+                <circle cx="155" cy="125" r="3" fill="#E05269" />
+                <circle cx="185" cy="125" r="3" fill="#E05269" />
+                <path d="M150 200 L170 240 L190 200" stroke="#C72C46" strokeWidth="2" fill="none" />
+                <path d="M170 240 L170 300" stroke="#E05269" strokeWidth="1.5" />
+                {/* Ambient Fog Bottom */}
+                <rect y="320" width="340" height="105" fill="url(#bottomFade)" />
+                <linearGradient id="bottomFade" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#08090B" stopOpacity="0" />
+                  <stop offset="100%" stopColor="#08090B" stopOpacity="1" />
+                </linearGradient>
+              </svg>
             </div>
 
-            {/* Concise Introduction */}
-            <p className="font-sans text-base sm:text-lg text-text-secondary leading-relaxed max-w-xl">
-              I build intelligent software experiences by combining AI, engineering, automation and creative problem-solving.
-            </p>
-
-            {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-3">
-              <a
-                href="#contact"
-                onClick={() => sound.playClick()}
-                onMouseEnter={() => sound.playHover()}
-                className="px-5 py-3 rounded border border-accent-red bg-accent-red text-text-primary font-mono text-xs sm:text-sm tracking-wider font-semibold hover:bg-accent-red-hover hover:shadow-crimson-glow transition-all duration-200 flex items-center gap-2 group"
-              >
-                <Send className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-                <span>INITIATE CONTACT</span>
-              </a>
-
-              <a
-                href="#projects"
-                onClick={() => sound.playClick()}
-                onMouseEnter={() => sound.playHover()}
-                className="px-5 py-3 rounded border border-border-subtle bg-bg-panel/80 hover:bg-bg-panel text-text-primary font-mono text-xs sm:text-sm tracking-wider hover:border-accent-red/60 transition-all duration-200 flex items-center gap-2"
-              >
-                <span>EXPLORE PROJECTS</span>
-                <ArrowUpRight className="w-4 h-4 text-accent-red" />
-              </a>
-
-              <a
-                href="https://github.com/korikanasaipraneeth-svg"
-                target="_blank"
-                rel="noreferrer"
-                onClick={() => sound.playClick()}
-                onMouseEnter={() => sound.playHover()}
-                className="px-4 py-3 rounded border border-border-subtle bg-bg-panel/40 hover:bg-bg-panel text-text-secondary hover:text-text-primary font-mono text-xs sm:text-sm transition-all duration-200 flex items-center gap-2"
-              >
-                <Github className="w-4 h-4 text-text-primary" />
-                <span>GITHUB</span>
-              </a>
-
-              <button
-                onClick={() => {
-                  sound.playClick();
-                  setResumeModalOpen(true);
-                }}
-                onMouseEnter={() => sound.playHover()}
-                className="px-4 py-3 rounded border border-dashed border-border-subtle bg-transparent hover:border-text-muted text-text-muted hover:text-text-secondary font-mono text-xs sm:text-sm transition-colors flex items-center gap-2"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>RESUME</span>
-              </button>
-            </div>
-
-            {/* Verified Quick Stats Strip */}
-            <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 border-t border-border-subtle/60 font-mono">
-              <div className="p-3 rounded border border-border-subtle/70 bg-bg-panel/40">
-                <div className="text-xl font-heading font-bold text-text-primary">12</div>
-                <div className="text-[10px] text-text-muted tracking-tight uppercase">Public Repositories</div>
-              </div>
-              <div className="p-3 rounded border border-border-subtle/70 bg-bg-panel/40">
-                <div className="text-xl font-heading font-bold text-accent-red">AIML</div>
-                <div className="text-[10px] text-text-muted tracking-tight uppercase">B.Tech Degree</div>
-              </div>
-              <div className="p-3 rounded border border-border-subtle/70 bg-bg-panel/40">
-                <div className="text-xl font-heading font-bold text-text-primary">12</div>
-                <div className="text-[10px] text-text-muted tracking-tight uppercase">Specialized Agents</div>
-              </div>
-              <div className="p-3 rounded border border-border-subtle/70 bg-bg-panel/40">
-                <div className="text-xl font-heading font-bold text-emerald-400">100%</div>
-                <div className="text-[10px] text-text-muted tracking-tight uppercase">Genuine Evidence</div>
-              </div>
+            {/* Bottom Status Pill (Exact SAAI.pro styling) */}
+            <div className="absolute -left-2 bottom-3.5 z-20 px-3 py-1.5 bg-black border border-accent-red font-mono font-bold text-xs text-white tracking-wider flex items-center gap-2 shadow-xl">
+              <span className="w-2 h-2 rounded-full bg-accent-red animate-pulse" />
+              <span>SOVEREIGN SILICON ACTIVE</span>
             </div>
           </div>
+        </div>
 
-          {/* Right Column: Original Abstract Developer Workspace HUD (5 cols) */}
-          <div className="lg:col-span-5 w-full">
-            <div className="relative rounded-lg border border-border-subtle bg-bg-panel/90 backdrop-blur-md p-5 shadow-panel-subtle hover:border-accent-red/40 transition-colors">
-              {/* Corner Decorative Brackets */}
-              <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-accent-red -translate-x-[1px] -translate-y-[1px]" />
-              <div className="absolute top-0 right-0 w-3 h-3 border-t-2 border-r-2 border-accent-red translate-x-[1px] -translate-y-[1px]" />
-              <div className="absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 border-accent-red -translate-x-[1px] translate-y-[1px]" />
-              <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-accent-red translate-x-[1px] translate-y-[1px]" />
+        {/* RIGHT FLANK (3.5 cols): Stack of 3 Technical System Cards */}
+        <div className="lg:col-span-3.5 flex flex-col space-y-3">
+          {/* Card 01 */}
+          <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/70 hover:border-accent-red/50 hover:bg-bg-panel transition-all space-y-2">
+            <div className="flex items-center justify-between font-mono text-[11px] text-text-muted">
+              <span className="text-text-primary font-bold">01.</span>
+              <span className="px-1.5 py-0.5 rounded bg-black/60 border border-border-subtle text-[9px] uppercase tracking-wider text-accent-red">
+                RUNTIME
+              </span>
+            </div>
+            <h4 className="font-heading font-bold text-base text-text-primary leading-tight">
+              Autonomous Core
+            </h4>
+            <p className="font-sans text-xs text-text-secondary leading-relaxed">
+              Local-first agent runtime with multi-provider model routing. Zero cloud lock-in.
+            </p>
+          </div>
 
-              {/* HUD Header */}
-              <div className="flex items-center justify-between pb-3 mb-4 border-b border-border-subtle font-mono text-[11px] text-text-muted">
-                <div className="flex items-center gap-2">
-                  <Terminal className="w-3.5 h-3.5 text-accent-red" />
-                  <span className="text-text-primary font-semibold">ENGINEERING WORKSPACE</span>
-                </div>
-                <span className="text-[10px] text-accent-red">VIBE_ENV // RUNNING</span>
-              </div>
+          {/* Card 02 */}
+          <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/70 hover:border-accent-red/50 hover:bg-bg-panel transition-all space-y-2">
+            <div className="flex items-center justify-between font-mono text-[11px] text-text-muted">
+              <span className="text-text-primary font-bold">02.</span>
+              <span className="px-1.5 py-0.5 rounded bg-black/60 border border-border-subtle text-[9px] uppercase tracking-wider text-emerald-400">
+                PRODUCTION
+              </span>
+            </div>
+            <h4 className="font-heading font-bold text-base text-text-primary leading-tight">
+              AgriSahay AI &amp; STUDENT360
+            </h4>
+            <p className="font-sans text-xs text-text-secondary leading-relaxed">
+              Multimodal computer vision &amp; faculty-verified academic SaaS. 1st Prize Google Hackathon.
+            </p>
+          </div>
 
-              {/* Code Snippet / Architectural Telemetry Display */}
-              <div className="space-y-3 font-mono text-xs">
-                <div className="p-3 rounded bg-black/60 border border-border-subtle/50 text-[11px] space-y-1 overflow-x-auto text-text-secondary">
-                  <div className="text-text-muted">{"// Autonomous Agent Dispatcher"}</div>
-                  <div>
-                    <span className="text-accent-red">const</span> architect = <span className="text-purple-400">new</span>{" "}
-                    <span className="text-yellow-400">Developer</span>({`{`}
-                  </div>
-                  <div className="pl-4">
-                    name: <span className="text-emerald-400">&quot;Korikana Sai Praneeth&quot;</span>,
-                  </div>
-                  <div className="pl-4">
-                    role: <span className="text-emerald-400">&quot;Vibe Coder | AIML Builder&quot;</span>,
-                  </div>
-                  <div className="pl-4">
-                    coreDisciplines: [<span className="text-emerald-400">&quot;AI/ML&quot;</span>, <span className="text-emerald-400">&quot;Full-Stack&quot;</span>, <span className="text-emerald-400">&quot;Agent Swarms&quot;</span>],
-                  </div>
-                  <div className="pl-4">
-                    executionEngine: <span className="text-emerald-400">&quot;Autonomous DAG + Human In Loop&quot;</span>,
-                  </div>
-                  <div>{`});`}</div>
-                </div>
+          {/* Card 03 */}
+          <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/70 hover:border-accent-red/50 hover:bg-bg-panel transition-all space-y-2">
+            <div className="flex items-center justify-between font-mono text-[11px] text-text-muted">
+              <span className="text-text-primary font-bold">03.</span>
+              <span className="px-1.5 py-0.5 rounded bg-black/60 border border-border-subtle text-[9px] uppercase tracking-wider text-cyan-400">
+                EXECUTION
+              </span>
+            </div>
+            <h4 className="font-heading font-bold text-base text-text-primary leading-tight">
+              Sub-50ms Event Loops
+            </h4>
+            <p className="font-sans text-xs text-text-secondary leading-relaxed">
+              Emergency geospatial triage, Haversine routing &amp; 4-tier persistent memory.
+            </p>
 
-                {/* Micro Telemetry Gauges */}
-                <div className="grid grid-cols-2 gap-2 text-[11px]">
-                  <div className="p-2.5 rounded border border-border-subtle bg-background/50">
-                    <div className="text-text-muted text-[10px]">VERIFIED PROJECTS</div>
-                    <div className="font-semibold text-text-primary mt-0.5">AgriSahay AI • STUDENT360</div>
-                  </div>
-                  <div className="p-2.5 rounded border border-border-subtle bg-background/50">
-                    <div className="text-text-muted text-[10px]">CORE LANGUAGES</div>
-                    <div className="font-semibold text-text-primary mt-0.5">Python • TypeScript • Java</div>
-                  </div>
-                </div>
-
-                {/* Live Build Status Indicator */}
-                <div className="p-2.5 rounded border border-accent-red/30 bg-accent-red/5 flex items-center justify-between text-[11px]">
-                  <div className="flex items-center gap-2">
-                    <Cpu className="w-3.5 h-3.5 text-accent-red" />
-                    <span className="text-text-secondary">Runtime Environment:</span>
-                  </div>
-                  <span className="text-accent-red font-semibold">Active & Responsive</span>
-                </div>
-              </div>
+            {/* Stack Chips */}
+            <div className="pt-2 flex flex-wrap gap-1 font-mono text-[9px] text-text-muted">
+              {["Python", "React 19", "FastAPI", "Next.js", "Flutter", "MySQL"].map((tech) => (
+                <span key={tech} className="px-1.5 py-0.5 rounded bg-black/40 border border-border-subtle">
+                  {tech}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -229,11 +240,11 @@ export function HeroSection() {
 
       {/* Resume Modal */}
       {resumeModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-          <div className="max-w-md w-full rounded-lg border border-border-subtle bg-bg-panel p-6 shadow-panel-subtle space-y-4 font-sans">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-fadeIn">
+          <div className="max-w-xl w-full rounded-lg border border-border-subtle bg-bg-panel p-6 sm:p-8 shadow-2xl space-y-5 font-sans">
             <div className="flex items-center justify-between border-b border-border-subtle pb-3">
               <div className="font-mono text-xs text-accent-red font-semibold uppercase tracking-wider">
-                Document Notice
+                Official Curriculum Vitae
               </div>
               <button
                 onClick={() => setResumeModalOpen(false)}
@@ -242,18 +253,40 @@ export function HeroSection() {
                 [ESC]
               </button>
             </div>
-            <h3 className="font-heading font-bold text-lg text-text-primary">
-              Curriculum Vitae & Verified Dossier
-            </h3>
-            <p className="text-sm text-text-secondary leading-relaxed">
-              In accordance with our strict verification policy, a formal PDF dossier is currently being prepared for Korikana Sai Praneeth. All project accomplishments, code commits, and academic milestones are live and verifiable via GitHub.
-            </p>
-            <div className="p-3 rounded bg-bg-secondary border border-border-subtle font-mono text-xs text-text-muted space-y-1">
-              <div>CANDIDATE: Korikana Sai Praneeth</div>
-              <div>EMAIL: korikanasaipraneeth@gmail.com</div>
-              <div>GITHUB: github.com/korikanasaipraneeth-svg</div>
+
+            <div className="space-y-1">
+              <h3 className="font-heading font-bold text-2xl text-text-primary">
+                Korikana Sai Praneeth
+              </h3>
+              <div className="font-mono text-xs text-accent-red">
+                B.Tech AIML — Sri Sivani College of Engineering (Roll No: 24W61A6119)
+              </div>
             </div>
-            <div className="flex items-center justify-end gap-2 pt-2">
+
+            <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              3rd-year B.Tech student specializing in Artificial Intelligence and Machine Learning with strong full-stack development skills. Microsoft Student Ambassador, 1st Prize Winner at Google Student Ambassador Hackathon &amp; Brainovision Hackathon.
+            </p>
+
+            <div className="p-3.5 rounded bg-bg-secondary border border-border-subtle font-mono text-xs text-text-muted space-y-1.5">
+              <div className="flex justify-between">
+                <span>EMAIL:</span>
+                <span className="text-text-primary">korikanasaipraneeth@gmail.com</span>
+              </div>
+              <div className="flex justify-between">
+                <span>TELEPHONE:</span>
+                <span className="text-text-primary">+91 7569552087</span>
+              </div>
+              <div className="flex justify-between">
+                <span>GITHUB:</span>
+                <span className="text-accent-red font-semibold">korikanasaipraneeth-svg</span>
+              </div>
+              <div className="flex justify-between">
+                <span>LINKEDIN:</span>
+                <span className="text-text-primary">korikana-saipraneeth</span>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-end gap-3 pt-2">
               <button
                 onClick={() => setResumeModalOpen(false)}
                 className="px-4 py-2 rounded border border-border-subtle text-xs font-mono text-text-secondary hover:text-text-primary"
@@ -261,14 +294,14 @@ export function HeroSection() {
                 Close
               </button>
               <a
-                href="mailto:korikanasaipraneeth@gmail.com?subject=Resume%20Request%20for%20Korikana%20Sai%20Praneeth"
+                href="mailto:korikanasaipraneeth@gmail.com?subject=Resume%20Inquiry%20for%20Korikana%20Sai%20Praneeth"
                 onClick={() => {
                   sound.playClick();
                   setResumeModalOpen(false);
                 }}
-                className="px-4 py-2 rounded border border-accent-red bg-accent-red text-text-primary text-xs font-mono font-medium hover:bg-accent-red-hover"
+                className="px-4 py-2 rounded bg-accent-red hover:bg-accent-red-hover text-white text-xs font-mono font-semibold shadow-crimson-glow"
               >
-                Request via Email →
+                Request Official PDF →
               </a>
             </div>
           </div>

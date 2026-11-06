@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
+import { Space_Grotesk, Inter, JetBrains_Mono, Bebas_Neue, Caveat } from "next/font/google";
 import "./globals.css";
 import { CustomCursor } from "@/components/CustomCursor";
 import { AmbientCanvas } from "@/components/AmbientCanvas";
@@ -21,6 +22,19 @@ const inter = Inter({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains-mono",
+  display: "swap",
+});
+
+const bebasNeue = Bebas_Neue({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-bebas-neue",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  variable: "--font-caveat",
   display: "swap",
 });
 
@@ -60,7 +74,7 @@ export const metadata: Metadata = {
     creator: "@korikanasa99534",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.svg",
   },
 };
 
@@ -72,7 +86,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} dark`}
+      className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${bebasNeue.variable} ${caveat.variable} dark`}
     >
       <body className="min-h-screen bg-background text-text-primary selection:bg-accent-red selection:text-white font-sans antialiased relative">
         <CustomCursor />
@@ -80,6 +94,7 @@ export default function RootLayout({
         <NavigationDock />
         <main className="relative z-10">{children}</main>
         <Footer />
+        <Script src="/swarm-init.js" strategy="afterInteractive" />
       </body>
     </html>
   );
