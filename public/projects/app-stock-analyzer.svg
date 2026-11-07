@@ -1,56 +1,102 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' width='600' height='400'>
-  <rect width='600' height='400' fill='#07080c'/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360">
   <defs>
-    <pattern id='grid1' width='40' height='40' patternUnits='userSpaceOnUse'>
-      <path d='M 40 0 L 0 0 0 40' fill='none' stroke='#151824' stroke-width='1'/>
-    </pattern>
-    <linearGradient id='crimsonGrad' x1='0%' y1='0%' x2='0%' y2='100%'>
-      <stop offset='0%' stop-color='#E05269' stop-opacity='0.4'/>
-      <stop offset='100%' stop-color='#E05269' stop-opacity='0'/>
+    <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.0"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#121622"/>
+      <stop offset="100%" stop-color="#0A0C13"/>
     </linearGradient>
   </defs>
-  <rect width='600' height='400' fill='url(#grid1)'/>
+  <rect width="600" height="360" fill="#080A0F"/>
   
-  <rect x='30' y='25' width='540' height='45' rx='6' fill='#0e1017' stroke='#1e2230' stroke-width='1'/>
-  <circle cx='50' cy='47' r='5' fill='#E05269'/>
-  <text x='65' y='52' font-family='monospace' font-size='13' font-weight='bold' fill='#ffffff'>PORTFOLIO &amp; STOCK ANALYZER // LIVE TICKER</text>
-  <rect x='440' y='36' width='115' height='22' rx='4' fill='#10b981' fill-opacity='0.15' stroke='#10b981' stroke-width='1'/>
-  <text x='450' y='51' font-family='monospace' font-size='11' font-weight='bold' fill='#10b981'>+24.8% PROFIT</text>
+    <rect x="0" y="0" width="600" height="34" fill="#0E111A" />
+    <line x1="0" y1="34" x2="600" y2="34" stroke="#1E2433" stroke-width="1" />
+    <circle cx="20" cy="17" r="4.5" fill="#EF4444" opacity="0.8"/>
+    <circle cx="36" cy="17" r="4.5" fill="#F59E0B" opacity="0.8"/>
+    <circle cx="52" cy="17" r="4.5" fill="#10B981" opacity="0.8"/>
+    <rect x="75" y="7" width="280" height="20" rx="4" fill="#080A0F" stroke="#1E2433" stroke-width="1"/>
+    <text x="88" y="21" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94A3B8">https://analyzer.stock.ai // PORTFOLIO ALPHA</text>
+    <rect x="490" y="8" width="90" height="18" rx="9" fill="#10B98122" stroke="#10B981" stroke-width="0.75"/>
+    <circle cx="502" cy="17" r="2.5" fill="#10B981"/>
+    <text x="512" y="21" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#10B981">MARKET OPEN</text>
+  
+  
+  <!-- Stat Cards -->
+  <g transform="translate(20, 48)">
+    <!-- Card 1 -->
+    <rect width="170" height="64" rx="8" fill="url(#cardGrad)" stroke="#1E2538"/>
+    <text x="14" y="22" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#64748B" font-weight="600">PORTFOLIO VALUE</text>
+    <text x="14" y="47" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#F8FAFC">$148,920.50</text>
+    <rect x="110" y="10" width="48" height="16" rx="4" fill="#10B98122"/>
+    <text x="116" y="22" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#10B981">+24.8%</text>
 
-  <g transform='translate(30, 85)'>
-    <rect width='165' height='55' rx='6' fill='#0e1017' stroke='#1e2230'/>
-    <text x='15' y='22' font-family='monospace' font-size='10' fill='#71717a'>PORTFOLIO VALUE</text>
-    <text x='15' y='44' font-family='sans-serif' font-size='18' font-weight='bold' fill='#ffffff'>$148,920.50</text>
-  </g>
-  <g transform='translate(215, 85)'>
-    <rect width='170' height='55' rx='6' fill='#0e1017' stroke='#1e2230'/>
-    <text x='15' y='22' font-family='monospace' font-size='10' fill='#71717a'>ALPHA RETURN</text>
-    <text x='15' y='44' font-family='sans-serif' font-size='18' font-weight='bold' fill='#E05269'>+18.4% SHARPE</text>
-  </g>
-  <g transform='translate(405, 85)'>
-    <rect width='165' height='55' rx='6' fill='#0e1017' stroke='#1e2230'/>
-    <text x='15' y='22' font-family='monospace' font-size='10' fill='#71717a'>RISK INDEX</text>
-    <text x='15' y='44' font-family='sans-serif' font-size='18' font-weight='bold' fill='#38bdf8'>0.42 LOW VOL</text>
+    <!-- Card 2 -->
+    <rect x="185" width="180" height="64" rx="8" fill="url(#cardGrad)" stroke="#1E2538"/>
+    <text x="199" y="22" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#64748B" font-weight="600">TODAY'S ALPHA GAIN</text>
+    <text x="199" y="47" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#E05269">+$3,420.15</text>
+    <rect x="305" y="10" width="50" height="16" rx="4" fill="#E0526922"/>
+    <text x="312" y="22" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#E05269">+2.35%</text>
+
+    <!-- Card 3 -->
+    <rect x="380" width="180" height="64" rx="8" fill="url(#cardGrad)" stroke="#1E2538"/>
+    <text x="394" y="22" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#64748B" font-weight="600">SHARPE RATIO // RISK</text>
+    <text x="394" y="47" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#38BDF8">2.14 SHARPE</text>
+    <rect x="495" y="10" width="55" height="16" rx="4" fill="#38BDF822"/>
+    <text x="502" y="22" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#38BDF8">LOW VOL</text>
   </g>
 
-  <g transform='translate(30, 160)'>
-    <rect width='540' height='210' rx='8' fill='#0a0c12' stroke='#1e2230'/>
-    <path d='M 20 160 Q 80 120 140 135 T 260 85 T 380 95 T 480 30 L 520 20 L 520 190 L 20 190 Z' fill='url(#crimsonGrad)'/>
-    <path d='M 20 160 Q 80 120 140 135 T 260 85 T 380 95 T 480 30 L 520 20' fill='none' stroke='#E05269' stroke-width='3'/>
+  <!-- Interactive Candlestick &amp; Area Chart Canvas -->
+  <g transform="translate(20, 126)">
+    <rect width="560" height="214" rx="8" fill="url(#cardGrad)" stroke="#1E2538"/>
     
-    <line x1='70' y1='100' x2='70' y2='170' stroke='#10b981' stroke-width='1.5'/>
-    <rect x='64' y='115' width='12' height='40' fill='#10b981' rx='1'/>
-    <line x1='120' y1='110' x2='120' y2='165' stroke='#ef4444' stroke-width='1.5'/>
-    <rect x='114' y='125' width='12' height='30' fill='#ef4444' rx='1'/>
-    <line x1='190' y1='75' x2='190' y2='145' stroke='#10b981' stroke-width='1.5'/>
-    <rect x='184' y='90' width='12' height='45' fill='#10b981' rx='1'/>
-    <line x1='260' y1='60' x2='260' y2='130' stroke='#10b981' stroke-width='1.5'/>
-    <rect x='254' y='75' width='12' height='40' fill='#10b981' rx='1'/>
-    <line x1='330' y1='70' x2='330' y2='140' stroke='#ef4444' stroke-width='1.5'/>
-    <rect x='324' y='85' width='12' height='35' fill='#ef4444' rx='1'/>
-    <line x1='410' y1='40' x2='410' y2='110' stroke='#10b981' stroke-width='1.5'/>
-    <rect x='404' y='50' width='12' height='45' fill='#10b981' rx='1'/>
-    <line x1='480' y1='15' x2='480' y2='85' stroke='#10b981' stroke-width='1.5'/>
-    <rect x='474' y='25' width='12' height='40' fill='#10b981' rx='1'/>
+    <!-- Grid Lines -->
+    <line x1="20" y1="45" x2="540" y2="45" stroke="#161B29" stroke-dasharray="4,4"/>
+    <line x1="20" y1="95" x2="540" y2="95" stroke="#161B29" stroke-dasharray="4,4"/>
+    <line x1="20" y1="145" x2="540" y2="145" stroke="#161B29" stroke-dasharray="4,4"/>
+
+    <!-- Candlesticks -->
+    <!-- Candle 1 (Green) -->
+    <line x1="50" y1="90" x2="50" y2="150" stroke="#10B981" stroke-width="1.5"/>
+    <rect x="44" y="105" width="12" height="35" rx="1" fill="#10B981"/>
+    <!-- Candle 2 (Green) -->
+    <line x1="90" y1="75" x2="90" y2="135" stroke="#10B981" stroke-width="1.5"/>
+    <rect x="84" y="85" width="12" height="40" rx="1" fill="#10B981"/>
+    <!-- Candle 3 (Red) -->
+    <line x1="130" y1="85" x2="130" y2="145" stroke="#EF4444" stroke-width="1.5"/>
+    <rect x="124" y="95" width="12" height="30" rx="1" fill="#EF4444"/>
+    <!-- Candle 4 (Green) -->
+    <line x1="170" y1="60" x2="170" y2="120" stroke="#10B981" stroke-width="1.5"/>
+    <rect x="164" y="70" width="12" height="42" rx="1" fill="#10B981"/>
+    <!-- Candle 5 (Red) -->
+    <line x1="210" y1="70" x2="210" y2="130" stroke="#EF4444" stroke-width="1.5"/>
+    <rect x="204" y="80" width="12" height="25" rx="1" fill="#EF4444"/>
+    <!-- Candle 6 (Green) -->
+    <line x1="250" y1="45" x2="250" y2="110" stroke="#10B981" stroke-width="1.5"/>
+    <rect x="244" y="55" width="12" height="45" rx="1" fill="#10B981"/>
+
+    <!-- Smooth Trend Line with Glowing Gradient -->
+    <path d="M 280 110 Q 340 70 400 90 T 480 35 L 535 25 L 535 185 L 280 185 Z" fill="url(#areaGrad)"/>
+    <path d="M 280 110 Q 340 70 400 90 T 480 35 L 535 25" fill="none" stroke="#10B981" stroke-width="2.5"/>
+
+    <!-- Tooltip HUD -->
+    <g transform="translate(435, 15)">
+      <rect width="105" height="32" rx="5" fill="#080A0F" stroke="#10B981" stroke-width="1"/>
+      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#94A3B8">INFY: $184.20</text>
+      <text x="8" y="26" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" fill="#10B981">VOL: 14.8M +5.2%</text>
+    </g>
+
+    <!-- Volume Bars -->
+    <rect x="44" y="165" width="12" height="20" fill="#10B981" opacity="0.4"/>
+    <rect x="84" y="160" width="12" height="25" fill="#10B981" opacity="0.4"/>
+    <rect x="124" y="170" width="12" height="15" fill="#EF4444" opacity="0.4"/>
+    <rect x="164" y="152" width="12" height="33" fill="#10B981" opacity="0.4"/>
+    <rect x="204" y="172" width="12" height="13" fill="#EF4444" opacity="0.4"/>
+    <rect x="244" y="145" width="12" height="40" fill="#10B981" opacity="0.4"/>
+    <rect x="300" y="158" width="12" height="27" fill="#10B981" opacity="0.4"/>
+    <rect x="360" y="150" width="12" height="35" fill="#10B981" opacity="0.4"/>
+    <rect x="420" y="140" width="12" height="45" fill="#10B981" opacity="0.5"/>
+    <rect x="480" y="132" width="12" height="53" fill="#10B981" opacity="0.6"/>
   </g>
 </svg>

@@ -1,47 +1,69 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' width='600' height='400'>
-  <rect width='600' height='400' fill='#060a07'/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360">
   <defs>
-    <pattern id='grid5' width='40' height='40' patternUnits='userSpaceOnUse'>
-      <path d='M 40 0 L 0 0 0 40' fill='none' stroke='#122016' stroke-width='1'/>
-    </pattern>
+    <linearGradient id="cardGrad5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#121622"/>
+      <stop offset="100%" stop-color="#0A0C13"/>
+    </linearGradient>
   </defs>
-  <rect width='600' height='400' fill='url(#grid5)'/>
+  <rect width="600" height="360" fill="#080A0F"/>
+  
+    <rect x="0" y="0" width="600" height="34" fill="#0E111A" />
+    <line x1="0" y1="34" x2="600" y2="34" stroke="#1E2433" stroke-width="1" />
+    <circle cx="20" cy="17" r="4.5" fill="#EF4444" opacity="0.8"/>
+    <circle cx="36" cy="17" r="4.5" fill="#F59E0B" opacity="0.8"/>
+    <circle cx="52" cy="17" r="4.5" fill="#10B981" opacity="0.8"/>
+    <rect x="75" y="7" width="280" height="20" rx="4" fill="#080A0F" stroke="#1E2433" stroke-width="1"/>
+    <text x="88" y="21" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94A3B8">https://agrisahay.ai // MULTILINGUAL CROP TRIAGE</text>
+    <rect x="490" y="8" width="90" height="18" rx="9" fill="#10B98122" stroke="#10B981" stroke-width="0.75"/>
+    <circle cx="502" cy="17" r="2.5" fill="#10B981"/>
+    <text x="512" y="21" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#10B981">SCANNER READY</text>
+  
 
-  <rect x='30' y='25' width='540' height='45' rx='6' fill='#0c160e' stroke='#1b3823' stroke-width='1'/>
-  <circle cx='50' cy='47' r='5' fill='#22c55e'/>
-  <text x='65' y='52' font-family='monospace' font-size='13' font-weight='bold' fill='#ffffff'>AGRISAHAY AI // COMPUTER VISION &amp; GEMINI MULTIMODAL</text>
-  <rect x='440' y='36' width='115' height='22' rx='4' fill='#22c55e' fill-opacity='0.15' stroke='#22c55e' stroke-width='1'/>
-  <text x='455' y='51' font-family='monospace' font-size='11' font-weight='bold' fill='#22c55e'>CV INFERENCE</text>
+  <!-- Camera Viewport / Computer Vision Analysis -->
+  <g transform="translate(20, 48)">
+    <rect width="320" height="292" rx="8" fill="#05070A" stroke="#1E2538"/>
+    
+    <!-- Reticle Grid -->
+    <line x1="160" y1="20" x2="160" y2="272" stroke="#161B29" stroke-width="1" stroke-dasharray="4,4"/>
+    <line x1="20" y1="146" x2="300" y2="146" stroke="#161B29" stroke-width="1" stroke-dasharray="4,4"/>
 
-  <g transform='translate(30, 85)'>
-    <rect width='260' height='285' rx='8' fill='#0a120c' stroke='#1b3823'/>
-    <path d='M 130 35 C 190 70 210 160 170 220 C 140 260 130 270 130 270 C 130 270 120 260 90 220 C 50 160 70 70 130 35 Z' fill='#166534' fill-opacity='0.4' stroke='#22c55e' stroke-width='2'/>
-    <path d='M 130 35 L 130 270' stroke='#22c55e' stroke-width='1.5' stroke-dasharray='4,4'/>
+    <!-- Simulated Plant Leaf Graphic -->
+    <path d="M 60 220 Q 160 50 260 200 C 220 250 100 260 60 220 Z" fill="#166534" opacity="0.6"/>
+    <path d="M 160 80 Q 160 180 160 240" stroke="#22C55E" stroke-width="2"/>
+    <path d="M 160 120 Q 110 140 80 160" stroke="#22C55E" stroke-width="1.5"/>
+    <path d="M 160 150 Q 210 170 240 190" stroke="#22C55E" stroke-width="1.5"/>
 
-    <rect x='85' y='110' width='45' height='40' fill='none' stroke='#ef4444' stroke-width='2'/>
-    <rect x='85' y='95' width='45' height='15' fill='#ef4444'/>
-    <text x='88' y='106' font-family='monospace' font-size='9' font-weight='bold' fill='#ffffff'>LESION 94%</text>
+    <!-- Bounding Box 1: Early Blight (Crimson) -->
+    <rect x="90" y="110" width="110" height="70" rx="3" fill="#EF444415" stroke="#EF4444" stroke-width="2"/>
+    <rect x="90" y="92" width="110" height="18" rx="2" fill="#EF4444"/>
+    <text x="96" y="105" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#FFFFFF">EARLY BLIGHT: 94.2%</text>
 
-    <rect x='140' y='160' width='50' height='35' fill='none' stroke='#ef4444' stroke-width='2'/>
-    <rect x='140' y='145' width='50' height='15' fill='#ef4444'/>
-    <text x='143' y='156' font-family='monospace' font-size='9' font-weight='bold' fill='#ffffff'>BLIGHT 88%</text>
+    <!-- Scan Line Laser -->
+    <line x1="20" y1="160" x2="300" y2="160" stroke="#10B981" stroke-width="2" opacity="0.8"/>
   </g>
 
-  <g transform='translate(305, 85)'>
-    <rect width='265' height='285' rx='8' fill='#0a120c' stroke='#1b3823'/>
-    <text x='18' y='30' font-family='monospace' font-size='11' font-weight='bold' fill='#86efac'>GEMINI MULTIMODAL PROGNOSIS</text>
+  <!-- Right Panel: Gemini Multilingual Consultation -->
+  <g transform="translate(356, 48)">
+    <rect width="224" height="292" rx="8" fill="url(#cardGrad5)" stroke="#1E2538"/>
+    <text x="16" y="28" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#38BDF8">GEMINI MULTIMODAL AI</text>
     
-    <rect x='18' y='45' width='230' height='90' rx='6' fill='#0f2015' stroke='#1b3823'/>
-    <text x='28' y='68' font-family='sans-serif' font-size='12' font-weight='bold' fill='#ffffff'>Early Leaf Blight Detected</text>
-    <text x='28' y='86' font-family='sans-serif' font-size='10' fill='#a1a1aa'>Organic Remedy: Spray copper</text>
-    <text x='28' y='100' font-family='sans-serif' font-size='10' fill='#a1a1aa'>fungicide 2.5g/L before noon.</text>
-    <text x='28' y='120' font-family='monospace' font-size='9' fill='#22c55e'>Telugu / Hindi Vernacular Audio ✓</text>
+    <g transform="translate(14, 42)">
+      <rect width="196" height="85" rx="6" fill="#080A0F" stroke="#1E2538"/>
+      <text x="10" y="18" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#F8FAFC">Diagnosis Result</text>
+      <text x="10" y="36" font-family="'Inter', sans-serif" font-size="10" fill="#94A3B8">Target: Alternaria solani</text>
+      <text x="10" y="52" font-family="'Inter', sans-serif" font-size="10" fill="#EF4444" font-weight="bold">Severity: Stage 2 (Moderate)</text>
+      <text x="10" y="70" font-family="'JetBrains Mono', monospace" font-size="9" fill="#10B981">Confidence: 94.2%</text>
+    </g>
 
-    <rect x='18' y='150' width='230' height='60' rx='6' fill='#0f2015' stroke='#1b3823'/>
-    <text x='28' y='172' font-family='monospace' font-size='10' fill='#86efac'>REGIONAL MARKET TELEMETRY</text>
-    <text x='28' y='194' font-family='sans-serif' font-size='14' font-weight='bold' fill='#ffffff'>Paddy: $2,450/qtl <tspan font-size='11' fill='#22c55e'>+4.2%</tspan></text>
+    <g transform="translate(14, 138)">
+      <rect width="196" height="85" rx="6" fill="#080A0F" stroke="#1E2538"/>
+      <text x="10" y="18" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#F8FAFC">Organic Remedy</text>
+      <text x="10" y="36" font-family="'Inter', sans-serif" font-size="9.5" fill="#94A3B8">Spray Copper Oxychloride</text>
+      <text x="10" y="52" font-family="'Inter', sans-serif" font-size="9.5" fill="#94A3B8">2.5g / liter before sunset</text>
+      <text x="10" y="70" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#38BDF8">Voice Output: Telugu / Hindi</text>
+    </g>
 
-    <rect x='18' y='225' width='230' height='45' rx='6' fill='#0f2015' stroke='#1b3823'/>
-    <text x='28' y='245' font-family='monospace' font-size='10' fill='#38bdf8'>WEATHER: 78% RH • Rain in 48h</text>
+    <rect x="14" y="235" width="196" height="38" rx="6" fill="#10B98122" stroke="#10B981"/>
+    <text x="32" y="258" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#10B981">🔊 PLAY AUDIO ADVICE</text>
   </g>
 </svg>

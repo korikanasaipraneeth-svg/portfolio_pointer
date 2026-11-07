@@ -1,37 +1,74 @@
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' width='600' height='400'>
-  <rect width='600' height='400' fill='#06090e'/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360">
   <defs>
-    <pattern id='grid11' width='40' height='40' patternUnits='userSpaceOnUse'>
-      <path d='M 40 0 L 0 0 0 40' fill='none' stroke='#131d2b' stroke-width='1'/>
-    </pattern>
+    <linearGradient id="cardGrad11" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#121622"/>
+      <stop offset="100%" stop-color="#0A0C13"/>
+    </linearGradient>
   </defs>
-  <rect width='600' height='400' fill='url(#grid11)'/>
+  <rect width="600" height="360" fill="#080A0F"/>
+  
+    <rect x="0" y="0" width="600" height="34" fill="#0E111A" />
+    <line x1="0" y1="34" x2="600" y2="34" stroke="#1E2433" stroke-width="1" />
+    <circle cx="20" cy="17" r="4.5" fill="#EF4444" opacity="0.8"/>
+    <circle cx="36" cy="17" r="4.5" fill="#F59E0B" opacity="0.8"/>
+    <circle cx="52" cy="17" r="4.5" fill="#10B981" opacity="0.8"/>
+    <rect x="75" y="7" width="280" height="20" rx="4" fill="#080A0F" stroke="#1E2433" stroke-width="1"/>
+    <text x="88" y="21" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94A3B8">https://edulearn.dev/course/algorithms</text>
+    <rect x="490" y="8" width="90" height="18" rx="9" fill="#10B98122" stroke="#10B981" stroke-width="0.75"/>
+    <circle cx="502" cy="17" r="2.5" fill="#10B981"/>
+    <text x="512" y="21" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#10B981">82% PROGRESS</text>
+  
 
-  <rect x='30' y='25' width='540' height='45' rx='6' fill='#0c1420' stroke='#1c2f4a' stroke-width='1'/>
-  <circle cx='50' cy='47' r='5' fill='#38bdf8'/>
-  <text x='65' y='52' font-family='monospace' font-size='13' font-weight='bold' fill='#ffffff'>EDULEARN // MODULAR E-LEARNING INTERFACE &amp; PROGRESS TREE</text>
-  <rect x='440' y='36' width='115' height='22' rx='4' fill='#38bdf8' fill-opacity='0.15' stroke='#38bdf8' stroke-width='1'/>
-  <text x='450' y='51' font-family='monospace' font-size='11' font-weight='bold' fill='#38bdf8'>COURSE ACTIVE</text>
+  <!-- Course Curriculum &amp; Progress Dashboard -->
+  <g transform="translate(20, 48)">
+    <rect width="560" height="292" rx="8" fill="url(#cardGrad11)" stroke="#1E2538"/>
 
-  <g transform='translate(30, 85)'>
-    <rect width='540' height='285' rx='8' fill='#09101a' stroke='#1c2f4a'/>
+    <!-- Top Course Banner -->
+    <rect x="16" y="16" width="528" height="54" rx="6" fill="#080A0F" stroke="#1E2538"/>
+    <text x="32" y="38" font-family="'Inter', sans-serif" font-size="14" font-weight="800" fill="#F8FAFC">Advanced Data Structures &amp; Algorithms</text>
+    <text x="32" y="54" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#38BDF8">Module 4: Graph Traversal &amp; Dynamic Programming</text>
+    
+    <rect x="420" y="24" width="108" height="30" rx="4" fill="#10B98115" stroke="#10B981"/>
+    <text x="432" y="43" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#10B981">82% COMPLETE</text>
 
-    <g transform='translate(20, 25)'>
-      <rect width='240' height='105' rx='6' fill='#0e1b29' stroke='#10b981'/>
-      <text x='15' y='25' font-family='monospace' font-size='10' font-weight='bold' fill='#10b981'>MODULE 01 • COMPLETED ✓</text>
-      <text x='15' y='50' font-family='sans-serif' font-size='14' font-weight='bold' fill='#ffffff'>Data Structures &amp; Algorithms</text>
-      <text x='15' y='70' font-family='monospace' font-size='10' fill='#94a3b8'>Binary Trees • Graphs • DP</text>
-      <rect x='15' y='82' width='210' height='8' rx='4' fill='#15283c'/>
-      <rect x='15' y='82' width='210' height='8' rx='4' fill='#10b981'/>
+    <!-- Modules List (Left) -->
+    <g transform="translate(16, 82)">
+      <!-- Module 1 (Done) -->
+      <rect width="280" height="42" rx="4" fill="#0A0E18" stroke="#10B98144"/>
+      <circle cx="20" cy="21" r="7" fill="#10B981"/>
+      <text x="17" y="25" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#000000">✓</text>
+      <text x="36" y="25" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#F8FAFC">1. Binary Trees &amp; BST Search</text>
+
+      <!-- Module 2 (Done) -->
+      <g transform="translate(0, 48)">
+        <rect width="280" height="42" rx="4" fill="#0A0E18" stroke="#10B98144"/>
+        <circle cx="20" cy="21" r="7" fill="#10B981"/>
+        <text x="17" y="25" font-family="'Inter', sans-serif" font-size="10" font-weight="bold" fill="#000000">✓</text>
+        <text x="36" y="25" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#F8FAFC">2. Heap Sort &amp; Priority Queues</text>
+      </g>
+
+      <!-- Module 3 (Active) -->
+      <g transform="translate(0, 96)">
+        <rect width="280" height="42" rx="4" fill="#38BDF815" stroke="#38BDF8" stroke-width="1.5"/>
+        <circle cx="20" cy="21" r="7" fill="#38BDF8"/>
+        <text x="36" y="25" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#38BDF8">3. Dijkstra's Shortest Path</text>
+      </g>
     </g>
 
-    <g transform='translate(280, 25)'>
-      <rect width='240' height='105' rx='6' fill='#0e1b29' stroke='#38bdf8'/>
-      <text x='15' y='25' font-family='monospace' font-size='10' font-weight='bold' fill='#38bdf8'>MODULE 02 • IN PROGRESS (65%)</text>
-      <text x='15' y='50' font-family='sans-serif' font-size='14' font-weight='bold' fill='#ffffff'>Full-Stack React &amp; FastAPI</text>
-      <text x='15' y='70' font-family='monospace' font-size='10' fill='#94a3b8'>REST Routing • Async Workers</text>
-      <rect x='15' y='82' width='210' height='8' rx='4' fill='#15283c'/>
-      <rect x='15' y='82' width='140' height='8' rx='4' fill='#38bdf8'/>
+    <!-- Interactive Code Challenge / Quiz Card (Right) -->
+    <g transform="translate(312, 82)">
+      <rect width="232" height="190" rx="6" fill="#080A0F" stroke="#1E2538"/>
+      <text x="16" y="24" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#F59E0B">QUIZ: GRAPH COMPLEXITY</text>
+      <text x="16" y="44" font-family="'Inter', sans-serif" font-size="10.5" fill="#94A3B8">What is time complexity of</text>
+      <text x="16" y="60" font-family="'Inter', sans-serif" font-size="10.5" fill="#94A3B8">Dijkstra with Min-Heap?</text>
+      
+      <rect x="16" y="74" width="200" height="30" rx="4" fill="#10B98122" stroke="#10B981"/>
+      <text x="28" y="93" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#10B981">A) O((V + E) log V) ✓</text>
+
+      <rect x="16" y="112" width="200" height="30" rx="4" fill="#0E121D" stroke="#1E2538"/>
+      <text x="28" y="131" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#64748B">B) O(V^2)</text>
+
+      <text x="16" y="168" font-family="'JetBrains Mono', monospace" font-size="9" fill="#10B981">Correct Answer! +50 XP Earned</text>
     </g>
   </g>
 </svg>
