@@ -684,6 +684,39 @@ export function TechStackGlobe({
     rot.hasMouseOver = false;
   };
 
+  // Real-time 3D constellation laser connections between nearby orbital cubes
+  const constellationLines = useMemo(() => {
+    if (isSingle || points.length < 2) return [];
+    const lines: { x1: number; y1: number; x2: number; y2: number; opacity: number; stroke: string }[] = [];
+    const maxLines = 24;
+    let count = 0;
+    for (let i = 0; i < points.length && count < maxLines; i++) {
+      const p1 = points[i];
+      if (p1.z < -sphereRadius * 0.4) continue;
+      for (let j = i + 1; j < points.length && count < maxLines; j++) {
+        const p2 = points[j];
+        if (p2.z < -sphereRadius * 0.4) continue;
+        const dx = p1.screenX - p2.screenX;
+        const dy = p1.screenY - p2.screenY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 110 && dist > 35) {
+          const isHighlighted = p1.skill.name === activeSkill.name || p2.skill.name === activeSkill.name;
+          const opacity = (1 - dist / 110) * (isHighlighted ? 0.65 : 0.2) * Math.min(p1.alpha, p2.alpha);
+          lines.push({
+            x1: p1.screenX,
+            y1: p1.screenY,
+            x2: p2.screenX,
+            y2: p2.screenY,
+            opacity,
+            stroke: isHighlighted ? "#E05269" : "rgba(255, 255, 255, 0.35)",
+          });
+          count++;
+        }
+      }
+    }
+    return lines;
+  }, [points, isSingle, sphereRadius, activeSkill.name]);
+
   return (
     <div className="relative w-full flex flex-col items-center">
       {/* 3D Rotating Stack Canvas (Transparent with NO dark backside box/sheet) */}
@@ -709,6 +742,25 @@ export function TechStackGlobe({
           <div className="w-[340px] h-[340px] sm:w-[420px] sm:h-[420px] rounded-full border border-white/[0.04] pointer-events-none" />
           <div className="w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] rounded-full border border-accent-red/[0.06] pointer-events-none animate-pulse" />
         </div>
+
+        {/* Dynamic 3D Constellation Laser Links Between Orbital Nodes */}
+        {!isSingle && constellationLines.length > 0 && (
+          <svg className="absolute inset-0 w-full h-full pointer-events-none z-10" aria-hidden="true">
+            {constellationLines.map((line, idx) => (
+              <line
+                key={idx}
+                x1={line.x1}
+                y1={line.y1}
+                x2={line.x2}
+                y2={line.y2}
+                stroke={line.stroke}
+                strokeWidth={1}
+                strokeDasharray="2 3"
+                opacity={line.opacity}
+              />
+            ))}
+          </svg>
+        )}
 
         {/* SINGLE ARCHITECTURE HERO VIEW (When category has 1 item, e.g. App Development / Flutter) */}
         {isSingle && points.length === 1 && (

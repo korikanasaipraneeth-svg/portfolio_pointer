@@ -115,14 +115,17 @@ export function ProfileSection() {
                 />
 
                 {/* Top Subtle Status Badge */}
-                <div className="absolute top-4 left-4 z-20">
-                  <span className="font-mono text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/10 text-zinc-300">
+                <div className="absolute top-4 left-4 z-20" style={{ transform: "translateZ(32px)" }}>
+                  <span className="font-mono text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/15 text-zinc-300 shadow-md">
                     ID: 24W61A6119
                   </span>
                 </div>
 
-                {/* Floating HUD Badge on Portrait */}
-                <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3.5 rounded-2xl bg-black/75 backdrop-blur-xl border border-white/15 flex items-center justify-between font-mono text-xs text-white z-20 shadow-2xl">
+                {/* Floating HUD Badge on Portrait with True 3D Z-Depth */}
+                <div
+                  className="absolute bottom-3.5 left-3.5 right-3.5 p-3.5 rounded-2xl bg-black/80 backdrop-blur-xl border border-white/20 flex items-center justify-between font-mono text-xs text-white z-20 shadow-2xl"
+                  style={{ transform: "translateZ(44px)" }}
+                >
                   <div>
                     <span className="font-bold text-sm block tracking-wide">KORIKANA SAI PRANEETH</span>
                     <span className="text-[10.5px] text-accent-red font-semibold tracking-wider">AI SYSTEM ARCHITECT · VIBE CODER</span>

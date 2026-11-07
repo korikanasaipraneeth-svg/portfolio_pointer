@@ -16,7 +16,9 @@ import {
   ShieldCheck,
   AlertCircle,
   HelpCircle,
+  Radio,
 } from "lucide-react";
+import { Interactive3DTilt } from "@/components/Interactive3DTilt";
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -99,72 +101,76 @@ export function ContactSection() {
           {/* Left Column: Direct Credentials & Copy (5 cols) */}
           <div className="lg:col-span-5 space-y-6 font-mono text-xs">
             {/* Primary Email Card with 1-Click Copy */}
-            <div className="rounded-lg border border-border-subtle bg-bg-panel p-6 shadow-panel-subtle space-y-4">
-              <div className="flex items-center justify-between text-text-muted border-b border-border-subtle pb-3">
-                <div className="flex items-center gap-2">
-                  <Mail className="w-4 h-4 text-accent-red" />
-                  <span className="font-semibold text-text-primary">DIRECT EMAIL INTAKE</span>
+            <Interactive3DTilt maxTilt={5} scale={1.015} glare={true} className="w-full">
+              <div className="rounded-2xl border border-border-subtle bg-bg-panel/90 backdrop-blur-md p-6 shadow-panel-subtle space-y-4 hover:border-accent-red/60 transition-colors">
+                <div className="flex items-center justify-between text-text-muted border-b border-border-subtle pb-3">
+                  <div className="flex items-center gap-2">
+                    <Mail className="w-4 h-4 text-accent-red" />
+                    <span className="font-semibold text-text-primary">DIRECT EMAIL INTAKE</span>
+                  </div>
+                  <span className="text-[10px] text-accent-red">PRIMARY CHANNEL</span>
                 </div>
-                <span className="text-[10px] text-accent-red">PRIMARY CHANNEL</span>
-              </div>
 
-              <div className="space-y-2">
-                <div className="text-text-muted text-[11px]">VERIFIED ADDRESS</div>
-                <div className="font-mono text-sm text-text-primary break-all font-semibold">
-                  {emailAddress}
+                <div className="space-y-2">
+                  <div className="text-text-muted text-[11px]">VERIFIED ADDRESS</div>
+                  <div className="font-mono text-sm text-text-primary break-all font-semibold">
+                    {emailAddress}
+                  </div>
+                </div>
+
+                <div className="pt-2 flex items-center gap-2">
+                  <button
+                    onClick={handleCopyEmail}
+                    onMouseEnter={() => sound.playHover()}
+                    className={`flex-1 py-2.5 px-3 rounded-xl border font-semibold flex items-center justify-center gap-2 transition-all ${
+                      copied
+                        ? "border-emerald-500 bg-emerald-500/20 text-emerald-400"
+                        : "border-accent-red/60 bg-accent-red/10 text-text-primary hover:bg-accent-red hover:text-white shadow-crimson-glow"
+                    }`}
+                  >
+                    {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                    <span>{copied ? "COPIED TO CLIPBOARD" : "COPY EMAIL ADDRESS"}</span>
+                  </button>
+
+                  <a
+                    href={`mailto:${emailAddress}`}
+                    onMouseEnter={() => sound.playHover()}
+                    className="py-2.5 px-3 rounded-xl border border-border-subtle bg-bg-secondary text-text-secondary hover:text-text-primary hover:border-accent-red transition-colors"
+                    title="Open in Mail Client"
+                  >
+                    <Send className="w-4 h-4" />
+                  </a>
                 </div>
               </div>
-
-              <div className="pt-2 flex items-center gap-2">
-                <button
-                  onClick={handleCopyEmail}
-                  onMouseEnter={() => sound.playHover()}
-                  className={`flex-1 py-2.5 px-3 rounded border font-semibold flex items-center justify-center gap-2 transition-all ${
-                    copied
-                      ? "border-emerald-500 bg-emerald-500/20 text-emerald-400"
-                      : "border-accent-red/60 bg-accent-red/10 text-text-primary hover:bg-accent-red hover:text-white shadow-crimson-glow"
-                  }`}
-                >
-                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-                  <span>{copied ? "COPIED TO CLIPBOARD" : "COPY EMAIL ADDRESS"}</span>
-                </button>
-
-                <a
-                  href={`mailto:${emailAddress}`}
-                  onMouseEnter={() => sound.playHover()}
-                  className="py-2.5 px-3 rounded border border-border-subtle bg-bg-secondary text-text-secondary hover:text-text-primary hover:border-accent-red transition-colors"
-                  title="Open in Mail Client"
-                >
-                  <Send className="w-4 h-4" />
-                </a>
-              </div>
-            </div>
+            </Interactive3DTilt>
 
             {/* Direct Phone Call Card */}
-            <div className="rounded-lg border border-border-subtle bg-bg-panel p-5 shadow-panel-subtle space-y-3">
-              <div className="flex items-center justify-between text-text-muted">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-3.5 h-3.5 text-accent-red" />
-                  <span className="font-semibold text-text-primary">DIRECT TELEPHONE</span>
+            <Interactive3DTilt maxTilt={5} scale={1.015} glare={true} className="w-full">
+              <div className="rounded-2xl border border-border-subtle bg-bg-panel/90 backdrop-blur-md p-5 shadow-panel-subtle space-y-3 hover:border-emerald-500/50 transition-colors">
+                <div className="flex items-center justify-between text-text-muted">
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-3.5 h-3.5 text-accent-red" />
+                    <span className="font-semibold text-text-primary">DIRECT TELEPHONE</span>
+                  </div>
+                  <span className="text-[10px] text-emerald-400">VOICE &amp; WHATSAPP</span>
                 </div>
-                <span className="text-[10px] text-emerald-400">VOICE & WHATSAPP</span>
-              </div>
 
-              <div className="font-mono text-sm text-text-primary font-semibold">
-                {phoneNumber}
-              </div>
+                <div className="font-mono text-sm text-text-primary font-semibold">
+                  {phoneNumber}
+                </div>
 
-              <a
-                href={`tel:${phoneNumber.replace(/\s+/g, "")}`}
-                onMouseEnter={() => sound.playHover()}
-                className="inline-block py-2 px-3 rounded border border-border-subtle bg-bg-secondary text-text-secondary hover:text-text-primary hover:border-accent-red transition-colors text-[11px]"
-              >
-                Call Now ({phoneNumber}) →
-              </a>
-            </div>
+                <a
+                  href={`tel:${phoneNumber.replace(/\s+/g, "")}`}
+                  onMouseEnter={() => sound.playHover()}
+                  className="inline-block py-2 px-3 rounded-xl border border-border-subtle bg-bg-secondary text-text-secondary hover:text-text-primary hover:border-accent-red transition-colors text-[11px]"
+                >
+                  Call Now ({phoneNumber}) →
+                </a>
+              </div>
+            </Interactive3DTilt>
 
             {/* Social Grid */}
-            <div className="rounded-lg border border-border-subtle bg-bg-panel p-5 space-y-3">
+            <div className="rounded-2xl border border-border-subtle bg-bg-panel/90 backdrop-blur-md p-5 space-y-3">
               <div className="text-text-muted text-[11px] uppercase tracking-wider font-semibold">
                 Verified Social Profiles
               </div>
@@ -175,7 +181,7 @@ export function ContactSection() {
                   target="_blank"
                   rel="noreferrer"
                   onMouseEnter={() => sound.playHover()}
-                  className="p-2.5 rounded border border-border-subtle bg-bg-secondary hover:border-accent-red text-text-secondary hover:text-text-primary flex items-center gap-2 transition-colors"
+                  className="p-2.5 rounded-xl border border-border-subtle bg-bg-secondary hover:border-accent-red text-text-secondary hover:text-text-primary flex items-center gap-2 transition-all hover:scale-105"
                 >
                   <Github className="w-4 h-4 text-text-primary" />
                   <span className="truncate">GitHub</span>
@@ -186,7 +192,7 @@ export function ContactSection() {
                   target="_blank"
                   rel="noreferrer"
                   onMouseEnter={() => sound.playHover()}
-                  className="p-2.5 rounded border border-border-subtle bg-bg-secondary hover:border-accent-red text-text-secondary hover:text-text-primary flex items-center gap-2 transition-colors"
+                  className="p-2.5 rounded-xl border border-border-subtle bg-bg-secondary hover:border-cyan-400 text-text-secondary hover:text-text-primary flex items-center gap-2 transition-all hover:scale-105"
                 >
                   <Twitter className="w-4 h-4 text-cyan-400" />
                   <span className="truncate">X / Twitter</span>
@@ -197,7 +203,7 @@ export function ContactSection() {
                   target="_blank"
                   rel="noreferrer"
                   onMouseEnter={() => sound.playHover()}
-                  className="p-2.5 rounded border border-border-subtle bg-bg-secondary hover:border-accent-red text-text-secondary hover:text-text-primary flex items-center gap-2 transition-colors"
+                  className="p-2.5 rounded-xl border border-border-subtle bg-bg-secondary hover:border-pink-500 text-text-secondary hover:text-text-primary flex items-center gap-2 transition-all hover:scale-105"
                 >
                   <Instagram className="w-4 h-4 text-pink-400" />
                   <span className="truncate">Instagram</span>
@@ -209,7 +215,7 @@ export function ContactSection() {
                   target="_blank"
                   rel="noreferrer"
                   onMouseEnter={() => sound.playHover()}
-                  className="p-2.5 rounded border border-border-subtle bg-bg-secondary hover:border-accent-red text-text-secondary hover:text-text-primary flex items-center justify-between transition-colors"
+                  className="p-2.5 rounded-xl border border-border-subtle bg-bg-secondary hover:border-blue-400 text-text-secondary hover:text-text-primary flex items-center justify-between transition-all hover:scale-105"
                 >
                   <div className="flex items-center gap-2">
                     <Linkedin className="w-4 h-4 text-blue-400" />
@@ -222,14 +228,19 @@ export function ContactSection() {
           </div>
 
           {/* Right Column: Interactive Dispatch Terminal Form (7 cols) */}
-          <div className="lg:col-span-7 rounded-lg border border-border-subtle bg-bg-panel p-6 sm:p-8 shadow-panel-subtle space-y-6">
-            <div className="flex items-center justify-between border-b border-border-subtle pb-3 font-mono text-xs">
-              <div className="flex items-center gap-2">
-                <Terminal className="w-4 h-4 text-accent-red" />
-                <span className="font-semibold text-text-primary">ENCRYPTED MESSAGE DISPATCH</span>
-              </div>
-              <span className="text-text-muted">[PROTOCOL 2026]</span>
-            </div>
+          <div className="lg:col-span-7">
+            <Interactive3DTilt maxTilt={4} scale={1.01} glare={true} className="w-full">
+              <div className="rounded-2xl border border-border-subtle bg-bg-panel/95 backdrop-blur-md p-6 sm:p-8 shadow-panel-subtle space-y-6 hover:border-white/20 transition-colors">
+                <div className="flex items-center justify-between border-b border-border-subtle pb-3 font-mono text-xs">
+                  <div className="flex items-center gap-2">
+                    <Terminal className="w-4 h-4 text-accent-red" />
+                    <span className="font-semibold text-text-primary">ENCRYPTED MESSAGE DISPATCH</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-zinc-400 text-[10px]">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>GATEWAY SECURE // SSL 443</span>
+                  </div>
+                </div>
 
             {submitSuccess && (
               <div className="p-4 rounded border border-emerald-500/40 bg-emerald-500/10 text-emerald-400 text-xs font-mono space-y-1">
@@ -316,8 +327,10 @@ export function ContactSection() {
               </button>
             </form>
           </div>
-        </div>
+        </Interactive3DTilt>
       </div>
+    </div>
+  </div>
 
       {/* LinkedIn Configuration Modal */}
       {linkedinModalOpen && (

@@ -79,9 +79,15 @@ function ProjectCard3D({
       className="project-card relative w-full rounded-2xl overflow-hidden cursor-pointer group bg-[#0A0C13] border border-white/10 hover:border-accent-red/70 transition-all duration-300 shadow-xl hover:shadow-[0_20px_40px_rgba(199,44,70,0.18)] flex flex-col justify-between"
     >
       {/* Top Application Window Preview Canvas */}
-      <div className="relative w-full bg-[#07090E] border-b border-white/10 flex flex-col overflow-hidden">
+      <div
+        className="relative w-full bg-[#07090E] border-b border-white/10 flex flex-col overflow-hidden"
+        style={{ transform: "translateZ(14px)" }}
+      >
         {/* Sleek Browser/Window Chrome Header */}
-        <div className="px-4 py-2.5 bg-black/75 backdrop-blur-md border-b border-white/10 flex items-center justify-between z-10">
+        <div
+          className="px-4 py-2.5 bg-black/80 backdrop-blur-md border-b border-white/10 flex items-center justify-between z-10"
+          style={{ transform: "translateZ(26px)" }}
+        >
           <div className="flex items-center gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-[#EF4444]/90 border border-[#EF4444]/40" />
             <div className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]/90 border border-[#F59E0B]/40" />
@@ -92,10 +98,10 @@ function ProjectCard3D({
           </div>
 
           <div className="flex items-center gap-1.5 font-mono text-[10px]">
-            <span className="text-accent-red font-bold uppercase text-[10px] px-2 py-0.5 rounded bg-black/60 border border-accent-red/30">
+            <span className="text-accent-red font-bold uppercase text-[10px] px-2 py-0.5 rounded bg-black/70 border border-accent-red/35">
               {project.badge.split(" // ")[0]}
             </span>
-            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold flex items-center gap-1">
+            <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/35 font-semibold flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               {project.status === "ACTIVE PRODUCTION" ? "LIVE" : project.status}
             </span>
@@ -109,11 +115,15 @@ function ProjectCard3D({
             src={project.image}
             alt={project.title}
             className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+            style={{ transform: "translateZ(10px)" }}
           />
 
           {/* Interactive Inspect Badge on Hover */}
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-            <span className="px-3.5 py-1.5 rounded-full bg-black/85 border border-accent-red/60 text-white font-mono text-xs flex items-center gap-2 backdrop-blur-md shadow-2xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
+          <div
+            className="absolute inset-0 bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none"
+            style={{ transform: "translateZ(42px)" }}
+          >
+            <span className="px-4 py-2 rounded-full bg-black/90 border border-accent-red/70 text-white font-mono text-xs flex items-center gap-2 backdrop-blur-md shadow-2xl transform translate-y-2 group-hover:translate-y-0 transition-transform">
               <Sparkles className="w-3.5 h-3.5 text-accent-red" />
               <span className="font-bold tracking-wider">INSPECT SYSTEM</span>
             </span>
@@ -126,14 +136,14 @@ function ProjectCard3D({
         className="pointer-events-none absolute inset-0 z-20 transition-opacity duration-300 mix-blend-screen rounded-2xl"
         style={{
           opacity: shine.opacity,
-          background: `radial-gradient(circle 280px at ${shine.x}px ${shine.y}px, rgba(224, 82, 105, 0.22), rgba(255, 255, 255, 0.08) 35%, transparent 70%)`,
+          background: `radial-gradient(circle 280px at ${shine.x}px ${shine.y}px, rgba(224, 82, 105, 0.25), rgba(255, 255, 255, 0.1) 35%, transparent 70%)`,
         }}
       />
 
       {/* Structured Card Content Body (Zero Text Collision) */}
       <div
         className="relative z-10 p-5 sm:p-6 flex flex-col justify-between flex-1 bg-gradient-to-b from-[#0A0C13] to-[#07080B] space-y-4"
-        style={{ transform: "translateZ(18px)" }}
+        style={{ transform: "translateZ(28px)" }}
       >
         <div className="space-y-2">
           <div className="flex items-center justify-between">
@@ -141,7 +151,8 @@ function ProjectCard3D({
               {project.badge.split(" // ")[1] || "VERIFIED SYSTEM"}
             </span>
             {project.flagship && (
-              <span className="text-[9px] font-mono uppercase px-2 py-0.5 rounded bg-accent-red/10 border border-accent-red/30 text-accent-red font-semibold">
+              <span className="text-[9px] font-mono uppercase px-2 py-0.5 rounded bg-accent-red/15 border border-accent-red/40 text-accent-red font-bold flex items-center gap-1 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
                 FLAGSHIP
               </span>
             )}
@@ -158,11 +169,11 @@ function ProjectCard3D({
 
         <div className="space-y-3 pt-1">
           {/* Tech Stack Pills */}
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5" style={{ transform: "translateZ(34px)" }}>
             {project.techStack.slice(0, 4).map((tech) => (
               <span
                 key={tech}
-                className="text-[10px] uppercase font-mono px-2.5 py-0.8 rounded-md border border-white/10 bg-white/[0.04] text-zinc-300 backdrop-blur-sm"
+                className="text-[10px] uppercase font-mono px-2.5 py-0.8 rounded-md border border-white/10 bg-white/[0.04] text-zinc-300 backdrop-blur-sm group-hover:border-accent-red/30 transition-colors"
               >
                 {tech}
               </span>
@@ -170,8 +181,11 @@ function ProjectCard3D({
           </div>
 
           {/* Action Link Footer */}
-          <div className="pt-3 border-t border-white/10 flex items-center justify-between font-mono text-xs">
-            <span className="text-accent-red font-bold text-[11px] flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+          <div
+            className="pt-3 border-t border-white/10 flex items-center justify-between font-mono text-xs"
+            style={{ transform: "translateZ(38px)" }}
+          >
+            <span className="text-accent-red font-bold text-[11px] flex items-center gap-1.5 group-hover:translate-x-1.5 transition-transform duration-200">
               <span>ACCESS RECORD</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </span>
@@ -185,7 +199,7 @@ function ProjectCard3D({
                   e.stopPropagation();
                   sound.playClick();
                 }}
-                className="text-[11px] text-zinc-400 hover:text-white flex items-center gap-1 transition-colors"
+                className="text-[11px] text-zinc-400 hover:text-white flex items-center gap-1 transition-colors px-2 py-0.5 rounded bg-white/[0.04] hover:bg-white/[0.1] border border-white/10"
               >
                 <span>Live Demo</span>
                 <ExternalLink className="w-3 h-3" />

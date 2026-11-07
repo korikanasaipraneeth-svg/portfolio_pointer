@@ -128,34 +128,83 @@ export function HeroSection() {
           </div>
 
           {/* Stats Row (3 Columns matching SAAI.pro 478 / 7-Layer / 100%) */}
-          <div className="grid grid-cols-3 gap-0 pt-4 border-t border-white/15 font-mono text-xs">
-            <div className="p-3 border-r border-white/10">
-              <div className="font-mono font-bold text-2xl sm:text-3xl text-accent-red">12</div>
-              <div className="text-[11px] text-[#a8a8b0] tracking-tight">Public Repos</div>
+          <div className="grid grid-cols-3 gap-2 pt-4 border-t border-white/15 font-mono text-xs">
+            <div
+              onMouseEnter={() => sound.playHover()}
+              className="p-3 rounded-lg border border-white/10 bg-white/[0.02] hover:border-accent-red/50 hover:bg-accent-red/[0.04] transition-all duration-300 group cursor-default"
+            >
+              <div className="font-mono font-bold text-2xl sm:text-3xl text-accent-red group-hover:scale-105 transition-transform duration-200">
+                12
+              </div>
+              <div className="text-[11px] text-[#a8a8b0] tracking-tight group-hover:text-white transition-colors">
+                Public Repos
+              </div>
             </div>
-            <div className="p-3 border-r border-white/10">
-              <div className="font-mono font-bold text-2xl sm:text-3xl text-white">7-Layer</div>
-              <div className="text-[11px] text-[#a8a8b0] tracking-tight">AIML Stack</div>
+
+            <div
+              onMouseEnter={() => sound.playHover()}
+              className="p-3 rounded-lg border border-white/10 bg-white/[0.02] hover:border-emerald-500/50 hover:bg-emerald-500/[0.04] transition-all duration-300 group cursor-default"
+            >
+              <div className="font-mono font-bold text-2xl sm:text-3xl text-white group-hover:text-emerald-400 group-hover:scale-105 transition-all duration-200">
+                7-Layer
+              </div>
+              <div className="text-[11px] text-[#a8a8b0] tracking-tight group-hover:text-white transition-colors">
+                AIML Stack
+              </div>
             </div>
-            <div className="p-3">
-              <div className="font-mono font-bold text-2xl sm:text-3xl text-white">100%</div>
-              <div className="text-[11px] text-[#a8a8b0] tracking-tight">Verified Evidence</div>
+
+            <div
+              onMouseEnter={() => sound.playHover()}
+              className="p-3 rounded-lg border border-white/10 bg-white/[0.02] hover:border-cyan-500/50 hover:bg-cyan-500/[0.04] transition-all duration-300 group cursor-default"
+            >
+              <div className="font-mono font-bold text-2xl sm:text-3xl text-white group-hover:text-cyan-400 group-hover:scale-105 transition-all duration-200">
+                100%
+              </div>
+              <div className="text-[11px] text-[#a8a8b0] tracking-tight group-hover:text-white transition-colors">
+                Verified Evidence
+              </div>
             </div>
           </div>
         </div>
 
         {/* CENTER COLUMN: Iconic 3D Portrait Cutout Card */}
-        <div className="flex justify-center items-end my-4 lg:my-0 min-w-0">
+        <div className="flex justify-center items-end my-4 lg:my-0 min-w-0 relative">
+          {/* Subtle Ambient Cybernetic Orbit Ring */}
+          <div className="absolute inset-0 -m-10 pointer-events-none flex items-center justify-center opacity-30 z-0">
+            <div
+              className="w-[360px] h-[360px] rounded-full border border-accent-red/30 animate-orbit-slow pointer-events-none"
+              style={{ borderStyle: "dashed", transform: "rotateX(60deg)" }}
+            />
+          </div>
+
           <Interactive3DTilt
             maxTilt={7}
             scale={1.02}
             glare={false}
-            className="w-full max-w-[340px]"
+            className="w-full max-w-[340px] relative z-10"
           >
             <div
               className="relative w-full aspect-[4/5] bg-gradient-to-b from-[#050505] via-[#111111] to-[#050505] border border-white/10 overflow-visible group"
               style={{ transformStyle: "preserve-3d" }}
             >
+              {/* Floating 3D Satellite Badge 1 (Top Right) */}
+              <div
+                className="absolute -top-3 -right-3 z-30 px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-cyan-400/40 font-mono text-[10px] text-cyan-300 font-semibold tracking-wider flex items-center gap-1.5 shadow-lg shadow-cyan-500/20 animate-float-slow select-none pointer-events-none"
+                style={{ transform: "translateZ(46px)" }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                <span>AIML 2024–PRESENT</span>
+              </div>
+
+              {/* Floating 3D Satellite Badge 2 (Mid Left) */}
+              <div
+                className="absolute top-1/2 -left-4 z-30 px-2.5 py-1 rounded-full bg-black/85 backdrop-blur-md border border-accent-red/40 font-mono text-[10px] text-red-300 font-semibold tracking-wider flex items-center gap-1.5 shadow-lg shadow-red-500/20 animate-float-delayed select-none pointer-events-none"
+                style={{ transform: "translateZ(50px)" }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
+                <span>VIBE CODER</span>
+              </div>
+
               {/* Offset Red Accent Panel (Exact SAAI.pro styling) */}
               <div
                 className="absolute inset-[18%_6%_0] z-0 bg-accent-red transform translate-x-3.5 -translate-y-3.5 opacity-90 transition-transform group-hover:translate-x-4 group-hover:-translate-y-4"
@@ -170,6 +219,9 @@ export function HeroSection() {
                 className="relative z-10 w-full h-full flex flex-col justify-end items-center overflow-hidden"
                 style={{ transform: "translateZ(28px)" }}
               >
+                {/* Holographic Laser Scanline */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-accent-red/10 to-transparent h-20 w-full animate-laser-flow z-20 opacity-60" />
+
                 {!imgError ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img
