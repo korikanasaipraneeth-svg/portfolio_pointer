@@ -94,7 +94,7 @@ test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
     await page.locator("#projects h3:has-text('AgriSahay AI')").first().click();
 
     // Modal should be open
-    const modal = page.locator("text=SYSTEM ARCHITECTURE");
+    const modal = page.locator(".fixed.inset-0:has-text('SYSTEM ARCHITECTURE')");
     await expect(modal).toBeVisible();
 
     // Close modal
