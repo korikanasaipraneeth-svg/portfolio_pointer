@@ -1,8 +1,36 @@
 {
-  "totalVisits": 201,
-  "uniqueWatchers": 116,
-  "lastUpdated": "2026-11-07T06:54:31.769Z",
+  "totalVisits": 203,
+  "uniqueWatchers": 118,
+  "lastUpdated": "2026-11-07T06:56:13.199Z",
   "events": [
+    {
+      "id": "LOG-MW61V43Z-Desk",
+      "timestamp": "2026-11-07T06:56:13.199Z",
+      "ipMasked": "::ffff:192.168.***.***",
+      "device": "Desktop",
+      "browser": "Edge",
+      "os": "Windows",
+      "timezone": "Asia/Calcutta",
+      "country": "India",
+      "referrer": "Direct Dispatch / Portfolio Entry",
+      "landingPage": "/#contact",
+      "lastSection": "SEC_HERO",
+      "durationSeconds": 2342
+    },
+    {
+      "id": "LOG-MW61TTTC-Desk",
+      "timestamp": "2026-11-07T06:55:13.200Z",
+      "ipMasked": "::ffff:192.168.***.***",
+      "device": "Desktop",
+      "browser": "Edge",
+      "os": "Windows",
+      "timezone": "Asia/Calcutta",
+      "country": "India",
+      "referrer": "Direct Dispatch / Portfolio Entry",
+      "landingPage": "/#contact",
+      "lastSection": "SEC_HERO",
+      "durationSeconds": 2282
+    },
     {
       "id": "LOG-MW61SXUH-Mobi",
       "timestamp": "2026-11-07T06:54:31.769Z",
