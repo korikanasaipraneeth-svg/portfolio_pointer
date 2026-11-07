@@ -72,7 +72,7 @@ export function NavigationDock() {
               KP
             </div>
             <span className="font-bebas text-lg tracking-wider text-text-primary group-hover:text-accent-red transition-colors">
-              PRANEETH<span className="text-accent-red">.</span>
+              SAI PRANEETH<span className="text-accent-red">.</span>
             </span>
           </a>
 

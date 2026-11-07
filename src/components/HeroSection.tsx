@@ -45,15 +45,37 @@ export function HeroSection() {
       <div className="w-full max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-[minmax(340px,1.2fr)_minmax(280px,360px)_minmax(320px,1fr)] gap-8 items-end mt-2 lg:mt-0">
         {/* LEFT FLANK: Script, Solid Red Box, Pill, Description, CTAs, Stats */}
         <div className="flex flex-col space-y-4 text-left pb-2 min-w-0">
-          {/* Cursive Script (Caveat font) */}
-          <div className="font-script text-white text-3xl sm:text-4xl tracking-wide select-none leading-none -mb-1">
-            Hello, I&apos;m
+          {/* Well-Mannered & Professional Greeting Kicker */}
+          <div className="space-y-2">
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm border border-accent-red/35 bg-accent-red/10 backdrop-blur-md font-mono text-[11px] text-accent-red uppercase tracking-wider font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                <span>GREETINGS // PORTFOLIO WORKSPACE</span>
+              </div>
+              <span className="text-[#a8a8b0] text-[11px] font-mono tracking-wider hidden sm:inline-flex items-center gap-1.5">
+                <span className="text-white/20">•</span>
+                <span>SRI SIVANI COE &bull; AIML</span>
+              </span>
+            </div>
+
+            {/* Respectful & Dignified Greeting */}
+            <div className="flex items-center gap-2 pt-0.5">
+              <span className="font-heading font-normal text-lg sm:text-xl lg:text-2xl text-[#d0d0d8] tracking-wide">
+                Hello, I&apos;m
+              </span>
+              <span className="font-heading font-bold text-lg sm:text-xl lg:text-2xl text-white tracking-tight">
+                Sai Praneeth
+              </span>
+              <span className="text-accent-red font-mono text-[11px] font-semibold px-2 py-0.5 rounded-sm bg-accent-red/10 border border-accent-red/30 hidden sm:inline-block">
+                KORIKANA
+              </span>
+            </div>
           </div>
 
-          {/* Solid Red Name Box (Bebas Neue on #C72C46 / #DC2626) */}
+          {/* Solid Red Name Box (Bebas Neue on #C72C46 / #DC2626) with SAI PRANEETH */}
           <div>
-            <h1 className="hero-name-badge inline-block font-bebas text-white text-6xl sm:text-7xl lg:text-8xl bg-accent-red px-3 sm:px-3.5 py-0.5 sm:py-1 tracking-wider leading-none shadow-crimson-glow">
-              PRANEETH<span className="text-white">.</span>
+            <h1 className="hero-name-badge inline-block font-bebas text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl bg-accent-red px-3 sm:px-4 py-0.5 sm:py-1 tracking-wider leading-none shadow-crimson-glow border border-white/20">
+              SAI PRANEETH<span className="text-white">.</span>
             </h1>
           </div>
 
@@ -65,7 +87,7 @@ export function HeroSection() {
 
           {/* Description */}
           <p className="font-sans text-sm sm:text-base text-[#c4c4cb] leading-relaxed max-w-md">
-            Architecting <strong className="text-white font-bold">practical AI systems</strong>, multi-agent workflows, and <strong className="text-white font-bold">interactive full-stack applications</strong> from first principles — prompt engineering, vibe coding, real-world execution.
+            Dedicated to engineering <strong className="text-white font-bold">practical AI systems</strong>, multi-agent workflows, and <strong className="text-white font-bold">interactive software applications</strong> — combining creativity, AI-assisted development, and verified real-world execution.
           </p>
 
           {/* Actions */}
