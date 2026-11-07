@@ -100,7 +100,11 @@ test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
     // Verify timeline section is present
     const timeline = page.locator("#timeline");
     await expect(timeline).toBeVisible();
-    await expect(timeline).toContainText("ACADEMIC & DEVELOPMENT CHRONOLOGY");
+    await expect(timeline).toContainText("Academic & Development");
+    await expect(timeline).toContainText("Timeline");
+    await expect(timeline).toContainText("Sri Sivani College of Engineering");
+    await expect(timeline).toContainText("Spider-Man 3D Developer Portfolio");
+    await expect(timeline).toContainText("HRX Tech Solution");
   });
 
   test("8. Direct Contact section, email copy and form validation", async ({ page }) => {
