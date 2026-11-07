@@ -29,7 +29,7 @@ export function ArchitectureSection() {
         <div className="space-y-2 border-b border-border-subtle/80 pb-6">
           <div className="flex items-center gap-2 font-mono text-xs text-accent-red uppercase tracking-widest font-semibold">
             <span className="w-1.5 h-1.5 rounded-full bg-accent-red" />
-            <span>05 // SCHEMATIC VERIFICATION</span>
+            <span>04 // SCHEMATIC VERIFICATION</span>
           </div>
           <h2 className="font-heading font-black text-3xl sm:text-4xl text-text-primary tracking-tight">
             SYSTEMS ARCHITECTURE & DATA FLOWS

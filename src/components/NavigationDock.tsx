@@ -6,9 +6,9 @@ import { Volume2, VolumeX, Menu, X, MousePointer2 } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "About", href: "#profile" },
-  { label: "Flagships", href: "#projects" },
   { label: "Matrix", href: "#skills" },
-  { label: "Agents", href: "#agents" },
+  { label: "Flagships", href: "#projects" },
+  { label: "Architecture", href: "#architecture" },
   { label: "Timeline", href: "#timeline" },
   { label: "Contact", href: "#contact" },
 ];
@@ -25,7 +25,7 @@ export function NavigationDock() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
 
-      const sections = ["hero", "profile", "projects", "skills", "agents", "timeline", "contact"];
+      const sections = ["hero", "profile", "skills", "projects", "architecture", "timeline", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {

@@ -90,7 +90,7 @@ export function HeroSection() {
 
           {/* Description */}
           <p className="font-sans text-sm sm:text-base text-[#c4c4cb] leading-relaxed max-w-md">
-            Dedicated to engineering <strong className="text-white font-bold">practical AI systems</strong>, multi-agent workflows, and <strong className="text-white font-bold">interactive software applications</strong> — combining creativity, AI-assisted development, and verified real-world execution.
+            Dedicated to engineering <strong className="text-white font-bold">practical AI systems</strong>, modern full-stack systems, and <strong className="text-white font-bold">interactive software applications</strong> — combining creativity, AI-assisted development, and verified real-world execution.
           </p>
 
           {/* Actions */}
@@ -242,10 +242,10 @@ export function HeroSection() {
                 </span>
               </div>
               <h4 className="font-heading font-bold text-base text-white leading-tight">
-                Autonomous Core
+                AI &amp; Deep Learning Core
               </h4>
               <p className="font-sans text-xs text-[#a8a8b0] leading-relaxed">
-                Local-first agent runtime with multi-provider model routing. Zero cloud lock-in.
+                Practical AI models, predictive analytics, and production full-stack deployment.
               </p>
             </div>
           </Interactive3DTilt>

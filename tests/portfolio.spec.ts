@@ -60,25 +60,14 @@ test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
     await expect(page.locator("text=TECHNOLOGY INSPECTOR")).toBeVisible();
   });
 
-  test("5. Autonomous Development Environment executes agent build pipeline", async ({ page }) => {
-    const agents = page.locator("#agents");
-    await expect(agents).toBeVisible();
-    await expect(agents).toContainText("AUTONOMOUS DEVELOPMENT ENVIRONMENT");
+  test("5. Verified complete removal of agent section and clean navigation", async ({ page }) => {
+    // Assert agent section and simulation environment are completely removed
+    await expect(page.locator("#agents")).toHaveCount(0);
+    await expect(page.locator("text=AUTONOMOUS DEVELOPMENT ENVIRONMENT")).toHaveCount(0);
+    await expect(page.locator("text=DISPATCH AGENTS")).toHaveCount(0);
 
-    // Mode Toggle
-    const realModeBtn = page.locator("button:has-text('MODE B: REAL AI EXECUTION')");
-    await realModeBtn.click();
-    await expect(page.locator("text=ACTIVE MODE: REAL AI EXECUTION GATEWAY")).toBeVisible();
-
-    // Back to Mode A
-    await page.locator("button:has-text('MODE A: LOCAL SIMULATION')").click();
-
-    // Dispatch Agents
-    const dispatchBtn = page.locator("button:has-text('DISPATCH AGENTS')");
-    await dispatchBtn.click();
-
-    // Verify build logs start appearing
-    await expect(page.locator("text=INITIATING BUILD RUN")).toBeVisible({ timeout: 5000 });
+    // Verify navigation dock does not link to agents
+    await expect(page.locator("header nav")).not.toContainText("Agents");
   });
 
   test("6. Architectural Showcase filters and project modal", async ({ page }) => {

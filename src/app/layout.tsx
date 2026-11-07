@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "AI Systems Architect",
     "Vibe Coder",
     "AIML Engineer",
-    "Autonomous Agents",
+    "Full-Stack Development",
     "Next.js",
     "FastAPI",
     "AgriSahay AI",

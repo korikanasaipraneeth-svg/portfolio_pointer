@@ -93,29 +93,4 @@ export const ARCHITECTURE_FLOWS: ArchitectureFlow[] = [
       "Persistent audit trail for paramedic and emergency personnel coordination",
     ],
   },
-  {
-    id: "autonomous-agents",
-    title: "Autonomous Multi-Agent Collaborative Development Engine",
-    badge: "SYS-ARCH // 04 — AGENTIC WORKFLOW & DAG",
-    summary: "Concurrent specialized agent swarm executing topological task graphs with sandboxed visual preview compilation.",
-    verifiedSource: "Architectural implementation in Autonomous Development Environment (PRANEETH.AI)",
-    nodes: [
-      { id: "orchestrator", label: "NOVA DAG Orchestrator", type: "engine", subtext: "Prompt parsing & task dispatch" },
-      { id: "architect", label: "ATLAS & PIXEL Sub-Swarm", type: "service", subtext: "System schema & token definition" },
-      { id: "engineers", label: "FORGE & API Synthesizers", type: "service", subtext: "Full-stack code generation" },
-      { id: "sandbox", label: "Sandboxed Preview Worker", type: "client", subtext: "Isolated iframe execution" },
-      { id: "reviewers", label: "SENTINEL & DEBUG Watchdogs", type: "engine", subtext: "Static analysis & type verification" },
-    ],
-    steps: [
-      { step: 1, title: "Prompt Decomposition", detail: "NOVA ingests natural language project requirements and compiles an execution graph specifying order and dependencies." },
-      { step: 2, title: "Design & Schema Synthesis", detail: "ATLAS generates TypeScript data interfaces while PIXEL generates design tokens matching the requested theme." },
-      { step: 3, title: "Parallel Component Assembly", detail: "FORGE synthesizes React components while API synthesizes endpoints and mock data adapters concurrently." },
-      { step: 4, title: "Sandboxed Verification", detail: "Generated code is compiled into a sandboxed preview frame where SENTINEL enforces CSP rules and DEBUG runs type checks." },
-    ],
-    keyHighlights: [
-      "Dual operational modes: deterministic local simulation vs. live AI provider execution",
-      "Zero arbitrary eval execution: all previews render within isolated sandboxes",
-      "Explicit verification gates before code release",
-    ],
-  },
 ];

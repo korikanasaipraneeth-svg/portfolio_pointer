@@ -90,7 +90,7 @@ export function ProjectShowcase() {
           <div className="space-y-2">
             <div className="flex items-center gap-2 font-mono text-xs text-accent-red uppercase tracking-widest font-semibold">
               <span className="w-1.5 h-1.5 rounded-full bg-accent-red" />
-              <span>04 // VERIFIED ENGINEERING REPOSITORY</span>
+              <span>03 // VERIFIED ENGINEERING REPOSITORY</span>
             </div>
             <h2 className="font-heading font-black text-3xl sm:text-4xl text-text-primary tracking-tight">
               ARCHITECTURAL SHOWCASE
