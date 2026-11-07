@@ -1,74 +1,82 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
   <defs>
-    <linearGradient id="cardGrad3" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#121622"/>
-      <stop offset="100%" stop-color="#0A0C13"/>
+    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#131B2E"/>
+      <stop offset="100%" stop-color="#0B101C"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1D273D"/>
+      <stop offset="100%" stop-color="#151C2C"/>
+    </linearGradient>
+    <linearGradient id="highlightGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#283654"/>
+      <stop offset="100%" stop-color="#1B2438"/>
     </linearGradient>
   </defs>
-  <rect width="600" height="360" fill="#080A0F"/>
   
-    <rect x="0" y="0" width="600" height="34" fill="#0E111A" />
-    <line x1="0" y1="34" x2="600" y2="34" stroke="#1E2433" stroke-width="1" />
-    <circle cx="20" cy="17" r="4.5" fill="#EF4444" opacity="0.8"/>
-    <circle cx="36" cy="17" r="4.5" fill="#F59E0B" opacity="0.8"/>
-    <circle cx="52" cy="17" r="4.5" fill="#10B981" opacity="0.8"/>
-    <rect x="75" y="7" width="280" height="20" rx="4" fill="#080A0F" stroke="#1E2433" stroke-width="1"/>
-    <text x="88" y="21" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94A3B8">https://swayam.org // BLOOD &amp; ORGAN DISPATCH</text>
-    <rect x="490" y="8" width="90" height="18" rx="9" fill="#EF444422" stroke="#EF4444" stroke-width="0.75"/>
-    <circle cx="502" cy="17" r="2.5" fill="#EF4444"/>
-    <text x="512" y="21" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#EF4444">EMERGENCY READY</text>
-  
+  <rect width="600" height="320" fill="url(#bgGrad)"/>
+  <circle cx="80" cy="80" r="140" fill="#EF4444" opacity="0.15" filter="url(#neon)"/>
 
-  <!-- 4 Blood Group Inventory Gauges -->
-  <g transform="translate(20, 48)">
+  <!-- 4 Vivid Blood Inventory Cards -->
+  <g transform="translate(24, 18)">
     <!-- O- (Critical) -->
-    <rect width="130" height="110" rx="8" fill="url(#cardGrad3)" stroke="#EF4444" stroke-width="1.5"/>
-    <circle cx="65" cy="48" r="28" fill="#EF444415" stroke="#EF4444" stroke-width="2"/>
-    <text x="56" y="55" font-family="'Inter', sans-serif" font-size="18" font-weight="900" fill="#EF4444">O-</text>
-    <text x="28" y="94" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#EF4444">4 UNITS CRITICAL</text>
+    <rect width="128" height="126" rx="10" fill="#2E0A0F" stroke="#EF4444" stroke-width="2.5"/>
+    <circle cx="64" cy="50" r="34" fill="#EF444440" stroke="#EF4444" stroke-width="3"/>
+    <text x="48" y="59" font-family="'Inter', sans-serif" font-size="26" font-weight="900" fill="#FFFFFF">O-</text>
+    <text x="16" y="104" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#FF8BA7">4 UNITS CRITICAL</text>
+    <rect x="16" y="110" width="96" height="6" rx="3" fill="#EF4444"/>
 
     <!-- O+ (Normal) -->
-    <rect x="142" width="130" height="110" rx="8" fill="url(#cardGrad3)" stroke="#1E2538"/>
-    <circle cx="207" cy="48" r="28" fill="#10B98115" stroke="#10B981" stroke-width="2"/>
-    <text x="198" y="55" font-family="'Inter', sans-serif" font-size="18" font-weight="900" fill="#10B981">O+</text>
-    <text x="174" y="94" font-family="'JetBrains Mono', monospace" font-size="10" fill="#10B981">42 UNITS AVAIL</text>
+    <rect x="141" width="128" height="126" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
+    <circle cx="205" cy="50" r="34" fill="#10B98130" stroke="#10B981" stroke-width="2.5"/>
+    <text x="189" y="59" font-family="'Inter', sans-serif" font-size="26" font-weight="900" fill="#34D399">O+</text>
+    <text x="162" y="104" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#34D399">42 UNITS AVAIL</text>
+    <rect x="159" y="110" width="96" height="6" rx="3" fill="#10B981"/>
 
     <!-- A+ (Normal) -->
-    <rect x="284" width="130" height="110" rx="8" fill="url(#cardGrad3)" stroke="#1E2538"/>
-    <circle cx="349" cy="48" r="28" fill="#38BDF815" stroke="#38BDF8" stroke-width="2"/>
-    <text x="341" y="55" font-family="'Inter', sans-serif" font-size="18" font-weight="900" fill="#38BDF8">A+</text>
-    <text x="316" y="94" font-family="'JetBrains Mono', monospace" font-size="10" fill="#38BDF8">28 UNITS AVAIL</text>
+    <rect x="282" width="128" height="126" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
+    <circle cx="346" cy="50" r="34" fill="#38BDF830" stroke="#38BDF8" stroke-width="2.5"/>
+    <text x="331" y="59" font-family="'Inter', sans-serif" font-size="26" font-weight="900" fill="#38BDF8">A+</text>
+    <text x="303" y="104" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#38BDF8">28 UNITS AVAIL</text>
+    <rect x="300" y="110" width="96" height="6" rx="3" fill="#38BDF8"/>
 
     <!-- B+ (Normal) -->
-    <rect x="426" width="134" height="110" rx="8" fill="url(#cardGrad3)" stroke="#1E2538"/>
-    <circle cx="493" cy="48" r="28" fill="#A855F715" stroke="#A855F7" stroke-width="2"/>
-    <text x="485" y="55" font-family="'Inter', sans-serif" font-size="18" font-weight="900" fill="#A855F7">B+</text>
-    <text x="460" y="94" font-family="'JetBrains Mono', monospace" font-size="10" fill="#A855F7">36 UNITS AVAIL</text>
+    <rect x="424" width="128" height="126" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
+    <circle cx="488" cy="50" r="34" fill="#A855F730" stroke="#A855F7" stroke-width="2.5"/>
+    <text x="473" y="59" font-family="'Inter', sans-serif" font-size="26" font-weight="900" fill="#C084FC">B+</text>
+    <text x="445" y="104" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#C084FC">36 UNITS AVAIL</text>
+    <rect x="442" y="110" width="96" height="6" rx="3" fill="#A855F7"/>
   </g>
 
-  <!-- Live Emergency Dispatch Log -->
-  <g transform="translate(20, 170)">
-    <rect width="560" height="170" rx="8" fill="url(#cardGrad3)" stroke="#1E2538"/>
-    <text x="20" y="26" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#F8FAFC">ACTIVE SOS DISPATCH FEEDS</text>
+  <!-- Emergency Dispatch Log -->
+  <g transform="translate(24, 158)">
+    <rect width="552" height="142" rx="10" fill="url(#highlightGrad)" stroke="#38496B" stroke-width="1.5"/>
     
-    <!-- Feed Item 1 -->
-    <g transform="translate(20, 42)">
-      <rect width="520" height="50" rx="6" fill="#EF444415" stroke="#EF4444" stroke-width="1"/>
-      <circle cx="20" cy="25" r="5" fill="#EF4444"/>
-      <text x="35" y="22" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#F8FAFC">CRITICAL SOS: 2 Units O- Required</text>
-      <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="10" fill="#EF4444">Apollo Trauma Ward • Matching 3 nearby verified donors (ETA 14m)</text>
-      <rect x="430" y="13" width="75" height="24" rx="4" fill="#EF4444" />
-      <text x="444" y="29" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#FFFFFF">DISPATCH</text>
+    <g transform="translate(18, 16)">
+      <rect width="516" height="52" rx="6" fill="#3D0C13" stroke="#EF4444" stroke-width="1.8"/>
+      <circle cx="26" cy="26" r="8" fill="#EF4444"/>
+      <text x="46" y="25" font-family="'Inter', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">CRITICAL SOS: 2 Units O- Required Immediately</text>
+      <text x="46" y="43" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="bold" fill="#FF8BA7">Apollo Trauma ICU • 3 nearby verified donors alerted (ETA 14m)</text>
+      <rect x="416" y="11" width="90" height="30" rx="4" fill="#EF4444"/>
+      <text x="428" y="30" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="bold" fill="#FFFFFF">DISPATCH</text>
     </g>
 
-    <!-- Feed Item 2 -->
-    <g transform="translate(20, 102)">
-      <rect width="520" height="50" rx="6" fill="#080A0F" stroke="#1E2538"/>
-      <circle cx="20" cy="25" r="5" fill="#10B981"/>
-      <text x="35" y="22" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#F8FAFC">TRANSIT CONFIRMED: 1 Unit A+ in Route</text>
-      <text x="35" y="38" font-family="'JetBrains Mono', monospace" font-size="10" fill="#10B981">Courier #882 • Secure Cold Storage Chain Maintained (3.8°C)</text>
-      <rect x="430" y="13" width="75" height="24" rx="4" fill="#10B98122" stroke="#10B981"/>
-      <text x="446" y="29" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#10B981">TRACKING</text>
+    <g transform="translate(18, 76)">
+      <rect width="516" height="52" rx="6" fill="#10251B" stroke="#10B981" stroke-width="1.5"/>
+      <circle cx="26" cy="26" r="8" fill="#10B981"/>
+      <text x="46" y="25" font-family="'Inter', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF">TRANSIT CONFIRMED: 1 Unit A+ En Route</text>
+      <text x="46" y="43" font-family="'JetBrains Mono', monospace" font-size="11.5" fill="#34D399">Courier #882 • Secure Cold Storage Monitored (3.8°C)</text>
+      <rect x="416" y="11" width="90" height="30" rx="4" fill="#10B981"/>
+      <text x="428" y="30" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="bold" fill="#022C1A">TRACKING</text>
     </g>
   </g>
+
 </svg>

@@ -1,89 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
   <defs>
-    <linearGradient id="cardGrad2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#121622"/>
-      <stop offset="100%" stop-color="#0A0C13"/>
+    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#131B2E"/>
+      <stop offset="100%" stop-color="#0B101C"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1D273D"/>
+      <stop offset="100%" stop-color="#151C2C"/>
+    </linearGradient>
+    <linearGradient id="highlightGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#283654"/>
+      <stop offset="100%" stop-color="#1B2438"/>
     </linearGradient>
   </defs>
-  <rect width="600" height="360" fill="#080A0F"/>
   
-    <rect x="0" y="0" width="600" height="34" fill="#0E111A" />
-    <line x1="0" y1="34" x2="600" y2="34" stroke="#1E2433" stroke-width="1" />
-    <circle cx="20" cy="17" r="4.5" fill="#EF4444" opacity="0.8"/>
-    <circle cx="36" cy="17" r="4.5" fill="#F59E0B" opacity="0.8"/>
-    <circle cx="52" cy="17" r="4.5" fill="#10B981" opacity="0.8"/>
-    <rect x="75" y="7" width="280" height="20" rx="4" fill="#080A0F" stroke="#1E2433" stroke-width="1"/>
-    <text x="88" y="21" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94A3B8">https://rural-health.ai/clinical-triage</text>
-    <rect x="490" y="8" width="90" height="18" rx="9" fill="#10B98122" stroke="#10B981" stroke-width="0.75"/>
-    <circle cx="502" cy="17" r="2.5" fill="#10B981"/>
-    <text x="512" y="21" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#10B981">TELEMEDICINE ACTIVE</text>
-  
-  
-  <!-- Patient Header Banner -->
-  <g transform="translate(20, 48)">
-    <rect width="560" height="42" rx="6" fill="url(#cardGrad2)" stroke="#1E2538"/>
-    <circle cx="24" cy="21" r="10" fill="#38BDF822" stroke="#38BDF8"/>
-    <text x="21" y="25" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#38BDF8">P</text>
-    <text x="44" y="25" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#F8FAFC">Lakshmi Devi (42F)</text>
-    <text x="195" y="25" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748B">ID: #AP-RUR-8841</text>
-    <rect x="360" y="11" width="95" height="20" rx="4" fill="#10B98115" stroke="#10B981" stroke-width="0.75"/>
-    <text x="368" y="25" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#10B981">TRIAGE: STABLE</text>
-    <rect x="465" y="11" width="85" height="20" rx="4" fill="#38BDF815" stroke="#38BDF8" stroke-width="0.75"/>
-    <text x="473" y="25" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#38BDF8">DISTRICT #04</text>
+  <rect width="600" height="320" fill="url(#bgGrad)"/>
+  <circle cx="160" cy="180" r="160" fill="#10B981" opacity="0.15" filter="url(#neon)"/>
+
+  <!-- Vitals Header -->
+  <g transform="translate(24, 18)">
+    <rect width="552" height="62" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
+    <circle cx="34" cy="31" r="18" fill="#38BDF830" stroke="#38BDF8" stroke-width="2"/>
+    <text x="27" y="37" font-family="'Inter', sans-serif" font-size="18" font-weight="900" fill="#38BDF8">P</text>
+    <text x="64" y="28" font-family="'Inter', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">Lakshmi Devi (42F)</text>
+    <text x="64" y="48" font-family="'JetBrains Mono', monospace" font-size="11.5" fill="#38BDF8">ID: #AP-RUR-8841 • DISTRICT CLINIC #04</text>
+
+    <!-- Glowing Vitals -->
+    <rect x="260" y="14" width="95" height="34" rx="6" fill="#10B981" stroke="#34D399" stroke-width="1"/>
+    <text x="272" y="36" font-family="'Inter', sans-serif" font-size="13.5" font-weight="900" fill="#022C1A">99% SpO2</text>
+
+    <rect x="365" y="14" width="90" height="34" rx="6" fill="#EF4444" stroke="#F87171" stroke-width="1"/>
+    <text x="378" y="36" font-family="'Inter', sans-serif" font-size="13.5" font-weight="900" fill="#2E0A0E">74 BPM</text>
+
+    <rect x="465" y="14" width="75" height="34" rx="6" fill="#38BDF8" stroke="#7DD3FC" stroke-width="1"/>
+    <text x="475" y="36" font-family="'Inter', sans-serif" font-size="13" font-weight="900" fill="#082F49">120/80</text>
   </g>
 
-  <!-- Realtime Vitals Row -->
-  <g transform="translate(20, 98)">
-    <!-- SpO2 -->
-    <rect width="130" height="66" rx="6" fill="url(#cardGrad2)" stroke="#1E2538"/>
-    <text x="12" y="20" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748B">OXYGEN SAT (SpO2)</text>
-    <text x="12" y="48" font-family="'Inter', sans-serif" font-size="24" font-weight="800" fill="#10B981">99%</text>
-    <text x="75" y="48" font-family="'JetBrains Mono', monospace" font-size="10" fill="#10B981">NORMAL</text>
+  <!-- Glowing Neon ECG Monitor -->
+  <g transform="translate(24, 92)">
+    <rect width="350" height="208" rx="10" fill="#0B1320" stroke="#25354F" stroke-width="1.8"/>
+    <text x="18" y="26" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#34D399">LIVE 3-LEAD CARDIAC ECG WAVEFORM</text>
+    
+    <line x1="18" y1="65" x2="332" y2="65" stroke="#1D2A42" stroke-dasharray="4,4"/>
+    <line x1="18" y1="115" x2="332" y2="115" stroke="#1D2A42" stroke-dasharray="4,4"/>
+    <line x1="18" y1="165" x2="332" y2="165" stroke="#1D2A42" stroke-dasharray="4,4"/>
 
-    <!-- Heart Rate -->
-    <rect x="142" width="130" height="66" rx="6" fill="url(#cardGrad2)" stroke="#1E2538"/>
-    <text x="154" y="20" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748B">HEART RATE</text>
-    <text x="154" y="48" font-family="'Inter', sans-serif" font-size="24" font-weight="800" fill="#E05269">74</text>
-    <text x="188" y="48" font-family="'JetBrains Mono', monospace" font-size="10" fill="#64748B">BPM</text>
+    <!-- High-Voltage Neon-Green Heartbeat Wave -->
+    <path d="M 18 115 L 60 115 L 75 110 L 85 118 L 95 115 L 105 115 L 115 45 L 125 165 L 135 75 L 145 115 L 180 115 L 195 110 L 205 118 L 215 115 L 225 115 L 235 45 L 245 165 L 255 75 L 265 115 L 300 115 L 315 110 L 332 115" 
+          fill="none" stroke="#10B981" stroke-width="4" filter="url(#neon)"/>
 
-    <!-- BP -->
-    <rect x="284" width="130" height="66" rx="6" fill="url(#cardGrad2)" stroke="#1E2538"/>
-    <text x="296" y="20" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748B">BLOOD PRESSURE</text>
-    <text x="296" y="48" font-family="'Inter', sans-serif" font-size="22" font-weight="800" fill="#F8FAFC">120/80</text>
-    <text x="382" y="48" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748B">mmHg</text>
+    <text x="18" y="195" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#38BDF8">REAL-TIME SINUS RHYTHM • 500 Hz SENSOR POLLING</text>
 
-    <!-- Temp -->
-    <rect x="426" width="134" height="66" rx="6" fill="url(#cardGrad2)" stroke="#1E2538"/>
-    <text x="438" y="20" font-family="'JetBrains Mono', monospace" font-size="9" fill="#64748B">TEMPERATURE</text>
-    <text x="438" y="48" font-family="'Inter', sans-serif" font-size="24" font-weight="800" fill="#F8FAFC">98.4°</text>
-    <text x="510" y="48" font-family="'JetBrains Mono', monospace" font-size="10" fill="#10B981">CELSIUS</text>
-  </g>
+    <!-- AI Prescription Dispatch -->
+    <g transform="translate(365, 0)">
+      <rect width="187" height="208" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
+      <text x="16" y="26" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#FF8BA7">AI DISPATCH ALERT</text>
 
-  <!-- Live ECG Monitor + AI Prescription Dispatch -->
-  <g transform="translate(20, 172)">
-    <!-- ECG Waveform -->
-    <rect width="360" height="168" rx="8" fill="#0A0C14" stroke="#1E2538"/>
-    <text x="16" y="24" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#10B981">LIVE 3-LEAD TELEMETRY WAVEFORM</text>
-    <!-- ECG Grid -->
-    <line x1="16" y1="50" x2="344" y2="50" stroke="#141926" stroke-dasharray="2,4"/>
-    <line x1="16" y1="95" x2="344" y2="95" stroke="#141926" stroke-dasharray="2,4"/>
-    <line x1="16" y1="140" x2="344" y2="140" stroke="#141926" stroke-dasharray="2,4"/>
-    <!-- Heartbeat Curve -->
-    <path d="M 16 95 L 60 95 L 75 90 L 85 98 L 95 95 L 105 95 L 115 50 L 125 130 L 135 75 L 145 95 L 175 95 L 190 90 L 200 98 L 210 95 L 220 95 L 230 50 L 240 130 L 250 75 L 260 95 L 290 95 L 305 90 L 315 98 L 325 95 L 344 95" fill="none" stroke="#10B981" stroke-width="2.5"/>
+      <rect x="14" y="40" width="159" height="72" rx="6" fill="#24131E" stroke="#E05269" stroke-width="1.5"/>
+      <text x="24" y="62" font-family="'Inter', sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF">Amoxicillin 500mg</text>
+      <text x="24" y="82" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="bold" fill="#FF8BA7">LOW: 8 STRIPS REMAIN</text>
+      <text x="24" y="98" font-family="'JetBrains Mono', monospace" font-size="10" fill="#E2E8F0">Auto-restock dispatched</text>
 
-    <!-- Right Side: Automated Pharmacy Dispatch -->
-    <g transform="translate(372, 0)">
-      <rect width="188" height="168" rx="8" fill="url(#cardGrad2)" stroke="#1E2538"/>
-      <text x="14" y="24" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#E05269">AI DISPATCH ALERT</text>
-      <rect x="14" y="38" width="160" height="48" rx="4" fill="#080A0F" stroke="#E0526933"/>
-      <text x="22" y="55" font-family="'JetBrains Mono', monospace" font-size="9" fill="#94A3B8">Amoxicillin 500mg</text>
-      <text x="22" y="72" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#E05269">LOW: 8 STRIPS REMAIN</text>
-      
-      <rect x="14" y="94" width="160" height="42" rx="4" fill="#10B98110" stroke="#10B98133"/>
-      <text x="22" y="110" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#10B981">Auto-Transfer Requested</text>
-      <text x="22" y="125" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#64748B">From Central Hub #01</text>
-      
-      <text x="14" y="154" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#64748B">REST API: 200 OK (38ms)</text>
+      <rect x="14" y="124" width="159" height="54" rx="6" fill="#0D2E1C" stroke="#10B981" stroke-width="1.5"/>
+      <text x="24" y="144" font-family="'Inter', sans-serif" font-size="12.5" font-weight="bold" fill="#34D399">Transfer In Route</text>
+      <text x="24" y="162" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#E2E8F0">Central Hub AP-01 (38ms)</text>
+
+      <text x="16" y="195" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#34D399">FASTAPI REST // 200 OK</text>
     </g>
   </g>
+
 </svg>

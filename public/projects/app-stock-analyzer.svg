@@ -1,102 +1,88 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 360" width="600" height="360">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
   <defs>
-    <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#10B981" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0.0"/>
+    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#10B981" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#131B2E"/>
+      <stop offset="100%" stop-color="#0B101C"/>
     </linearGradient>
     <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#121622"/>
-      <stop offset="100%" stop-color="#0A0C13"/>
+      <stop offset="0%" stop-color="#1D273D"/>
+      <stop offset="100%" stop-color="#151C2C"/>
+    </linearGradient>
+    <linearGradient id="highlightGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#283654"/>
+      <stop offset="100%" stop-color="#1B2438"/>
     </linearGradient>
   </defs>
-  <rect width="600" height="360" fill="#080A0F"/>
   
-    <rect x="0" y="0" width="600" height="34" fill="#0E111A" />
-    <line x1="0" y1="34" x2="600" y2="34" stroke="#1E2433" stroke-width="1" />
-    <circle cx="20" cy="17" r="4.5" fill="#EF4444" opacity="0.8"/>
-    <circle cx="36" cy="17" r="4.5" fill="#F59E0B" opacity="0.8"/>
-    <circle cx="52" cy="17" r="4.5" fill="#10B981" opacity="0.8"/>
-    <rect x="75" y="7" width="280" height="20" rx="4" fill="#080A0F" stroke="#1E2433" stroke-width="1"/>
-    <text x="88" y="21" font-family="'JetBrains Mono', monospace" font-size="10" fill="#94A3B8">https://analyzer.stock.ai // PORTFOLIO ALPHA</text>
-    <rect x="490" y="8" width="90" height="18" rx="9" fill="#10B98122" stroke="#10B981" stroke-width="0.75"/>
-    <circle cx="502" cy="17" r="2.5" fill="#10B981"/>
-    <text x="512" y="21" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#10B981">MARKET OPEN</text>
-  
-  
-  <!-- Stat Cards -->
-  <g transform="translate(20, 48)">
-    <!-- Card 1 -->
-    <rect width="170" height="64" rx="8" fill="url(#cardGrad)" stroke="#1E2538"/>
-    <text x="14" y="22" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#64748B" font-weight="600">PORTFOLIO VALUE</text>
-    <text x="14" y="47" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#F8FAFC">$148,920.50</text>
-    <rect x="110" y="10" width="48" height="16" rx="4" fill="#10B98122"/>
-    <text x="116" y="22" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#10B981">+24.8%</text>
+  <rect width="600" height="320" fill="url(#bgGrad)"/>
+  <circle cx="500" cy="80" r="160" fill="#10B981" opacity="0.15" filter="url(#neon)"/>
 
-    <!-- Card 2 -->
-    <rect x="185" width="180" height="64" rx="8" fill="url(#cardGrad)" stroke="#1E2538"/>
-    <text x="199" y="22" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#64748B" font-weight="600">TODAY'S ALPHA GAIN</text>
-    <text x="199" y="47" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#E05269">+$3,420.15</text>
-    <rect x="305" y="10" width="50" height="16" rx="4" fill="#E0526922"/>
-    <text x="312" y="22" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#E05269">+2.35%</text>
+  <!-- Top Hero Stats Ribbon -->
+  <g transform="translate(24, 18)">
+    <rect width="552" height="64" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
+    <text x="20" y="24" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#38BDF8">PORTFOLIO &amp; STOCK ANALYZER // LIVE ALPHA</text>
+    <text x="20" y="52" font-family="'Inter', sans-serif" font-size="28" font-weight="900" fill="#FFFFFF">$148,920.50</text>
 
-    <!-- Card 3 -->
-    <rect x="380" width="180" height="64" rx="8" fill="url(#cardGrad)" stroke="#1E2538"/>
-    <text x="394" y="22" font-family="'JetBrains Mono', monospace" font-size="9.5" fill="#64748B" font-weight="600">SHARPE RATIO // RISK</text>
-    <text x="394" y="47" font-family="'Inter', sans-serif" font-size="20" font-weight="800" fill="#38BDF8">2.14 SHARPE</text>
-    <rect x="495" y="10" width="55" height="16" rx="4" fill="#38BDF822"/>
-    <text x="502" y="22" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="bold" fill="#38BDF8">LOW VOL</text>
+    <!-- Profit Badge -->
+    <rect x="250" y="16" width="130" height="32" rx="6" fill="#10B981" stroke="#34D399" stroke-width="1"/>
+    <text x="264" y="37" font-family="'JetBrains Mono', monospace" font-size="12.5" font-weight="bold" fill="#022C1A">+24.8% PROFIT</text>
+
+    <rect x="395" y="16" width="145" height="32" rx="6" fill="#E0526935" stroke="#E05269" stroke-width="1.5"/>
+    <text x="410" y="37" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#FF8BA7">+18.4% SHARPE</text>
   </g>
 
-  <!-- Interactive Candlestick &amp; Area Chart Canvas -->
-  <g transform="translate(20, 126)">
-    <rect width="560" height="214" rx="8" fill="url(#cardGrad)" stroke="#1E2538"/>
+  <!-- Big Candlestick Chart -->
+  <g transform="translate(24, 94)">
+    <rect width="552" height="206" rx="10" fill="url(#highlightGrad)" stroke="#38496B" stroke-width="1.5"/>
     
-    <!-- Grid Lines -->
-    <line x1="20" y1="45" x2="540" y2="45" stroke="#161B29" stroke-dasharray="4,4"/>
-    <line x1="20" y1="95" x2="540" y2="95" stroke="#161B29" stroke-dasharray="4,4"/>
-    <line x1="20" y1="145" x2="540" y2="145" stroke="#161B29" stroke-dasharray="4,4"/>
+    <line x1="20" y1="45" x2="532" y2="45" stroke="#283550" stroke-dasharray="4,4"/>
+    <line x1="20" y1="95" x2="532" y2="95" stroke="#283550" stroke-dasharray="4,4"/>
+    <line x1="20" y1="145" x2="532" y2="145" stroke="#283550" stroke-dasharray="4,4"/>
 
-    <!-- Candlesticks -->
-    <!-- Candle 1 (Green) -->
-    <line x1="50" y1="90" x2="50" y2="150" stroke="#10B981" stroke-width="1.5"/>
-    <rect x="44" y="105" width="12" height="35" rx="1" fill="#10B981"/>
-    <!-- Candle 2 (Green) -->
-    <line x1="90" y1="75" x2="90" y2="135" stroke="#10B981" stroke-width="1.5"/>
-    <rect x="84" y="85" width="12" height="40" rx="1" fill="#10B981"/>
-    <!-- Candle 3 (Red) -->
-    <line x1="130" y1="85" x2="130" y2="145" stroke="#EF4444" stroke-width="1.5"/>
-    <rect x="124" y="95" width="12" height="30" rx="1" fill="#EF4444"/>
-    <!-- Candle 4 (Green) -->
-    <line x1="170" y1="60" x2="170" y2="120" stroke="#10B981" stroke-width="1.5"/>
-    <rect x="164" y="70" width="12" height="42" rx="1" fill="#10B981"/>
-    <!-- Candle 5 (Red) -->
-    <line x1="210" y1="70" x2="210" y2="130" stroke="#EF4444" stroke-width="1.5"/>
-    <rect x="204" y="80" width="12" height="25" rx="1" fill="#EF4444"/>
-    <!-- Candle 6 (Green) -->
-    <line x1="250" y1="45" x2="250" y2="110" stroke="#10B981" stroke-width="1.5"/>
-    <rect x="244" y="55" width="12" height="45" rx="1" fill="#10B981"/>
+    <!-- Vivid Candlesticks -->
+    <line x1="60" y1="75" x2="60" y2="155" stroke="#10B981" stroke-width="3"/>
+    <rect x="46" y="90" width="28" height="50" rx="3" fill="#10B981"/>
+    
+    <line x1="120" y1="60" x2="120" y2="140" stroke="#10B981" stroke-width="3"/>
+    <rect x="106" y="75" width="28" height="52" rx="3" fill="#10B981"/>
 
-    <!-- Smooth Trend Line with Glowing Gradient -->
-    <path d="M 280 110 Q 340 70 400 90 T 480 35 L 535 25 L 535 185 L 280 185 Z" fill="url(#areaGrad)"/>
-    <path d="M 280 110 Q 340 70 400 90 T 480 35 L 535 25" fill="none" stroke="#10B981" stroke-width="2.5"/>
+    <line x1="180" y1="70" x2="180" y2="150" stroke="#EF4444" stroke-width="3"/>
+    <rect x="166" y="85" width="28" height="48" rx="3" fill="#EF4444"/>
 
-    <!-- Tooltip HUD -->
-    <g transform="translate(435, 15)">
-      <rect width="105" height="32" rx="5" fill="#080A0F" stroke="#10B981" stroke-width="1"/>
-      <text x="8" y="14" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#94A3B8">INFY: $184.20</text>
-      <text x="8" y="26" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" fill="#10B981">VOL: 14.8M +5.2%</text>
+    <line x1="240" y1="45" x2="240" y2="125" stroke="#10B981" stroke-width="3"/>
+    <rect x="226" y="60" width="28" height="52" rx="3" fill="#10B981"/>
+
+    <line x1="300" y1="60" x2="300" y2="135" stroke="#EF4444" stroke-width="3"/>
+    <rect x="286" y="75" width="28" height="42" rx="3" fill="#EF4444"/>
+
+    <!-- Glowing Area Fill & Trend Curve -->
+    <path d="M 320 90 Q 380 45 440 65 T 520 18 L 532 15 L 532 175 L 320 175 Z" fill="url(#chartGrad)"/>
+    <path d="M 320 90 Q 380 45 440 65 T 520 18 L 532 15" fill="none" stroke="#34D399" stroke-width="4" filter="url(#neon)"/>
+
+    <!-- Tooltip -->
+    <g transform="translate(385, 10)">
+      <rect width="140" height="48" rx="6" fill="#0C1322" stroke="#34D399" stroke-width="2"/>
+      <text x="14" y="20" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#94A3B8">INFY: $184.20</text>
+      <text x="14" y="38" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#34D399">VOL: 14.8M +5.2%</text>
     </g>
 
     <!-- Volume Bars -->
-    <rect x="44" y="165" width="12" height="20" fill="#10B981" opacity="0.4"/>
-    <rect x="84" y="160" width="12" height="25" fill="#10B981" opacity="0.4"/>
-    <rect x="124" y="170" width="12" height="15" fill="#EF4444" opacity="0.4"/>
-    <rect x="164" y="152" width="12" height="33" fill="#10B981" opacity="0.4"/>
-    <rect x="204" y="172" width="12" height="13" fill="#EF4444" opacity="0.4"/>
-    <rect x="244" y="145" width="12" height="40" fill="#10B981" opacity="0.4"/>
-    <rect x="300" y="158" width="12" height="27" fill="#10B981" opacity="0.4"/>
-    <rect x="360" y="150" width="12" height="35" fill="#10B981" opacity="0.4"/>
-    <rect x="420" y="140" width="12" height="45" fill="#10B981" opacity="0.5"/>
-    <rect x="480" y="132" width="12" height="53" fill="#10B981" opacity="0.6"/>
+    <rect x="46" y="152" width="28" height="32" fill="#10B981" opacity="0.85" rx="2"/>
+    <rect x="106" y="145" width="28" height="39" fill="#10B981" opacity="0.85" rx="2"/>
+    <rect x="166" y="160" width="28" height="24" fill="#EF4444" opacity="0.85" rx="2"/>
+    <rect x="226" y="138" width="28" height="46" fill="#10B981" opacity="0.9" rx="2"/>
+    <rect x="286" y="162" width="28" height="22" fill="#EF4444" opacity="0.85" rx="2"/>
+    <rect x="350" y="142" width="28" height="42" fill="#10B981" opacity="0.9" rx="2"/>
+    <rect x="410" y="132" width="28" height="52" fill="#10B981" opacity="0.95" rx="2"/>
+    <rect x="470" y="122" width="28" height="62" fill="#10B981" opacity="1" rx="2"/>
   </g>
+
 </svg>
