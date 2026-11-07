@@ -1,21 +1,15 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { sound } from "@/lib/audio";
 import { VERIFIED_PROJECTS, ProjectItem } from "@/data/projects";
 import { ProjectModal } from "@/components/ProjectModal";
-import { Interactive3DTilt } from "@/components/Interactive3DTilt";
 import {
-  Github,
   ExternalLink,
   Layers,
   Sparkles,
   ArrowUpRight,
-  RefreshCw,
-  Cpu,
-  GitBranch,
   ShieldCheck,
-  Activity,
 } from "lucide-react";
 
 const CATEGORIES = [
@@ -26,6 +20,156 @@ const CATEGORIES = [
   { id: "04 — AUTOMATION & TOOLS", label: "04 — AUTOMATION & TOOLS" },
   { id: "05 — EXPERIMENTAL PROJECTS", label: "05 — EXPERIMENTAL PROJECTS" },
 ];
+
+function ProjectCard3D({
+  project,
+  onClick,
+}: {
+  project: ProjectItem;
+  onClick: () => void;
+}) {
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  const [style, setStyle] = useState<React.CSSProperties>({});
+  const [shine, setShine] = useState<{ x: number; y: number; opacity: number }>({
+    x: 50,
+    y: 50,
+    opacity: 0,
+  });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const ax = (x / rect.width - 0.5) * 16;
+    const ay = (y / rect.height - 0.5) * -16;
+
+    setStyle({
+      transform: `perspective(1000px) rotateX(${ay.toFixed(2)}deg) rotateY(${ax.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`,
+      transition: "transform 0.08s ease-out",
+    });
+
+    setShine({
+      x,
+      y,
+      opacity: 1,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setStyle({
+      transform: "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)",
+      transition: "transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)",
+    });
+    setShine((prev) => ({ ...prev, opacity: 0 }));
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onClick={onClick}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => sound.playHover()}
+      style={{
+        transformStyle: "preserve-3d",
+        ...style,
+      }}
+      className="project-card relative w-full h-[470px] sm:h-[490px] rounded-2xl overflow-hidden cursor-pointer group bg-black border border-white/10 hover:border-accent-red/70 transition-colors duration-300 shadow-2xl flex flex-col justify-end"
+    >
+      {/* Background Image with Authentic Blend Mode */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-zinc-950 pointer-events-none">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={project.image}
+          alt={project.title}
+          className={`absolute inset-0 w-full h-[120%] -top-[10%] object-cover object-center ${project.blend || "mix-blend-luminosity brightness-80"} transition-transform duration-700 ease-out group-hover:scale-110`}
+        />
+        {/* Atmospheric Dark Vignette Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/20 z-10" />
+      </div>
+
+      {/* Dynamic Cursor Spotlight / Specular Shine */}
+      <div
+        className="pointer-events-none absolute inset-0 z-15 transition-opacity duration-300 mix-blend-screen"
+        style={{
+          opacity: shine.opacity,
+          background: `radial-gradient(circle 280px at ${shine.x}px ${shine.y}px, rgba(224, 82, 105, 0.28), rgba(255, 255, 255, 0.08) 35%, transparent 70%)`,
+        }}
+      />
+
+      {/* Top Header Strip: File ID & Live Status */}
+      <div className="absolute top-5 left-5 right-5 z-20 flex items-center justify-between font-mono text-xs pointer-events-none">
+        <span className="text-accent-red font-bold tracking-widest uppercase text-[11px] px-2.5 py-0.5 rounded bg-black/60 border border-accent-red/30 backdrop-blur-md">
+          {project.badge.split(" // ")[0]}
+        </span>
+        <span className="text-[10px] px-2.5 py-1 rounded-full bg-black/60 text-emerald-400 border border-emerald-500/30 backdrop-blur-md font-semibold tracking-wider flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          {project.status === "ACTIVE PRODUCTION" ? "PRODUCTION" : project.status}
+        </span>
+      </div>
+
+      {/* Foreground Content Stack (Elevated with 3D Depth) */}
+      <div
+        className="relative z-20 p-6 sm:p-7 flex flex-col justify-end space-y-3"
+        style={{ transform: "translateZ(24px)" }}
+      >
+        <div className="space-y-1.5">
+          <div className="text-accent-red/90 font-mono text-[10px] tracking-[0.25em] font-bold uppercase">
+            {project.badge.split(" // ")[1] || "VERIFIED SYSTEM"}
+          </div>
+
+          <h3 className="text-2xl sm:text-3xl font-heading font-black text-white group-hover:text-accent-red transition-colors tracking-tight leading-tight drop-shadow-md">
+            {project.title.split(" — ")[0]}
+          </h3>
+
+          <p className="text-gray-300 font-sans text-xs sm:text-sm line-clamp-3 leading-relaxed drop-shadow">
+            {project.description}
+          </p>
+        </div>
+
+        {/* Tech Stack Pills */}
+        <div className="flex flex-wrap gap-1.5 pt-1 pointer-events-auto">
+          {project.techStack.slice(0, 4).map((tech) => (
+            <span
+              key={tech}
+              className="text-[10px] uppercase font-mono px-2.5 py-1 rounded-full border border-white/15 bg-black/60 text-gray-200 backdrop-blur-md"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Action Link Footer */}
+        <div className="pt-3 border-t border-white/10 flex items-center justify-between font-mono text-xs pointer-events-auto">
+          <span className="text-accent-red font-bold flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+            <span>ACCESS RECORD</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </span>
+
+          {project.liveUrl ? (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => {
+                e.stopPropagation();
+                sound.playClick();
+              }}
+              className="text-[11px] text-text-muted hover:text-white flex items-center gap-1 transition-colors"
+            >
+              <span>Live Demo</span>
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          ) : (
+            <span className="text-[11px] text-text-muted">github.com/{project.name}</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function ProjectShowcase() {
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
@@ -84,7 +228,7 @@ export function ProjectShowcase() {
 
   return (
     <section id="projects" className="py-24 px-4 sm:px-6 md:px-8 border-b border-border-subtle relative">
-      <div className="w-full max-w-6xl mx-auto space-y-10">
+      <div className="w-full max-w-6xl mx-auto space-y-12">
         {/* Section Header & GitHub Sync Telemetry */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-border-subtle/80 pb-6">
           <div className="space-y-2">
@@ -92,11 +236,11 @@ export function ProjectShowcase() {
               <span className="w-1.5 h-1.5 rounded-full bg-accent-red" />
               <span>03 // VERIFIED ENGINEERING REPOSITORY</span>
             </div>
-            <h2 className="font-heading font-black text-3xl sm:text-4xl text-text-primary tracking-tight">
+            <h2 className="font-heading font-black text-3xl sm:text-5xl text-text-primary tracking-tight">
               ARCHITECTURAL SHOWCASE
             </h2>
-            <p className="font-sans text-sm sm:text-base text-text-secondary max-w-2xl">
-              Authentic software systems engineered and verified across GitHub. Every displayed artifact is backed by real commit activity and verifiable source code.
+            <p className="font-sans text-sm sm:text-base text-text-secondary max-w-2xl leading-relaxed">
+              Authentic software systems engineered and verified across GitHub. Every displayed artifact is backed by real commit activity, live demos, and verifiable source code.
             </p>
           </div>
 
@@ -124,7 +268,7 @@ export function ProjectShowcase() {
                 key={cat.id}
                 onClick={() => handleFilterSelect(cat.id)}
                 onMouseEnter={() => sound.playHover()}
-                className={`px-3.5 py-2 rounded border transition-all duration-150 ${
+                className={`px-3.5 py-2 rounded-full border transition-all duration-150 ${
                   isSelected
                     ? "border-accent-red bg-accent-red/20 text-text-primary font-semibold shadow-crimson-glow"
                     : "border-border-subtle bg-bg-panel/50 text-text-secondary hover:text-text-primary hover:border-border-subtle/80"
@@ -136,110 +280,24 @@ export function ProjectShowcase() {
           })}
         </div>
 
-        {/* Flagship Deployments Spotlight (Top 3) */}
-        {selectedCategory === "all" && (
-          <div className="space-y-4">
-            <div className="flex items-center gap-2 font-mono text-xs text-text-muted uppercase tracking-wider">
+        {/* Dynamic 3D Atmospheric Project Grid */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between font-mono text-xs text-text-muted uppercase tracking-wider">
+            <div className="flex items-center gap-2">
               <Sparkles className="w-3.5 h-3.5 text-accent-red" />
-              <span>FLAGSHIP DEPLOYMENTS & PRODUCTION SYSTEMS</span>
+              <span>DEPLOYED MISSIONS &amp; ARCHITECTURAL REPOSITORIES ({filteredProjects.length})</span>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {VERIFIED_PROJECTS.filter((p) => p.flagship).map((project) => (
-                <Interactive3DTilt
-                  key={project.id}
-                  maxTilt={8}
-                  scale={1.02}
-                  glare={true}
-                  className="h-full rounded-lg"
-                >
-                  <div
-                    onClick={() => openProjectModal(project)}
-                    onMouseEnter={() => sound.playHover()}
-                    className="group cursor-pointer rounded-lg border border-border-subtle bg-bg-panel p-6 shadow-panel-subtle hover:border-accent-red/80 hover:shadow-crimson-glow transition-all duration-200 flex flex-col justify-between space-y-4 relative overflow-hidden h-full"
-                  >
-                    {/* Crimson Top Accent Bar */}
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-accent-crimson via-accent-red to-accent-red-hover opacity-80 group-hover:opacity-100 transition-opacity" />
-
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between text-xs font-mono">
-                        <span className="text-accent-red font-semibold tracking-wider">
-                          {project.badge}
-                        </span>
-                        <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                          {project.status}
-                        </span>
-                      </div>
-
-                      <h3 className="font-heading font-black text-xl text-text-primary group-hover:text-accent-red transition-colors">
-                        {project.title}
-                      </h3>
-
-                      <p className="text-xs text-text-secondary line-clamp-3 leading-relaxed font-sans">
-                        {project.description}
-                      </p>
-
-                      {/* Metrics Strip */}
-                      {project.metrics && (
-                        <div className="grid grid-cols-3 gap-2 pt-2 border-t border-border-subtle/60 font-mono text-[10px]">
-                          {project.metrics.map((m, idx) => (
-                            <div key={idx} className="p-1.5 rounded bg-bg-secondary text-center">
-                              <div className="text-accent-red font-bold">{m.value}</div>
-                              <div className="text-text-muted truncate">{m.label}</div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="pt-3 border-t border-border-subtle/60 flex items-center justify-between text-xs font-mono text-text-muted">
-                      <span className="truncate max-w-[150px]">{project.techStack.slice(0, 3).join(" • ")}</span>
-                      <span className="text-accent-red group-hover:translate-x-1 transition-transform flex items-center gap-1 font-semibold">
-                        INSPECT →
-                      </span>
-                    </div>
-                  </div>
-                </Interactive3DTilt>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* All Remaining Repositories Grid (Bento Matrix) */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 font-mono text-xs text-text-muted uppercase tracking-wider">
-            <Layers className="w-3.5 h-3.5 text-accent-red" />
-            <span>FULL VERIFIED REPOSITORY DIRECTORY ({filteredProjects.length})</span>
+            <span className="text-[11px] text-text-muted hidden sm:inline">HOVER TO ILLUMINATE // CLICK TO INSPECT</span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* 3-Column Responsive Grid with 3D Tilt & Mouse Glare */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredProjects.map((project) => (
-              <div
+              <ProjectCard3D
                 key={project.id}
+                project={project}
                 onClick={() => openProjectModal(project)}
-                onMouseEnter={() => sound.playHover()}
-                className="cursor-pointer p-5 rounded-lg border border-border-subtle bg-bg-panel/70 hover:bg-bg-panel hover:border-accent-red/50 hover:shadow-crimson-glow transition-all duration-200 flex flex-col justify-between space-y-3"
-              >
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-[11px] font-mono text-text-muted">
-                    <span className="text-accent-red font-semibold">{project.badge.split(" // ")[0]}</span>
-                    <span>{project.techStack[0]}</span>
-                  </div>
-
-                  <h4 className="font-heading font-bold text-base text-text-primary hover:text-accent-red transition-colors">
-                    {project.title}
-                  </h4>
-
-                  <p className="text-xs text-text-secondary line-clamp-2 leading-relaxed">
-                    {project.description}
-                  </p>
-                </div>
-
-                <div className="pt-2 border-t border-border-subtle/50 flex items-center justify-between font-mono text-[11px]">
-                  <span className="text-text-muted">github.com/{project.name}</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 text-accent-red" />
-                </div>
-              </div>
+              />
             ))}
           </div>
         </div>

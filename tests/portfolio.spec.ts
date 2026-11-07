@@ -80,7 +80,9 @@ test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
     await expect(projects).toContainText("Guardian AI");
 
     // Click AgriSahay AI to open modal
-    await page.locator("#projects h3:has-text('AgriSahay AI')").first().click();
+    const agriCard = page.locator("#projects .project-card:has-text('AgriSahay AI')").first();
+    await agriCard.scrollIntoViewIfNeeded();
+    await agriCard.click();
 
     // Modal should be open
     const modal = page.locator(".fixed.inset-0:has-text('SYSTEM ARCHITECTURE')");
