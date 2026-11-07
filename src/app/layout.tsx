@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { Space_Grotesk, Inter, JetBrains_Mono, Bebas_Neue, Caveat } from "next/font/google";
 import "./globals.css";
@@ -39,7 +39,15 @@ const caveat = Caveat({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  themeColor: "#050507",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://praneeth.ai"),
   title: "Korikana Sai Praneeth — AI & Software Developer | PRANEETH.AI",
   description:
     "Elite AI Systems Architect & Software Developer Portfolio for Korikana Sai Praneeth. Vibe Coder & AIML student at Sri Sivani College of Engineering. Building intelligent software with AI, automation, and real-world engineering.",
@@ -58,6 +66,17 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Korikana Sai Praneeth", url: "https://github.com/korikanasaipraneeth-svg" }],
   creator: "Korikana Sai Praneeth",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: "Korikana Sai Praneeth — AI & Software Developer",
     description:
@@ -66,6 +85,14 @@ export const metadata: Metadata = {
     siteName: "PRANEETH.AI",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "/praneeth-portrait.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Korikana Sai Praneeth — AI & Software Developer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -73,9 +100,11 @@ export const metadata: Metadata = {
     description:
       "I build intelligent software experiences by combining AI, engineering, automation and creative problem-solving.",
     creator: "@korikanasa99534",
+    images: ["/praneeth-portrait.jpg"],
   },
   icons: {
     icon: "/icon.svg",
+    apple: "/icon.svg",
   },
 };
 
