@@ -31,8 +31,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     categoryKey: "experimental",
     flagship: true,
     status: "ACTIVE PRODUCTION",
-    image: "/projects/spyderman-mask.png",
-    blend: "mix-blend-overlay brightness-125 saturate-150",
+    image: "/projects/app-webgl-spiderman.svg",
     description:
       "Premium 3D developer portfolio built with a Prompt Engineering philosophy. Engineered with custom WebGL shaders that respond in real time to scroll velocity and mouse movement, cinematic preloader with mix-blend spotlight, glowing emblem, seamless fly-through transition, and a dynamically drawn Journey timeline.",
     problemSolved:
@@ -68,8 +67,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     categoryKey: "ai-ml",
     flagship: true,
     status: "ACTIVE PRODUCTION",
-    image: "/projects/spyderman-mask.png",
-    blend: "mix-blend-luminosity brightness-75 contrast-125",
+    image: "/projects/app-smart-rural-health.svg",
     description:
       "Full-stack healthcare platform that improves rural healthcare access through predictive AI and multi-role dashboards. Features an AI disease prediction engine with conversational symptom input and probability-based recommendations, alongside a predictive medicine supply-chain system.",
     problemSolved:
@@ -104,8 +102,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     categoryKey: "fullstack",
     flagship: true,
     status: "ACTIVE PRODUCTION",
-    image: "/projects/praneeth-nature.png",
-    blend: "mix-blend-luminosity brightness-80",
+    image: "/projects/app-swayam.svg",
     description:
       "Full-stack real-time platform connecting blood and organ donors with recipients in critical emergencies. Features secure backend services with robust data handling, JWT authentication, responsive UI components, and integrated database for real-time donor-recipient matching and live inventory tracking.",
     problemSolved:
@@ -140,8 +137,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     categoryKey: "software-eng",
     flagship: true,
     status: "ACTIVE PRODUCTION",
-    image: "/projects/praneeth-nature.png",
-    blend: "mix-blend-luminosity grayscale contrast-110",
+    image: "/projects/app-stock-analyzer.svg",
     description:
       "Web tool for analyzing stock trends and personal portfolio performance. Awarded 1st Prize at Brainovision Hackathon (Backend, PPT & Documentation). Performs data analysis and visualization to identify market patterns and portfolio insights with interactive frontend dashboards for real-time trend monitoring and reporting.",
     problemSolved:
@@ -176,8 +172,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     categoryKey: "fullstack",
     flagship: true,
     status: "ACTIVE PRODUCTION",
-    image: "/projects/spiderman-box.png",
-    blend: "mix-blend-luminosity brightness-85",
+    image: "/projects/app-student360.svg",
     description:
       "Enterprise-grade SaaS platform bridging academia and industry. Awarded 1st Prize at Google Student Ambassador Hackathon (Student Profile & Job Search Platform). Interconnected tri-portal system where students build faculty-verified digital portfolios, professors validate academic achievements, and recruiters headhunt pre-verified talent via an interactive Kanban pipeline.",
     problemSolved:
@@ -212,8 +207,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     categoryKey: "ai-ml",
     flagship: true,
     status: "ACTIVE PRODUCTION",
-    image: "/projects/spiderman-climb.png",
-    blend: "mix-blend-overlay brightness-110 saturate-125",
+    image: "/projects/app-agrisahay.svg",
     description:
       "An intelligent smart-farming ecosystem empowering agricultural producers with computer vision crop disease detection, multilingual Gemini-powered agricultural guidance, and predictive harvest analytics.",
     problemSolved:
@@ -248,8 +242,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     categoryKey: "ai-ml",
     flagship: true,
     status: "ACTIVE PRODUCTION",
-    image: "/projects/spiderman-logo.png",
-    blend: "mix-blend-screen brightness-90 contrast-125",
+    image: "/projects/app-guardian-ai.svg",
     description:
       "AI-powered safety and emergency assistance system providing instant SOS broadcasts, live geolocation streaming, and nearest hospital geospatial triage using distance-matrix routing.",
     problemSolved:
@@ -283,8 +276,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     category: "03 — SOFTWARE ENGINEERING",
     categoryKey: "software-eng",
     status: "STABLE RELEASE",
-    image: "/projects/praneeth-nature.png",
-    blend: "mix-blend-luminosity brightness-75",
+    image: "/projects/app-hrx-interfaces.svg",
     description:
       "Enterprise UI component library and modular dashboard system built during Software Developer Internship at HRX Tech Solution (September 2026). Engineered for personnel management, performance evaluations, and role allocations.",
     problemSolved:
@@ -311,8 +303,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     category: "02 — FULL-STACK APPLICATIONS",
     categoryKey: "fullstack",
     status: "PROTOTYPE",
-    image: "/projects/spyderman-mask.png",
-    blend: "mix-blend-luminosity brightness-70",
+    image: "/projects/app-caresync-doctor.svg",
     description:
       "Direct medical appointment booking and digital clinical consultation portal designed for streamlined physician-patient interactions.",
     problemSolved:
@@ -340,8 +331,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     category: "05 — EXPERIMENTAL PROJECTS",
     categoryKey: "experimental",
     status: "ACTIVE PRODUCTION",
-    image: "/projects/praneeth-nature.png",
-    blend: "mix-blend-luminosity brightness-90",
+    image: "/projects/app-canvas-celebration.svg",
     description:
       "Interactive celebratory web experience driven by algorithmic 2D canvas particle physics, procedural confetti simulations, and audio-reactive micro-animations.",
     problemSolved:
@@ -368,8 +358,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     category: "02 — FULL-STACK APPLICATIONS",
     categoryKey: "fullstack",
     status: "STABLE RELEASE",
-    image: "/projects/spiderman-box.png",
-    blend: "mix-blend-luminosity brightness-75",
+    image: "/projects/app-edulearn.svg",
     description:
       "Modular e-learning interface built to explore interactive course navigation, modular lesson cards, and structured student knowledge delivery.",
     problemSolved:
@@ -396,8 +385,7 @@ export const VERIFIED_PROJECTS: ProjectItem[] = [
     category: "04 — AUTOMATION & TOOLS",
     categoryKey: "tools",
     status: "STABLE RELEASE",
-    image: "/projects/spiderman-logo.png",
-    blend: "mix-blend-luminosity brightness-80",
+    image: "/projects/app-devops-matrix.svg",
     description:
       "Specialized GitHub configuration repository maintaining public developer telemetry, automated README metrics, and public architectural profiles.",
     problemSolved:

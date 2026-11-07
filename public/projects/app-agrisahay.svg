@@ -1,0 +1,47 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' width='600' height='400'>
+  <rect width='600' height='400' fill='#060a07'/>
+  <defs>
+    <pattern id='grid5' width='40' height='40' patternUnits='userSpaceOnUse'>
+      <path d='M 40 0 L 0 0 0 40' fill='none' stroke='#122016' stroke-width='1'/>
+    </pattern>
+  </defs>
+  <rect width='600' height='400' fill='url(#grid5)'/>
+
+  <rect x='30' y='25' width='540' height='45' rx='6' fill='#0c160e' stroke='#1b3823' stroke-width='1'/>
+  <circle cx='50' cy='47' r='5' fill='#22c55e'/>
+  <text x='65' y='52' font-family='monospace' font-size='13' font-weight='bold' fill='#ffffff'>AGRISAHAY AI // COMPUTER VISION &amp; GEMINI MULTIMODAL</text>
+  <rect x='440' y='36' width='115' height='22' rx='4' fill='#22c55e' fill-opacity='0.15' stroke='#22c55e' stroke-width='1'/>
+  <text x='455' y='51' font-family='monospace' font-size='11' font-weight='bold' fill='#22c55e'>CV INFERENCE</text>
+
+  <g transform='translate(30, 85)'>
+    <rect width='260' height='285' rx='8' fill='#0a120c' stroke='#1b3823'/>
+    <path d='M 130 35 C 190 70 210 160 170 220 C 140 260 130 270 130 270 C 130 270 120 260 90 220 C 50 160 70 70 130 35 Z' fill='#166534' fill-opacity='0.4' stroke='#22c55e' stroke-width='2'/>
+    <path d='M 130 35 L 130 270' stroke='#22c55e' stroke-width='1.5' stroke-dasharray='4,4'/>
+
+    <rect x='85' y='110' width='45' height='40' fill='none' stroke='#ef4444' stroke-width='2'/>
+    <rect x='85' y='95' width='45' height='15' fill='#ef4444'/>
+    <text x='88' y='106' font-family='monospace' font-size='9' font-weight='bold' fill='#ffffff'>LESION 94%</text>
+
+    <rect x='140' y='160' width='50' height='35' fill='none' stroke='#ef4444' stroke-width='2'/>
+    <rect x='140' y='145' width='50' height='15' fill='#ef4444'/>
+    <text x='143' y='156' font-family='monospace' font-size='9' font-weight='bold' fill='#ffffff'>BLIGHT 88%</text>
+  </g>
+
+  <g transform='translate(305, 85)'>
+    <rect width='265' height='285' rx='8' fill='#0a120c' stroke='#1b3823'/>
+    <text x='18' y='30' font-family='monospace' font-size='11' font-weight='bold' fill='#86efac'>GEMINI MULTIMODAL PROGNOSIS</text>
+    
+    <rect x='18' y='45' width='230' height='90' rx='6' fill='#0f2015' stroke='#1b3823'/>
+    <text x='28' y='68' font-family='sans-serif' font-size='12' font-weight='bold' fill='#ffffff'>Early Leaf Blight Detected</text>
+    <text x='28' y='86' font-family='sans-serif' font-size='10' fill='#a1a1aa'>Organic Remedy: Spray copper</text>
+    <text x='28' y='100' font-family='sans-serif' font-size='10' fill='#a1a1aa'>fungicide 2.5g/L before noon.</text>
+    <text x='28' y='120' font-family='monospace' font-size='9' fill='#22c55e'>Telugu / Hindi Vernacular Audio ✓</text>
+
+    <rect x='18' y='150' width='230' height='60' rx='6' fill='#0f2015' stroke='#1b3823'/>
+    <text x='28' y='172' font-family='monospace' font-size='10' fill='#86efac'>REGIONAL MARKET TELEMETRY</text>
+    <text x='28' y='194' font-family='sans-serif' font-size='14' font-weight='bold' fill='#ffffff'>Paddy: $2,450/qtl <tspan font-size='11' fill='#22c55e'>+4.2%</tspan></text>
+
+    <rect x='18' y='225' width='230' height='45' rx='6' fill='#0f2015' stroke='#1b3823'/>
+    <text x='28' y='245' font-family='monospace' font-size='10' fill='#38bdf8'>WEATHER: 78% RH • Rain in 48h</text>
+  </g>
+</svg>

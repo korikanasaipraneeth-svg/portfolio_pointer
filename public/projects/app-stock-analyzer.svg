@@ -1,0 +1,56 @@
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 400' width='600' height='400'>
+  <rect width='600' height='400' fill='#07080c'/>
+  <defs>
+    <pattern id='grid1' width='40' height='40' patternUnits='userSpaceOnUse'>
+      <path d='M 40 0 L 0 0 0 40' fill='none' stroke='#151824' stroke-width='1'/>
+    </pattern>
+    <linearGradient id='crimsonGrad' x1='0%' y1='0%' x2='0%' y2='100%'>
+      <stop offset='0%' stop-color='#E05269' stop-opacity='0.4'/>
+      <stop offset='100%' stop-color='#E05269' stop-opacity='0'/>
+    </linearGradient>
+  </defs>
+  <rect width='600' height='400' fill='url(#grid1)'/>
+  
+  <rect x='30' y='25' width='540' height='45' rx='6' fill='#0e1017' stroke='#1e2230' stroke-width='1'/>
+  <circle cx='50' cy='47' r='5' fill='#E05269'/>
+  <text x='65' y='52' font-family='monospace' font-size='13' font-weight='bold' fill='#ffffff'>PORTFOLIO &amp; STOCK ANALYZER // LIVE TICKER</text>
+  <rect x='440' y='36' width='115' height='22' rx='4' fill='#10b981' fill-opacity='0.15' stroke='#10b981' stroke-width='1'/>
+  <text x='450' y='51' font-family='monospace' font-size='11' font-weight='bold' fill='#10b981'>+24.8% PROFIT</text>
+
+  <g transform='translate(30, 85)'>
+    <rect width='165' height='55' rx='6' fill='#0e1017' stroke='#1e2230'/>
+    <text x='15' y='22' font-family='monospace' font-size='10' fill='#71717a'>PORTFOLIO VALUE</text>
+    <text x='15' y='44' font-family='sans-serif' font-size='18' font-weight='bold' fill='#ffffff'>$148,920.50</text>
+  </g>
+  <g transform='translate(215, 85)'>
+    <rect width='170' height='55' rx='6' fill='#0e1017' stroke='#1e2230'/>
+    <text x='15' y='22' font-family='monospace' font-size='10' fill='#71717a'>ALPHA RETURN</text>
+    <text x='15' y='44' font-family='sans-serif' font-size='18' font-weight='bold' fill='#E05269'>+18.4% SHARPE</text>
+  </g>
+  <g transform='translate(405, 85)'>
+    <rect width='165' height='55' rx='6' fill='#0e1017' stroke='#1e2230'/>
+    <text x='15' y='22' font-family='monospace' font-size='10' fill='#71717a'>RISK INDEX</text>
+    <text x='15' y='44' font-family='sans-serif' font-size='18' font-weight='bold' fill='#38bdf8'>0.42 LOW VOL</text>
+  </g>
+
+  <g transform='translate(30, 160)'>
+    <rect width='540' height='210' rx='8' fill='#0a0c12' stroke='#1e2230'/>
+    <path d='M 20 160 Q 80 120 140 135 T 260 85 T 380 95 T 480 30 L 520 20 L 520 190 L 20 190 Z' fill='url(#crimsonGrad)'/>
+    <path d='M 20 160 Q 80 120 140 135 T 260 85 T 380 95 T 480 30 L 520 20' fill='none' stroke='#E05269' stroke-width='3'/>
+    
+    <line x1='70' y1='100' x2='70' y2='170' stroke='#10b981' stroke-width='1.5'/>
+    <rect x='64' y='115' width='12' height='40' fill='#10b981' rx='1'/>
+    <line x1='120' y1='110' x2='120' y2='165' stroke='#ef4444' stroke-width='1.5'/>
+    <rect x='114' y='125' width='12' height='30' fill='#ef4444' rx='1'/>
+    <line x1='190' y1='75' x2='190' y2='145' stroke='#10b981' stroke-width='1.5'/>
+    <rect x='184' y='90' width='12' height='45' fill='#10b981' rx='1'/>
+    <line x1='260' y1='60' x2='260' y2='130' stroke='#10b981' stroke-width='1.5'/>
+    <rect x='254' y='75' width='12' height='40' fill='#10b981' rx='1'/>
+    <line x1='330' y1='70' x2='330' y2='140' stroke='#ef4444' stroke-width='1.5'/>
+    <rect x='324' y='85' width='12' height='35' fill='#ef4444' rx='1'/>
+    <line x1='410' y1='40' x2='410' y2='110' stroke='#10b981' stroke-width='1.5'/>
+    <rect x='404' y='50' width='12' height='45' fill='#10b981' rx='1'/>
+    <line x1='480' y1='15' x2='480' y2='85' stroke='#10b981' stroke-width='1.5'/>
+    <rect x='474' y='25' width='12' height='40' fill='#10b981' rx='1'/>
+  </g>
+</svg>
