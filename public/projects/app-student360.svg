@@ -1,92 +1,142 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
   <defs>
-    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3.5" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0.05"/>
+    <linearGradient id="bgStudent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141824"/>
+      <stop offset="100%" stop-color="#090C14"/>
     </linearGradient>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#131B2E"/>
-      <stop offset="100%" stop-color="#0B101C"/>
+    <linearGradient id="goldBanner" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#B45309"/>
+      <stop offset="50%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
     </linearGradient>
-    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1D273D"/>
-      <stop offset="100%" stop-color="#151C2C"/>
-    </linearGradient>
-    <linearGradient id="highlightGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#283654"/>
-      <stop offset="100%" stop-color="#1B2438"/>
+    <linearGradient id="panelStudent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A233A"/>
+      <stop offset="100%" stop-color="#101726"/>
     </linearGradient>
   </defs>
-  
-  <rect width="600" height="320" fill="url(#bgGrad)"/>
-  <circle cx="300" cy="140" r="160" fill="#F59E0B" opacity="0.12" filter="url(#neon)"/>
 
-  <!-- Golden Hackathon Trophy Banner -->
-  <g transform="translate(24, 18)">
-    <rect width="552" height="54" rx="8" fill="#2E2008" stroke="#F59E0B" stroke-width="2"/>
-    <text x="24" y="34" font-family="'Inter', sans-serif" font-size="16" font-weight="900" fill="#FCD34D">🏆 1ST PRIZE — GOOGLE STUDENT AMBASSADOR HACKATHON</text>
-    <rect x="415" y="13" width="122" height="28" rx="4" fill="#F59E0B" stroke="#FCD34D" stroke-width="1"/>
-    <text x="425" y="31" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="bold" fill="#000000">VERIFIED WINNER</text>
+  <rect width="600" height="340" fill="url(#bgStudent)"/>
+
+  <!-- Top App Window Bar -->
+  <g transform="translate(0, 0)">
+    <rect width="600" height="36" fill="#0A0E18" stroke="#1E293B" stroke-width="1"/>
+    <circle cx="20" cy="18" r="4.5" fill="#EF4444"/>
+    <circle cx="36" cy="18" r="4.5" fill="#F59E0B"/>
+    <circle cx="52" cy="18" r="4.5" fill="#10B981"/>
+
+    <rect x="140" y="8" width="320" height="20" rx="10" fill="#141C2B" stroke="#25354F" stroke-width="1"/>
+    <text x="300" y="22" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#94A3B8" text-anchor="middle">student360.platform/talent-pipeline</text>
+
+    <rect x="470" y="8" width="115" height="20" rx="10" fill="#78350F" stroke="#F59E0B" stroke-width="1"/>
+    <text x="527" y="22" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#FDE68A" text-anchor="middle">★ 1ST PRIZE</text>
   </g>
 
-  <!-- 3-Column Verification Dashboard -->
-  <g transform="translate(24, 84)">
-    <!-- Column 1: Candidates -->
-    <rect width="175" height="216" rx="8" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
-    <text x="14" y="26" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#38BDF8">PROFILES (450+)</text>
-    
-    <g transform="translate(12, 40)">
-      <rect width="151" height="74" rx="6" fill="#131B2E" stroke="#38496B"/>
-      <text x="12" y="22" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Sai Praneeth</text>
-      <text x="12" y="39" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#38BDF8">Full-Stack AI Dev</text>
-      <rect x="12" y="48" width="44" height="20" rx="3" fill="#38BDF830" stroke="#38BDF8"/>
-      <text x="18" y="62" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#38BDF8">React</text>
-      <rect x="62" y="48" width="50" height="20" rx="3" fill="#10B98130" stroke="#10B981"/>
-      <text x="68" y="62" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#10B981">Python</text>
+  <!-- Google Student Ambassador 1st Prize Gold Banner -->
+  <g transform="translate(18, 48)">
+    <rect width="564" height="32" rx="8" fill="url(#goldBanner)" stroke="#FBBF24" stroke-width="1"/>
+    <text x="282" y="21" font-family="'Inter', sans-serif" font-size="11" font-weight="900" fill="#000000" text-anchor="middle" letter-spacing="1">
+      ★ 1ST PRIZE WINNER — GOOGLE STUDENT AMBASSADOR HACKATHON ★
+    </text>
+  </g>
+
+  <!-- Main Split Dashboard -->
+  <!-- Left Side: Student Skill Verification Scorecard (275 width) -->
+  <g transform="translate(18, 90)">
+    <rect width="272" height="232" rx="12" fill="url(#panelStudent)" stroke="#223552" stroke-width="1"/>
+
+    <g transform="translate(14, 16)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Candidate Verified Scorecard</text>
+      <text x="0" y="14" font-family="'JetBrains Mono', monospace" font-size="9" fill="#10B981">● AI ASSESSED &amp; INDUSTRY BENCHMARKED</text>
     </g>
 
-    <g transform="translate(12, 124)">
-      <rect width="151" height="74" rx="6" fill="#131B2E" stroke="#38496B"/>
-      <text x="12" y="22" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Rahul Varma</text>
-      <text x="12" y="39" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#94A3B8">Backend Architect</text>
-      <rect x="12" y="48" width="54" height="20" rx="3" fill="#A855F730" stroke="#A855F7"/>
-      <text x="18" y="62" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#C084FC">FastAPI</text>
-    </g>
-
-    <!-- Column 2: Faculty Verification Seal (Big Glowing Green) -->
-    <g transform="translate(188, 0)">
-      <rect width="175" height="216" rx="8" fill="#0C2417" stroke="#10B981" stroke-width="2.5"/>
-      <text x="14" y="26" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#34D399">FACULTY VERIFIED (320 ✓)</text>
-      
-      <g transform="translate(12, 40)">
-        <rect width="151" height="154" rx="6" fill="#07190F" stroke="#10B981"/>
-        <circle cx="75" cy="45" r="28" fill="#10B98140" stroke="#34D399" stroke-width="3"/>
-        <text x="62" y="55" font-family="'Inter', sans-serif" font-size="28" font-weight="900" fill="#34D399">✓</text>
-        
-        <text x="16" y="96" font-family="'Inter', sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF">Institutional Audit</text>
-        <text x="16" y="114" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#A7F3D0">Dean Signature Pass</text>
-
-        <rect x="14" y="122" width="123" height="26" rx="4" fill="#10B981"/>
-        <text x="20" y="139" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="bold" fill="#000000">CREDENTIAL PASS</text>
+    <!-- Score Big Card -->
+    <g transform="translate(14, 46)">
+      <rect width="244" height="64" rx="8" fill="#0C1422" stroke="#1D2A42"/>
+      <g transform="translate(12, 18)">
+        <text x="0" y="0" font-family="'Inter', sans-serif" font-size="9" fill="#94A3B8">Verification Rating</text>
+        <text x="0" y="28" font-family="'JetBrains Mono', monospace" font-size="24" font-weight="900" fill="#34D399">98 / 100</text>
+        <text x="110" y="26" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="bold" fill="#38BDF8">TOP 1% DECILE</text>
       </g>
     </g>
 
-    <!-- Column 3: Recruiters -->
-    <g transform="translate(376, 0)">
-      <rect width="176" height="216" rx="8" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
-      <text x="14" y="26" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#38BDF8">RECRUITERS (84)</text>
+    <!-- Verified Skill Badges -->
+    <g transform="translate(14, 122)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="9" font-weight="bold" fill="#94A3B8">VERIFIED TECHNICAL CAPABILITIES</text>
       
-      <g transform="translate(12, 40)">
-        <rect width="152" height="74" rx="6" fill="#131B2E" stroke="#38BDF8"/>
-        <text x="12" y="22" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Google Cloud Team</text>
-        <text x="12" y="39" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="bold" fill="#34D399">Round 2: Systems Design</text>
-        <text x="12" y="59" font-family="'JetBrains Mono', monospace" font-size="10" fill="#CBD5E1">Fri 2:00 PM Confirmed</text>
+      <g transform="translate(0, 10)">
+        <g transform="translate(0, 0)">
+          <rect width="118" height="24" rx="6" fill="#0E1726" stroke="#1E293B"/>
+          <text x="8" y="16" font-family="'JetBrains Mono', monospace" font-size="9" fill="#F1F5F9">✓ React &amp; Next.js</text>
+        </g>
+
+        <g transform="translate(126, 0)">
+          <rect width="118" height="24" rx="6" fill="#0E1726" stroke="#1E293B"/>
+          <text x="8" y="16" font-family="'JetBrains Mono', monospace" font-size="9" fill="#F1F5F9">✓ TypeScript Strict</text>
+        </g>
+
+        <g transform="translate(0, 30)">
+          <rect width="118" height="24" rx="6" fill="#0E1726" stroke="#1E293B"/>
+          <text x="8" y="16" font-family="'JetBrains Mono', monospace" font-size="9" fill="#F1F5F9">✓ Node &amp; Express</text>
+        </g>
+
+        <g transform="translate(126, 30)">
+          <rect width="118" height="24" rx="6" fill="#0E1726" stroke="#1E293B"/>
+          <text x="8" y="16" font-family="'JetBrains Mono', monospace" font-size="9" fill="#F1F5F9">✓ REST API Pipeline</text>
+        </g>
       </g>
+    </g>
+
+    <!-- Academic Detail Footer -->
+    <g transform="translate(14, 198)">
+      <text x="0" y="14" font-family="'Inter', sans-serif" font-size="9.5" fill="#64748B">
+        Korikana Sai Praneeth • B.Tech AIML (Sri Sivani COE)
+      </text>
     </g>
   </g>
 
+  <!-- Right Side: Corporate Recruitment Queue (280 width) -->
+  <g transform="translate(302, 90)">
+    <rect width="280" height="232" rx="12" fill="url(#panelStudent)" stroke="#223552" stroke-width="1"/>
+
+    <g transform="translate(14, 16)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Corporate Recruiter Dispatch</text>
+      <text x="0" y="14" font-family="'JetBrains Mono', monospace" font-size="9" fill="#38BDF8">Direct Industry Connection</text>
+    </g>
+
+    <!-- Queue Items -->
+    <g transform="translate(14, 46)">
+      <!-- Item 1: Google Ambassador -->
+      <g transform="translate(0, 0)">
+        <rect width="252" height="48" rx="8" fill="#0C1422" stroke="#1D2A42"/>
+        <g transform="translate(10, 16)">
+          <text x="0" y="0" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#FFFFFF">Google Student Ambassador</text>
+          <text x="0" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#34D399">✓ 1st Prize Hackathon Winner</text>
+          <rect x="175" y="-5" width="62" height="18" rx="4" fill="#064E3B"/>
+          <text x="206" y="8" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#34D399" text-anchor="middle">AWARDED</text>
+        </g>
+      </g>
+
+      <!-- Item 2: Microsoft Community -->
+      <g transform="translate(0, 56)">
+        <rect width="252" height="48" rx="8" fill="#0C1422" stroke="#1D2A42"/>
+        <g transform="translate(10, 16)">
+          <text x="0" y="0" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#FFFFFF">Microsoft Student Community</text>
+          <text x="0" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#38BDF8">Student Ambassador &amp; Coordinator</text>
+          <rect x="175" y="-5" width="62" height="18" rx="4" fill="#1E3A8A"/>
+          <text x="206" y="8" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#60A5FA" text-anchor="middle">ACTIVE</text>
+        </g>
+      </g>
+
+      <!-- Item 3: Corporate Campus Drive -->
+      <g transform="translate(0, 112)">
+        <rect width="252" height="48" rx="8" fill="#0C1422" stroke="#1D2A42"/>
+        <g transform="translate(10, 16)">
+          <text x="0" y="0" font-family="'Inter', sans-serif" font-size="10.5" font-weight="bold" fill="#FFFFFF">Corporate Recruiter Matching</text>
+          <text x="0" y="16" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#A855F7">14 Real-World Projects Verified</text>
+          <rect x="175" y="-5" width="62" height="18" rx="4" fill="#581C87"/>
+          <text x="206" y="8" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#C084FC" text-anchor="middle">VERIFIED</text>
+        </g>
+      </g>
+    </g>
+  </g>
 </svg>

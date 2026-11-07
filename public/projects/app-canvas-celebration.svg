@@ -1,92 +1,130 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
   <defs>
-    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3.5" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0.05"/>
+    <radialGradient id="particleGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E05269" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#38BDF8" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bgCanvas" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#140E1B"/>
+      <stop offset="100%" stop-color="#0A070E"/>
     </linearGradient>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#131B2E"/>
-      <stop offset="100%" stop-color="#0B101C"/>
-    </linearGradient>
-    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1D273D"/>
-      <stop offset="100%" stop-color="#151C2C"/>
-    </linearGradient>
-    <linearGradient id="highlightGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#283654"/>
-      <stop offset="100%" stop-color="#1B2438"/>
+    <linearGradient id="panelCanvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#22152E"/>
+      <stop offset="100%" stop-color="#140D1C"/>
     </linearGradient>
   </defs>
-  
-  <rect width="600" height="320" fill="url(#bgGrad)"/>
-  <circle cx="180" cy="180" r="160" fill="#E05269" opacity="0.15" filter="url(#neon)"/>
 
-  <!-- Particle Viewport (Left) -->
-  <g transform="translate(24, 18)">
-    <rect width="350" height="282" rx="10" fill="#10081C" stroke="#E05269" stroke-width="2"/>
-    
-    <circle cx="175" cy="180" r="22" fill="#E0526950"/>
-    <circle cx="175" cy="180" r="9" fill="#E05269"/>
+  <rect width="600" height="340" fill="url(#bgCanvas)"/>
 
-    <!-- Brilliant Arcs -->
-    <path d="M 175 180 Q 225 45 285 95" fill="none" stroke="#F59E0B" stroke-width="3.5" stroke-dasharray="4,4"/>
-    <circle cx="285" cy="95" r="10" fill="#F59E0B" filter="url(#neon)"/>
+  <!-- Top App Window Bar -->
+  <g transform="translate(0, 0)">
+    <rect width="600" height="36" fill="#0A0E18" stroke="#1E293B" stroke-width="1"/>
+    <circle cx="20" cy="18" r="4.5" fill="#EF4444"/>
+    <circle cx="36" cy="18" r="4.5" fill="#F59E0B"/>
+    <circle cx="52" cy="18" r="4.5" fill="#10B981"/>
 
-    <path d="M 175 180 Q 115 25 60 75" fill="none" stroke="#38BDF8" stroke-width="3.5" stroke-dasharray="4,4"/>
-    <circle cx="60" cy="75" r="9" fill="#38BDF8" filter="url(#neon)"/>
+    <rect x="140" y="8" width="320" height="20" rx="10" fill="#1A1224" stroke="#331E47" stroke-width="1"/>
+    <text x="300" y="22" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#94A3B8" text-anchor="middle">canvas-physics.engine/procedural-particles</text>
 
-    <path d="M 175 180 Q 265 125 315 205" fill="none" stroke="#10B981" stroke-width="3.5" stroke-dasharray="4,4"/>
-    <circle cx="315" cy="205" r="11" fill="#10B981" filter="url(#neon)"/>
-
-    <path d="M 175 180 Q 95 145 45 215" fill="none" stroke="#E05269" stroke-width="3.5" stroke-dasharray="4,4"/>
-    <circle cx="45" cy="215" r="10" fill="#E05269" filter="url(#neon)"/>
-
-    <path d="M 175 180 Q 175 10 175 35" fill="none" stroke="#C084FC" stroke-width="3.5" stroke-dasharray="4,4"/>
-    <circle cx="175" cy="35" r="9" fill="#C084FC" filter="url(#neon)"/>
-
-    <circle cx="130" cy="110" r="6" fill="#F59E0B"/>
-    <circle cx="210" cy="100" r="7" fill="#38BDF8"/>
-    <circle cx="230" cy="150" r="5.5" fill="#10B981"/>
-    <circle cx="110" cy="190" r="6" fill="#E05269"/>
-    <circle cx="190" cy="230" r="5.5" fill="#C084FC"/>
-
-    <rect x="14" y="14" width="144" height="46" rx="6" fill="#1D0E29" stroke="#E05269"/>
-    <text x="24" y="32" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#E2E8F0">PARTICLES: 250</text>
-    <text x="24" y="48" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#FF8BA7">VERLET PHYSICS</text>
+    <rect x="475" y="8" width="110" height="20" rx="10" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+    <circle cx="487" cy="18" r="3" fill="#34D399"/>
+    <text x="537" y="22" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#34D399" text-anchor="middle">60 FPS LOOP</text>
   </g>
 
-  <!-- Physics Engine Sliders (Right) -->
-  <g transform="translate(385, 18)">
-    <rect width="191" height="282" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
-    <text x="16" y="28" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#FFFFFF">PHYSICS ENGINE</text>
+  <!-- Central Radial Glow -->
+  <circle cx="230" cy="190" r="140" fill="url(#particleGlow)"/>
 
-    <g transform="translate(16, 46)">
-      <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="bold" fill="#FF8BA7">GRAVITY (0.98 G)</text>
-      <rect y="10" width="159" height="10" rx="5" fill="#131B2E"/>
-      <rect y="10" width="105" height="10" rx="5" fill="#E05269"/>
-      <circle cx="105" cy="15" r="7" fill="#FFFFFF"/>
+  <!-- Left: Interactive Canvas Emitter & Particle Trajectories -->
+  <g transform="translate(18, 48)">
+    <rect width="365" height="276" rx="12" fill="#0E0814" stroke="#2D1A3D" stroke-width="1"/>
+
+    <!-- HUD Telemetry Card -->
+    <g transform="translate(16, 16)">
+      <rect width="165" height="52" rx="6" fill="#180E24" stroke="#381D52"/>
+      <g transform="translate(10, 16)">
+        <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" fill="#E05269">PHYSICS TELEMETRY</text>
+        <text x="0" y="16" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#FFFFFF">1,420 Particles Active</text>
+        <text x="0" y="28" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#34D399">Verlet 60Hz Spring Step</text>
+      </g>
     </g>
 
-    <g transform="translate(16, 96)">
-      <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="bold" fill="#38BDF8">AIR RESISTANCE (0.05)</text>
-      <rect y="10" width="159" height="10" rx="5" fill="#131B2E"/>
-      <rect y="10" width="55" height="10" rx="5" fill="#38BDF8"/>
-      <circle cx="55" cy="15" r="7" fill="#FFFFFF"/>
-    </g>
+    <!-- Glowing Particle Trajectories -->
+    <g transform="translate(170, 240)">
+      <!-- Origin Emitter Node -->
+      <circle cx="0" cy="0" r="10" fill="#E05269" fill-opacity="0.3"/>
+      <circle cx="0" cy="0" r="5" fill="#FFFFFF"/>
 
-    <g transform="translate(16, 146)">
-      <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="bold" fill="#34D399">RESTITUTION (0.85)</text>
-      <rect y="10" width="159" height="10" rx="5" fill="#131B2E"/>
-      <rect y="10" width="128" height="10" rx="5" fill="#10B981"/>
-      <circle cx="128" cy="15" r="7" fill="#FFFFFF"/>
-    </g>
+      <!-- Parabolic Arcs -->
+      <!-- Left Stream -->
+      <path d="M0 0 Q-60 -150 -120 -80" fill="none" stroke="#E05269" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-120" cy="-80" r="4.5" fill="#E05269"/>
+      <circle cx="-80" cy="-135" r="3.5" fill="#FDA4AF"/>
+      <circle cx="-40" cy="-115" r="3" fill="#FFFFFF"/>
 
-    <rect x="16" y="218" width="159" height="42" rx="6" fill="#E05269" stroke="#FF8BA7"/>
-    <text x="34" y="244" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#FFFFFF">TRIGGER BURST</text>
+      <!-- Center-Left Stream -->
+      <path d="M0 0 Q-30 -190 -60 -160" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="-60" cy="-160" r="4.5" fill="#F59E0B"/>
+      <circle cx="-35" cy="-175" r="3" fill="#FDE68A"/>
+
+      <!-- Center-Right Stream -->
+      <path d="M0 0 Q40 -200 80 -170" fill="none" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="80" cy="-170" r="5" fill="#38BDF8"/>
+      <circle cx="45" cy="-185" r="3.5" fill="#BAE6FD"/>
+      <circle cx="20" cy="-130" r="3" fill="#FFFFFF"/>
+
+      <!-- Right Stream -->
+      <path d="M0 0 Q80 -140 140 -70" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="140" cy="-70" r="4.5" fill="#10B981"/>
+      <circle cx="100" cy="-130" r="3.5" fill="#6EE7B7"/>
+
+      <!-- Far Right Stream -->
+      <path d="M0 0 Q110 -90 160 -30" fill="none" stroke="#A855F7" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="160" cy="-30" r="4" fill="#A855F7"/>
+    </g>
   </g>
 
+  <!-- Right: Particle Engine Control Knobs (190 width) -->
+  <g transform="translate(393, 48)">
+    <rect width="189" height="276" rx="12" fill="url(#panelCanvas)" stroke="#2D1A3D" stroke-width="1"/>
+
+    <g transform="translate(14, 16)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="11.5" font-weight="bold" fill="#FFFFFF">Spring Dynamics</text>
+      <text x="0" y="14" font-family="'JetBrains Mono', monospace" font-size="9" fill="#38BDF8">Algorithmic Physics Engine</text>
+    </g>
+
+    <!-- Sliders -->
+    <g transform="translate(14, 46)">
+      <!-- Slider 1 -->
+      <text x="0" y="10" font-family="'Inter', sans-serif" font-size="9" fill="#94A3B8">Velocity Dispersion (72%)</text>
+      <rect x="0" y="18" width="160" height="6" rx="3" fill="#160D20"/>
+      <rect x="0" y="18" width="115" height="6" rx="3" fill="#E05269"/>
+      <circle cx="115" cy="21" r="5" fill="#FFFFFF"/>
+
+      <!-- Slider 2 -->
+      <text x="0" y="44" font-family="'Inter', sans-serif" font-size="9" fill="#94A3B8">Elastic Rebound (88%)</text>
+      <rect x="0" y="52" width="160" height="6" rx="3" fill="#160D20"/>
+      <rect x="0" y="52" width="140" height="6" rx="3" fill="#38BDF8"/>
+      <circle cx="140" cy="55" r="5" fill="#FFFFFF"/>
+
+      <!-- Slider 3 -->
+      <text x="0" y="78" font-family="'Inter', sans-serif" font-size="9" fill="#94A3B8">Gravity Dampening (18%)</text>
+      <rect x="0" y="86" width="160" height="6" rx="3" fill="#160D20"/>
+      <rect x="0" y="86" width="30" height="6" rx="3" fill="#10B981"/>
+      <circle cx="30" cy="89" r="5" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Color Mode Card -->
+    <g transform="translate(14, 160)">
+      <rect width="160" height="96" rx="8" fill="#140A1A" stroke="#2D1A3D"/>
+      <g transform="translate(10, 16)">
+        <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#E05269">RENDER MATRIX</text>
+        <text x="0" y="18" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">Neon Spectrum Shaders</text>
+        <text x="0" y="34" font-family="'JetBrains Mono', monospace" font-size="9" fill="#34D399">RGB HSL Interp: Active</text>
+        
+        <rect x="0" y="46" width="140" height="20" rx="4" fill="#064E3B"/>
+        <text x="70" y="60" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#34D399" text-anchor="middle">SPRING PHYSICS READY</text>
+      </g>
+    </g>
+  </g>
 </svg>

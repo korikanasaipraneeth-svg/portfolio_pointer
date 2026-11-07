@@ -1,92 +1,112 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 340" width="600" height="340">
   <defs>
-    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3.5" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
-    </filter>
-    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0.05"/>
+    <linearGradient id="bgCare" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0E1624"/>
+      <stop offset="100%" stop-color="#080C14"/>
     </linearGradient>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#131B2E"/>
-      <stop offset="100%" stop-color="#0B101C"/>
-    </linearGradient>
-    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1D273D"/>
-      <stop offset="100%" stop-color="#151C2C"/>
-    </linearGradient>
-    <linearGradient id="highlightGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#283654"/>
-      <stop offset="100%" stop-color="#1B2438"/>
+    <linearGradient id="panelCare" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#141E30"/>
+      <stop offset="100%" stop-color="#0E1624"/>
     </linearGradient>
   </defs>
-  
-  <rect width="600" height="320" fill="url(#bgGrad)"/>
-  <circle cx="200" cy="180" r="140" fill="#38BDF8" opacity="0.12" filter="url(#neon)"/>
 
-  <!-- Calendar Days -->
-  <g transform="translate(24, 18)">
-    <rect width="552" height="78" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
-    
-    <rect x="18" y="12" width="92" height="54" rx="6" fill="#131B2E" stroke="#38496B"/>
-    <text x="38" y="34" font-family="'JetBrains Mono', monospace" font-size="11.5" fill="#94A3B8">MON 04</text>
-    <text x="36" y="52" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">6 SLOTS</text>
+  <rect width="600" height="340" fill="url(#bgCare)"/>
 
-    <rect x="122" y="12" width="92" height="54" rx="6" fill="#131B2E" stroke="#38496B"/>
-    <text x="142" y="34" font-family="'JetBrains Mono', monospace" font-size="11.5" fill="#94A3B8">TUE 05</text>
-    <text x="140" y="52" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">4 SLOTS</text>
+  <!-- Top App Window Bar -->
+  <g transform="translate(0, 0)">
+    <rect width="600" height="36" fill="#0A0E18" stroke="#1E293B" stroke-width="1"/>
+    <circle cx="20" cy="18" r="4.5" fill="#EF4444"/>
+    <circle cx="36" cy="18" r="4.5" fill="#F59E0B"/>
+    <circle cx="52" cy="18" r="4.5" fill="#10B981"/>
 
-    <!-- Wed (Active Today) -->
-    <rect x="226" y="12" width="100" height="54" rx="6" fill="#38BDF8" stroke="#7DD3FC" stroke-width="2"/>
-    <text x="242" y="33" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#082F49">WED 06</text>
-    <text x="244" y="52" font-family="'Inter', sans-serif" font-size="12" font-weight="900" fill="#082F49">TODAY ✓</text>
+    <rect x="140" y="8" width="320" height="20" rx="10" fill="#131B2B" stroke="#223048" stroke-width="1"/>
+    <text x="300" y="22" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#94A3B8" text-anchor="middle">caresync.health/clinical-portal</text>
 
-    <rect x="338" y="12" width="92" height="54" rx="6" fill="#131B2E" stroke="#38496B"/>
-    <text x="358" y="34" font-family="'JetBrains Mono', monospace" font-size="11.5" fill="#94A3B8">THU 07</text>
-    <text x="356" y="52" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">8 SLOTS</text>
-
-    <rect x="442" y="12" width="92" height="54" rx="6" fill="#131B2E" stroke="#38496B"/>
-    <text x="462" y="34" font-family="'JetBrains Mono', monospace" font-size="11.5" fill="#94A3B8">FRI 08</text>
-    <text x="460" y="52" font-family="'Inter', sans-serif" font-size="11" font-weight="bold" fill="#FFFFFF">5 SLOTS</text>
+    <rect x="475" y="8" width="110" height="20" rx="10" fill="#064E3B" stroke="#059669" stroke-width="1"/>
+    <circle cx="487" cy="18" r="3" fill="#34D399"/>
+    <text x="537" y="22" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#34D399" text-anchor="middle">CLINIC OPEN</text>
   </g>
 
-  <!-- Slots & Prescription -->
-  <g transform="translate(24, 110)">
-    <rect width="320" height="190" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
-    <text x="18" y="26" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#38BDF8">AVAILABLE TIME SLOTS (TODAY)</text>
-    
-    <g transform="translate(18, 42)">
-      <rect width="134" height="40" rx="6" fill="#3D0C13" stroke="#EF4444"/>
-      <text x="14" y="25" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#FF8BA7">10:00 AM (Booked)</text>
+  <!-- Split Clinical Dashboard -->
+  <!-- Left Side: Doctor Appointment Queue (285 width) -->
+  <g transform="translate(18, 48)">
+    <rect width="280" height="276" rx="12" fill="url(#panelCare)" stroke="#223552" stroke-width="1"/>
 
-      <rect x="148" width="136" height="40" rx="6" fill="#10B981" stroke="#34D399" stroke-width="2"/>
-      <text x="156" y="25" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="bold" fill="#022C1A">11:30 AM (Confirmed ✓)</text>
-
-      <rect y="50" width="134" height="40" rx="6" fill="#131B2E" stroke="#38496B"/>
-      <text x="14" y="75" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#38BDF8">02:00 PM (Avail)</text>
-
-      <rect x="148" y="50" width="136" height="40" rx="6" fill="#131B2E" stroke="#38496B"/>
-      <text x="158" y="75" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#38BDF8">04:30 PM (Avail)</text>
+    <g transform="translate(16, 16)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Clinical Appointment Queue</text>
+      <text x="0" y="14" font-family="'JetBrains Mono', monospace" font-size="9" fill="#10B981">Dr. S. Rao, MD • 14 Scheduled Today</text>
     </g>
 
-    <rect x="18" y="142" width="284" height="38" rx="6" fill="#38BDF8" stroke="#7DD3FC"/>
-    <text x="54" y="166" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#082F49">START TELE-CONSULTATION</text>
+    <!-- Appointment Rows -->
+    <g transform="translate(16, 44)">
+      <!-- Appt 1 (Active Video) -->
+      <g transform="translate(0, 0)">
+        <rect width="248" height="64" rx="8" fill="#102336" stroke="#0284C7" stroke-width="1.2"/>
+        <g transform="translate(10, 16)">
+          <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#38BDF8">10:00 AM • TELEHEALTH VIDEO</text>
+          <text x="0" y="16" font-family="'Inter', sans-serif" font-size="11.5" font-weight="bold" fill="#FFFFFF">Patient #P-1082 (Follow-up)</text>
+          <rect x="160" y="-4" width="68" height="22" rx="4" fill="#0284C7"/>
+          <text x="194" y="11" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" fill="#FFFFFF" text-anchor="middle">JOIN CALL</text>
+        </g>
+      </g>
 
-    <!-- Digital Prescription -->
-    <g transform="translate(336, 0)">
-      <rect width="216" height="190" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
-      <text x="16" y="26" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" fill="#34D399">DIGITAL RX SUMMARY</text>
-      
-      <rect x="14" y="42" width="188" height="90" rx="6" fill="#131B2E" stroke="#38496B"/>
-      <text x="12" y="22" font-family="'Inter', sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF">Dr. K. Anand MD</text>
-      <text x="12" y="44" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#E2E8F0">• Cetirizine 10mg — 1-0-1</text>
-      <text x="12" y="62" font-family="'JetBrains Mono', monospace" font-size="10.5" fill="#E2E8F0">• Paracetamol 650mg — SOS</text>
-      <text x="12" y="80" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#34D399">Signed via Cryptographic Key</text>
-      
-      <rect x="14" y="142" width="188" height="38" rx="6" fill="#10B981" stroke="#34D399"/>
-      <text x="34" y="166" font-family="'JetBrains Mono', monospace" font-size="11.5" font-weight="bold" fill="#022C1A">DOWNLOAD PDF RX</text>
+      <!-- Appt 2 (In Clinic) -->
+      <g transform="translate(0, 74)">
+        <rect width="248" height="64" rx="8" fill="#0C1422" stroke="#1D2A42"/>
+        <g transform="translate(10, 16)">
+          <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#94A3B8">10:30 AM • IN-CLINIC VISIT</text>
+          <text x="0" y="16" font-family="'Inter', sans-serif" font-size="11.5" font-weight="bold" fill="#FFFFFF">Patient #P-1083 (Routine Check)</text>
+          <rect x="160" y="-4" width="68" height="22" rx="4" fill="#064E3B"/>
+          <text x="194" y="11" font-family="'JetBrains Mono', monospace" font-size="8.5" font-weight="bold" fill="#34D399" text-anchor="middle">CONFIRMED</text>
+        </g>
+      </g>
+
+      <!-- Appt 3 -->
+      <g transform="translate(0, 148)">
+        <rect width="248" height="64" rx="8" fill="#0C1422" stroke="#1D2A42"/>
+        <g transform="translate(10, 16)">
+          <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="bold" fill="#94A3B8">11:00 AM • DIAGNOSTIC REVIEW</text>
+          <text x="0" y="16" font-family="'Inter', sans-serif" font-size="11.5" font-weight="bold" fill="#FFFFFF">Patient #P-1084 (Cardio Labs)</text>
+          <rect x="160" y="-4" width="68" height="22" rx="4" fill="#1E293B"/>
+          <text x="194" y="11" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#94A3B8" text-anchor="middle">QUEUED</text>
+        </g>
+      </g>
     </g>
   </g>
 
+  <!-- Right Side: Digital EHR & Telehealth Prescription Console (275 width) -->
+  <g transform="translate(308, 48)">
+    <rect width="274" height="276" rx="12" fill="url(#panelCare)" stroke="#223552" stroke-width="1"/>
+
+    <g transform="translate(16, 16)">
+      <text x="0" y="0" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Electronic Health Record (EHR)</text>
+      <text x="0" y="14" font-family="'JetBrains Mono', monospace" font-size="9" fill="#38BDF8">FastAPI + MySQL Encrypted HIPAA</text>
+    </g>
+
+    <!-- Digital Prescription Box -->
+    <g transform="translate(16, 44)">
+      <rect width="242" height="154" rx="8" fill="#0C1422" stroke="#1D2A42"/>
+      <g transform="translate(12, 18)">
+        <text x="0" y="0" font-family="'JetBrains Mono', monospace" font-size="8.5" fill="#94A3B8">DIGITAL RX CERTIFICATE</text>
+        <text x="0" y="18" font-family="'Inter', sans-serif" font-size="12" font-weight="bold" fill="#FFFFFF">Amlodipine Besylate 5mg</text>
+        <text x="0" y="34" font-family="'Inter', sans-serif" font-size="9" fill="#34D399">Dosage: 1 Tablet Daily After Meals</text>
+
+        <line x1="0" y1="46" x2="218" y2="46" stroke="#1E293B"/>
+
+        <text x="0" y="62" font-family="'Inter', sans-serif" font-size="9" fill="#94A3B8">Clinical Diagnosis Notes:</text>
+        <text x="0" y="78" font-family="'Inter', sans-serif" font-size="9.5" fill="#F1F5F9">Mild essential hypertension. Vitals</text>
+        <text x="0" y="92" font-family="'Inter', sans-serif" font-size="9.5" fill="#F1F5F9">stable. Re-evaluate in 2 weeks.</text>
+
+        <rect x="0" y="104" width="218" height="22" rx="4" fill="#064E3B"/>
+        <text x="109" y="119" font-family="'JetBrains Mono', monospace" font-size="8" font-weight="bold" fill="#34D399" text-anchor="middle">✓ DIGITALLY SIGNED &amp; VERIFIED</text>
+      </g>
+    </g>
+
+    <!-- Appointment Booking CTA Status -->
+    <g transform="translate(16, 210)">
+      <rect width="242" height="42" rx="8" fill="#0D1A2B" stroke="#0284C7"/>
+      <text x="12" y="18" font-family="'Inter', sans-serif" font-size="9" fill="#38BDF8">Online Patient Portal Sync</text>
+      <text x="12" y="32" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="bold" fill="#FFFFFF">Instant Booking &amp; Slot Confirmation ✓</text>
+    </g>
+  </g>
 </svg>

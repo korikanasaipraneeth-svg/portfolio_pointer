@@ -1,200 +1,378 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 320" width="600" height="320">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
   <defs>
-    <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="3.5" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070B13" />
+      <stop offset="50%" stop-color="#0B1320" />
+      <stop offset="100%" stop-color="#050810" />
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="greenGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10B981" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.05" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#000000" flood-opacity="0.6" />
     </filter>
-    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#10B981" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#10B981" stop-opacity="0.05"/>
-    </linearGradient>
-    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#131B2E"/>
-      <stop offset="100%" stop-color="#0B101C"/>
-    </linearGradient>
-    <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1D273D"/>
-      <stop offset="100%" stop-color="#151C2C"/>
-    </linearGradient>
-    <linearGradient id="highlightGrad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#283654"/>
-      <stop offset="100%" stop-color="#1B2438"/>
-    </linearGradient>
   </defs>
-  
-  <rect width="600" height="320" fill="url(#bgGrad)"/>
-  <circle cx="200" cy="180" r="160" fill="#10B981" opacity="0.15" filter="url(#neon)"/>
 
-  <g transform="translate(24, 18)">
-    <rect width="552" height="282" rx="10" fill="url(#cardGrad)" stroke="#38496B" stroke-width="1.5"/>
+  <!-- Background Canvas -->
+  <rect width="800" height="480" fill="url(#bg)" />
 
-    <!-- CI/CD Badges -->
-    <g transform="translate(18, 16)">
-      <rect width="164" height="54" rx="6" fill="#131B2E" stroke="#10B981" stroke-width="1.5"/>
-      <circle cx="22" cy="27" r="8" fill="#10B981"/>
-      <text x="36" y="25" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Next.js 15 Build</text>
-      <text x="36" y="44" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#34D399">PASSING (3.5s) ✓</text>
+  <!-- Grid overlay -->
+  <g stroke="#38BDF8" stroke-opacity="0.04" stroke-width="1">
+    <line x1="0" y1="60" x2="800" y2="60" />
+    <line x1="0" y1="120" x2="800" y2="120" />
+    <line x1="0" y1="180" x2="800" y2="180" />
+    <line x1="0" y1="240" x2="800" y2="240" />
+    <line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="360" x2="800" y2="360" />
+    <line x1="0" y1="420" x2="800" y2="420" />
+    <line x1="100" y1="0" x2="100" y2="480" />
+    <line x1="200" y1="0" x2="200" y2="480" />
+    <line x1="300" y1="0" x2="300" y2="480" />
+    <line x1="400" y1="0" x2="400" y2="480" />
+    <line x1="500" y1="0" x2="500" y2="480" />
+    <line x1="600" y1="0" x2="600" y2="480" />
+    <line x1="700" y1="0" x2="700" y2="480" />
+  </g>
 
-      <g transform="translate(176, 0)">
-        <rect width="164" height="54" rx="6" fill="#131B2E" stroke="#10B981" stroke-width="1.5"/>
-        <circle cx="22" cy="27" r="8" fill="#10B981"/>
-        <text x="36" y="25" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Playwright E2E</text>
-        <text x="36" y="44" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#34D399">16/16 PASSED ✓</text>
+  <!-- Main Window Frame -->
+  <rect x="24" y="20" width="752" height="440" rx="12" fill="#0A0E18" stroke="#1E293B" stroke-width="1.5" filter="url(#shadow)" />
+
+  <!-- Window Header -->
+  <rect x="24" y="20" width="752" height="42" rx="12" fill="#0F172A" />
+  <rect x="24" y="50" width="752" height="12" fill="#0F172A" />
+  <line x1="24" y1="62" x2="776" y2="62" stroke="#1E293B" stroke-width="1" />
+
+  <!-- Mac Traffic Dots -->
+  <circle cx="46" cy="41" r="5.5" fill="#EF4444" />
+  <circle cx="64" cy="41" r="5.5" fill="#F59E0B" />
+  <circle cx="82" cy="41" r="5.5" fill="#10B981" />
+
+  <!-- Console Title / Address Pill -->
+  <rect x="180" y="30" width="440" height="22" rx="6" fill="#070B13" stroke="#1E293B" stroke-width="1" />
+  <text x="400" y="45" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" text-anchor="middle">github.com/korikanasaipraneeth-svg/ci-cd-devops-pipeline · main</text>
+
+  <!-- Live Status Pill -->
+  <rect x="682" y="31" width="82" height="20" rx="10" fill="#064E3B" stroke="#10B981" stroke-width="1" />
+  <circle cx="694" cy="41" r="3.5" fill="#34D399" />
+  <text x="729" y="45" fill="#6EE7B7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">HEALTHY</text>
+
+  <!-- TOP METRICS / CI-CD PIPELINE ROW -->
+  <!-- Card 1: Build Pipeline -->
+  <g transform="translate(42, 78)">
+    <rect width="224" height="88" rx="8" fill="#0D1525" stroke="#1E293B" stroke-width="1" />
+    <rect width="224" height="88" rx="8" fill="url(#greenGlow)" />
+    <circle cx="24" cy="24" r="10" fill="#064E3B" />
+    <path d="M 19 24 L 22 27 L 29 20" stroke="#34D399" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="42" y="28" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Next.js 15.2 Production Build</text>
+    <text x="18" y="52" fill="#6EE7B7" font-family="ui-monospace, monospace" font-size="16" font-weight="700">PASSING (2.8s)</text>
+    <text x="18" y="72" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Zero Turbopack errors · Bundle 142KB</text>
+  </g>
+
+  <!-- Card 2: Test Suite -->
+  <g transform="translate(288, 78)">
+    <rect width="224" height="88" rx="8" fill="#0D1525" stroke="#1E293B" stroke-width="1" />
+    <rect width="224" height="88" rx="8" fill="url(#blueGlow)" />
+    <circle cx="24" cy="24" r="10" fill="#0C4A6E" />
+    <path d="M 19 24 L 22 27 L 29 20" stroke="#38BDF8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="42" y="28" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Playwright E2E Test Suite</text>
+    <text x="18" y="52" fill="#38BDF8" font-family="ui-monospace, monospace" font-size="16" font-weight="700">16 / 16 PASSED</text>
+    <text x="18" y="72" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Coverage: 100% · Mobile &amp; Desktop</text>
+  </g>
+
+  <!-- Card 3: Production Edge -->
+  <g transform="translate(534, 78)">
+    <rect width="224" height="88" rx="8" fill="#0D1525" stroke="#1E293B" stroke-width="1" />
+    <circle cx="24" cy="24" r="10" fill="#581C87" />
+    <polygon points="24,18 28,26 25,26 25,30 23,30 23,26 20,26" fill="#C084FC" />
+    <text x="42" y="28" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Vercel Edge Global CDN</text>
+    <text x="18" y="52" fill="#C084FC" font-family="ui-monospace, monospace" font-size="16" font-weight="700">DEPLOYED 100%</text>
+    <text x="18" y="72" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Latency: 28ms · 320 Edge nodes</text>
+  </g>
+
+  <!-- REPOSITORY ACTIVITY & COMMITS CONSOLE -->
+  <g transform="translate(42, 182)">
+    <rect width="716" height="262" rx="8" fill="#070B13" stroke="#1E293B" stroke-width="1" />
+
+    <!-- Sub-header -->
+    <rect width="716" height="34" rx="8" fill="#0B1320" />
+    <rect y="26" width="716" height="8" fill="#0B1320" />
+    <line x1="0" y1="34" x2="716" y2="34" stroke="#1E293B" stroke-width="1" />
+    
+    <text x="16" y="22" fill="#F8FAFC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Production Contribution Matrix &amp; Git Audit Trail</text>
+    <text x="700" y="22" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="11" text-anchor="end">1,420+ commits in 2025–2026</text>
+
+    <!-- Contribution Matrix (GitHub style heat-map 6 rows x 36 cols) -->
+    <g transform="translate(24, 48)">
+      <!-- Day labels -->
+      <text x="-8" y="11" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="end">Mon</text>
+      <text x="-8" y="37" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="end">Wed</text>
+      <text x="-8" y="63" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="end">Fri</text>
+
+      <!-- Heatmap grid generated cleanly with varying intensities -->
+      <!-- Row 0 (Mon) -->
+      <g transform="translate(0, 0)">
+        <rect x="0" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="18" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="36" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="54" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="72" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="90" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="108" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="126" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="144" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="162" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="180" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="198" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="216" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="234" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="252" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="270" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="288" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="306" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="324" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="342" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="360" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="378" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="396" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="414" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="432" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="450" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="468" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="486" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="504" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="522" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="540" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="558" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="576" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="594" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="612" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="630" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="648" y="0" width="14" height="10" rx="2" fill="#059669" />
       </g>
 
-      <g transform="translate(352, 0)">
-        <rect width="164" height="54" rx="6" fill="#131B2E" stroke="#10B981" stroke-width="1.5"/>
-        <circle cx="22" cy="27" r="8" fill="#10B981"/>
-        <text x="36" y="25" font-family="'Inter', sans-serif" font-size="13" font-weight="bold" fill="#FFFFFF">Edge CDN Deploy</text>
-        <text x="36" y="44" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#34D399">DEPLOYED TO PROD</text>
+      <!-- Row 1 (Tue) -->
+      <g transform="translate(0, 13)">
+        <rect x="0" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="18" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="36" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="54" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="72" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="90" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="108" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="126" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="144" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="162" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="180" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="198" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="216" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="234" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="252" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="270" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="288" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="306" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="324" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="342" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="360" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="378" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="396" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="414" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="432" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="450" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="468" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="486" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="504" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="522" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="540" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="558" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="576" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="594" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="612" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="630" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="648" y="0" width="14" height="10" rx="2" fill="#10B981" />
+      </g>
+
+      <!-- Row 2 (Wed) -->
+      <g transform="translate(0, 26)">
+        <rect x="0" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="18" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="36" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="54" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="72" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="90" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="108" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="126" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="144" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="162" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="180" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="198" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="216" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="234" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="252" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="270" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="288" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="306" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="324" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="342" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="360" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="378" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="396" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="414" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="432" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="450" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="468" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="486" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="504" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="522" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="540" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="558" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="576" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="594" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="612" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="630" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="648" y="0" width="14" height="10" rx="2" fill="#059669" />
+      </g>
+
+      <!-- Row 3 (Thu) -->
+      <g transform="translate(0, 39)">
+        <rect x="0" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="18" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="36" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="54" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="72" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="90" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="108" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="126" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="144" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="162" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="180" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="198" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="216" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="234" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="252" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="270" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="288" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="306" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="324" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="342" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="360" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="378" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="396" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="414" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="432" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="450" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="468" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="486" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="504" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="522" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="540" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="558" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="576" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="594" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="612" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="630" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="648" y="0" width="14" height="10" rx="2" fill="#34D399" />
+      </g>
+
+      <!-- Row 4 (Fri) -->
+      <g transform="translate(0, 52)">
+        <rect x="0" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="18" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="36" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="54" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="72" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="90" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="108" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="126" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="144" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="162" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="180" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="198" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="216" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="234" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="252" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="270" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="288" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="306" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="324" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="342" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="360" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="378" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="396" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="414" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="432" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="450" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="468" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="486" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="504" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="522" y="0" width="14" height="10" rx="2" fill="#1E293B" />
+        <rect x="540" y="0" width="14" height="10" rx="2" fill="#047857" />
+        <rect x="558" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="576" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="594" y="0" width="14" height="10" rx="2" fill="#059669" />
+        <rect x="612" y="0" width="14" height="10" rx="2" fill="#10B981" />
+        <rect x="630" y="0" width="14" height="10" rx="2" fill="#34D399" />
+        <rect x="648" y="0" width="14" height="10" rx="2" fill="#10B981" />
       </g>
     </g>
 
-    <!-- Heatmap Grid -->
-    <g transform="translate(18, 84)">
-      <rect width="516" height="178" rx="8" fill="#0D1524" stroke="#25354F"/>
-      <text x="20" y="28" font-family="'Inter', sans-serif" font-size="13.5" font-weight="bold" fill="#FFFFFF">1,280+ CONTRIBUTIONS ACROSS PRODUCTION REPOSITORIES</text>
+    <!-- Legend bar -->
+    <g transform="translate(480, 126)">
+      <text x="0" y="8" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Less</text>
+      <rect x="30" y="0" width="10" height="9" rx="1.5" fill="#1E293B" />
+      <rect x="44" y="0" width="10" height="9" rx="1.5" fill="#047857" />
+      <rect x="58" y="0" width="10" height="9" rx="1.5" fill="#059669" />
+      <rect x="72" y="0" width="10" height="9" rx="1.5" fill="#10B981" />
+      <rect x="86" y="0" width="10" height="9" rx="1.5" fill="#34D399" />
+      <text x="104" y="8" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">More</text>
+    </g>
+
+    <!-- RECENT WORKFLOW RUNS TABLE -->
+    <g transform="translate(18, 142)">
+      <line x1="0" y1="0" x2="680" y2="0" stroke="#1E293B" stroke-width="1" />
       
-      <g transform="translate(20, 46)">
+      <!-- Table Header -->
+      <text x="12" y="18" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">WORKFLOW / TRIGGER</text>
+      <text x="240" y="18" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">COMMIT / BRANCH</text>
+      <text x="440" y="18" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">STATUS</text>
+      <text x="590" y="18" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">DURATION</text>
 
-</svg><rect x="0" y="0" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="0" y="17.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="0" y="35" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="0" y="52.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="0" y="70" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="17.5" y="0" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="17.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="17.5" y="35" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="17.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="17.5" y="70" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="35" y="0" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="35" y="17.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="35" y="35" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="35" y="52.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="35" y="70" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="52.5" y="0" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="52.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="52.5" y="35" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="52.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="52.5" y="70" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="70" y="0" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="70" y="17.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="70" y="35" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="70" y="52.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="70" y="70" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="87.5" y="0" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="87.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="87.5" y="35" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="87.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="87.5" y="70" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="105" y="0" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="105" y="17.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="105" y="35" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="105" y="52.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="105" y="70" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="122.5" y="0" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="122.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="122.5" y="35" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="122.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="122.5" y="70" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="140" y="0" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="140" y="17.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="140" y="35" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="140" y="52.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="140" y="70" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="157.5" y="0" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="157.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="157.5" y="35" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="157.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="157.5" y="70" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="175" y="0" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="175" y="17.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="175" y="35" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="175" y="52.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="175" y="70" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="192.5" y="0" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="192.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="192.5" y="35" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="192.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="192.5" y="70" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="210" y="0" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="210" y="17.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="210" y="35" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="210" y="52.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="210" y="70" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="227.5" y="0" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="227.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="227.5" y="35" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="227.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="227.5" y="70" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="245" y="0" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="245" y="17.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="245" y="35" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="245" y="52.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="245" y="70" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="262.5" y="0" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="262.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="262.5" y="35" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="262.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="262.5" y="70" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="280" y="0" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="280" y="17.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="280" y="35" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="280" y="52.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="280" y="70" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="297.5" y="0" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="297.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="297.5" y="35" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="297.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="297.5" y="70" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="315" y="0" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="315" y="17.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="315" y="35" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="315" y="52.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="315" y="70" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="332.5" y="0" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="332.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="332.5" y="35" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="332.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="332.5" y="70" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="350" y="0" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="350" y="17.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="350" y="35" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="350" y="52.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="350" y="70" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="367.5" y="0" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="367.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="367.5" y="35" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="367.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="367.5" y="70" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="385" y="0" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="385" y="17.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="385" y="35" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="385" y="52.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="385" y="70" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="402.5" y="0" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="402.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="402.5" y="35" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="402.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="402.5" y="70" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="420" y="0" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="420" y="17.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="420" y="35" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="420" y="52.5" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="420" y="70" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="437.5" y="0" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="437.5" y="17.5" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="437.5" y="35" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="437.5" y="52.5" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-<rect x="437.5" y="70" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="455" y="0" width="14.5" height="14.5" rx="3" fill="#26A641"/>
-<rect x="455" y="17.5" width="14.5" height="14.5" rx="3" fill="#1A2538"/>
-<rect x="455" y="35" width="14.5" height="14.5" rx="3" fill="#006D32"/>
-<rect x="455" y="52.5" width="14.5" height="14.5" rx="3" fill="#39D353"/>
-<rect x="455" y="70" width="14.5" height="14.5" rx="3" fill="#0E4429"/>
-
+      <!-- Row 1 -->
+      <g transform="translate(0, 24)">
+        <rect width="680" height="24" rx="4" fill="#0A111E" />
+        <circle cx="20" cy="12" r="3.5" fill="#10B981" />
+        <text x="32" y="16" fill="#F8FAFC" font-family="ui-monospace, monospace" font-size="10">deploy-prod.yml</text>
+        <text x="240" y="16" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="10">2fe518c (main)</text>
+        <rect x="440" y="4" width="70" height="16" rx="4" fill="#064E3B" />
+        <text x="475" y="16" fill="#6EE7B7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" text-anchor="middle">SUCCESS</text>
+        <text x="590" y="16" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="10">1m 12s</text>
       </g>
-      <text x="20" y="156" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold" fill="#38BDF8">Less [ ] [ ] [ ] [ ] [ ] More • Verified via GitHub GraphQL v4 API</text>
+
+      <!-- Row 2 -->
+      <g transform="translate(0, 52)">
+        <rect width="680" height="24" rx="4" fill="#0D1525" />
+        <circle cx="20" cy="12" r="3.5" fill="#10B981" />
+        <text x="32" y="16" fill="#F8FAFC" font-family="ui-monospace, monospace" font-size="10">playwright-tests.yml</text>
+        <text x="240" y="16" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="10">e4b7c12 (staging)</text>
+        <rect x="440" y="4" width="70" height="16" rx="4" fill="#064E3B" />
+        <text x="475" y="16" fill="#6EE7B7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" text-anchor="middle">SUCCESS</text>
+        <text x="590" y="16" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="10">42s</text>
+      </g>
+
+      <!-- Row 3 -->
+      <g transform="translate(0, 80)">
+        <rect width="680" height="24" rx="4" fill="#0A111E" />
+        <circle cx="20" cy="12" r="3.5" fill="#38BDF8" />
+        <text x="32" y="16" fill="#F8FAFC" font-family="ui-monospace, monospace" font-size="10">security-audit.yml</text>
+        <text x="240" y="16" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="10">weekly-cron (main)</text>
+        <rect x="440" y="4" width="70" height="16" rx="4" fill="#075985" />
+        <text x="475" y="16" fill="#7DD3FC" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700" text-anchor="middle">0 CVEs</text>
+        <text x="590" y="16" fill="#94A3B8" font-family="ui-monospace, monospace" font-size="10">24s</text>
+      </g>
     </g>
   </g>
 </svg>
