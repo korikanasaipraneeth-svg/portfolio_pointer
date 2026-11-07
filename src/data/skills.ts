@@ -15,6 +15,125 @@ export interface SkillCategory {
   skills: SkillItem[];
 }
 
+// Curated 15 Technologies Daily Stack (Matching reference design)
+export const DAILY_STACK_15: SkillItem[] = [
+  {
+    name: "Terminal",
+    category: "Developer Tools",
+    level: "Core Engineering",
+    description: "UNIX Shell commands, CLI automation, build pipelines, package management, and terminal workflows.",
+    highlight: true,
+    tags: ["Bash/Zsh", "CLI Tooling", "Automation", "Git CLI", "Build Scripts"],
+  },
+  {
+    name: "Netlify",
+    category: "Developer Tools",
+    level: "Active Production",
+    description: "Static and serverless web hosting, continuous deployment pipelines, edge routing, and automated previews.",
+    tags: ["Continuous Deployment", "Edge Routing", "Serverless", "SSL/DNS"],
+  },
+  {
+    name: "Vercel",
+    category: "Developer Tools",
+    level: "Active Production",
+    description: "Global edge network hosting, production Next.js deployment, preview environments, and instant zero-config CI/CD.",
+    highlight: true,
+    tags: ["Edge Network", "Next.js Hosting", "CI/CD Pipelines", "Zero-Config Deploy"],
+  },
+  {
+    name: "Firebase",
+    category: "Backend Development",
+    level: "Active Production",
+    description: "Realtime database persistence, user authentication, Cloud Firestore, and scalable backend services.",
+    tags: ["Authentication", "Firestore", "Realtime DB", "Cloud Functions"],
+  },
+  {
+    name: "GitHub",
+    category: "Developer Tools",
+    level: "Core Engineering",
+    description: "Repository collaboration, Git branching hygiene, pull request workflows, and open-source contributions.",
+    highlight: true,
+    tags: ["Repository Management", "Collaboration", "Pull Requests", "Code Reviews"],
+  },
+  {
+    name: "Git",
+    category: "Developer Tools",
+    level: "Core Engineering",
+    description: "Distributed version control, branch management, merge conflict resolution, and commit integrity.",
+    tags: ["Version Control", "Branching", "Merge Rebasing", "Commit Hygiene"],
+  },
+  {
+    name: "Tailwind",
+    category: "Frontend Development",
+    level: "Active Production",
+    description: "Utility-first design architecture, custom responsive layouts, dark mode orchestration, and JIT compilation.",
+    highlight: true,
+    tags: ["Utility Classes", "Responsive Breakpoints", "Dark Mode", "Custom Grids"],
+  },
+  {
+    name: "Node.js",
+    category: "Backend Development",
+    level: "Core Engineering",
+    description: "Event-driven asynchronous server runtime, Express.js microservices, npm ecosystem, and REST endpoint controllers.",
+    highlight: true,
+    tags: ["Async Runtime", "Express.js", "npm Ecosystem", "REST APIs"],
+  },
+  {
+    name: "React",
+    category: "Frontend Development",
+    level: "Active Production",
+    description: "Declarative UI engineering, custom hooks, state synchronization, component lifecycles, and virtual DOM reconciliation.",
+    highlight: true,
+    tags: ["Component Architecture", "Hooks", "Virtual DOM", "State Management"],
+  },
+  {
+    name: "Next.js",
+    category: "Frontend Development",
+    level: "Active Production",
+    description: "Hybrid server and client rendering, App Router paradigms, static site generation, and server action routing.",
+    highlight: true,
+    tags: ["App Router", "SSR / SSG", "Server Actions", "Edge Middleware"],
+  },
+  {
+    name: "Python",
+    category: "Programming Languages",
+    level: "Core Engineering",
+    description: "Algorithmic logic, data manipulation, object-oriented systems, OpenCV computer vision, and AI model orchestration.",
+    highlight: true,
+    tags: ["Variables & Types", "OOP Architecture", "Data Structures", "OpenCV / AI", "FastAPI"],
+  },
+  {
+    name: "JavaScript",
+    category: "Programming Languages",
+    level: "Core Engineering",
+    description: "Modern ES6+ syntax, asynchronous promises, event loops, DOM engineering, and cross-platform application logic.",
+    highlight: true,
+    tags: ["ES6+ Syntax", "Async/Await", "Event Loop", "DOM Scripting", "REST Fetch"],
+  },
+  {
+    name: "TypeScript",
+    category: "Programming Languages",
+    level: "Active Production",
+    description: "Compile-time type verification, custom interfaces, utility generics, union typing, and enterprise type safety.",
+    highlight: true,
+    tags: ["Static Typing", "Interfaces & Types", "Generics", "Type Narrowing"],
+  },
+  {
+    name: "CSS3",
+    category: "Frontend Development",
+    level: "Active Production",
+    description: "Modern CSS3 styling, Flexbox layouts, CSS Grid architectures, keyframe animations, and cross-device media queries.",
+    tags: ["Flexbox", "CSS Grid", "Keyframe Animations", "Responsive Media"],
+  },
+  {
+    name: "HTML5",
+    category: "Frontend Development",
+    level: "Core Engineering",
+    description: "Semantic document markup, accessibility standards (a11y), canvas graphics, audio/video APIs, and web forms.",
+    tags: ["Semantic HTML", "Accessibility (a11y)", "Canvas APIs", "Forms & Audio"],
+  },
+];
+
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
     id: "prog",
