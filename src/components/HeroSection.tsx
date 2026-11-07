@@ -111,7 +111,7 @@ export function HeroSection() {
               onMouseEnter={() => sound.playHover()}
               className="px-5 py-3 border border-white/20 bg-white/5 hover:bg-white/10 text-white font-mono text-xs sm:text-sm tracking-wider transition-all duration-200"
             >
-              EXPLORE ARCHITECTURE
+              EXPLORE PROJECTS
             </a>
 
             <button

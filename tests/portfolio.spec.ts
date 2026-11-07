@@ -18,7 +18,7 @@ test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
 
     // Verify SAAI-style Action Buttons
     await expect(page.locator("#hero a:has-text('INITIATE DISPATCH')")).toBeVisible();
-    await expect(page.locator("#hero a:has-text('EXPLORE ARCHITECTURE')")).toBeVisible();
+    await expect(page.locator("#hero a:has-text('EXPLORE PROJECTS')")).toBeVisible();
   });
 
   test("2. Navigation Dock links to all architectural sections", async ({ page }) => {
@@ -91,14 +91,16 @@ test.describe("Korikana Sai Praneeth — Elite AI Systems Portfolio", () => {
     await expect(modal).not.toBeVisible();
   });
 
-  test("7. Systems Architecture interactive topologies", async ({ page }) => {
-    const arch = page.locator("#architecture");
-    await expect(arch).toBeVisible();
-    await expect(arch).toContainText("SYSTEMS ARCHITECTURE & DATA FLOWS");
+  test("7. Verified complete excision of architecture section and active timeline", async ({ page }) => {
+    // Assert architecture section is completely excised
+    await expect(page.locator("#architecture")).toHaveCount(0);
+    await expect(page.locator("text=SYSTEMS ARCHITECTURE & DATA FLOWS")).toHaveCount(0);
+    await expect(page.locator("header nav")).not.toContainText("Architecture");
 
-    // Click on STUDENT360 flow
-    await page.locator("button:has-text('STUDENT360 Tri-Portal')").click();
-    await expect(arch).toContainText("STUDENT360 Tri-Portal Verification");
+    // Verify timeline section is present
+    const timeline = page.locator("#timeline");
+    await expect(timeline).toBeVisible();
+    await expect(timeline).toContainText("ACADEMIC & DEVELOPMENT CHRONOLOGY");
   });
 
   test("8. Direct Contact section, email copy and form validation", async ({ page }) => {

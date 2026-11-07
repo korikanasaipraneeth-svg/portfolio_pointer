@@ -8,7 +8,6 @@ const NAV_ITEMS = [
   { label: "About", href: "#profile" },
   { label: "Matrix", href: "#skills" },
   { label: "Flagships", href: "#projects" },
-  { label: "Architecture", href: "#architecture" },
   { label: "Timeline", href: "#timeline" },
   { label: "Contact", href: "#contact" },
 ];
@@ -25,7 +24,7 @@ export function NavigationDock() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
 
-      const sections = ["hero", "profile", "skills", "projects", "architecture", "timeline", "contact"];
+      const sections = ["hero", "profile", "skills", "projects", "timeline", "contact"];
       const scrollPos = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
