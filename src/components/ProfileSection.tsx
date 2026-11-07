@@ -105,10 +105,10 @@ export function ProfileSection() {
             <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/80 space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="text-cyan-400 font-bold text-sm">03</span>
-                <span className="font-bold text-text-primary text-sm">Microsoft Student Ambassador</span>
+                <span className="font-bold text-text-primary text-sm">Technical Event Organizer &amp; Mentor</span>
               </div>
               <p className="font-sans text-xs text-text-secondary leading-relaxed">
-                Organizing technical events and induction mentoring classes, collaborating with student developer communities, and sharing knowledge.
+                Organizing technical events and sessions, collaborating with student developer teams, and sharing practical engineering knowledge.
               </p>
             </div>
 
@@ -164,11 +164,7 @@ export function ProfileSection() {
                 <p className="text-sm text-text-secondary leading-relaxed">
                   I started my B.Tech journey in 2024. I am interested in technology, software development, and creating useful digital products. I enjoy learning new things, exploring modern technologies, building websites, and turning ideas into real-world applications.
                 </p>
-                <div className="pt-2 grid grid-cols-2 sm:grid-cols-4 gap-2 font-mono text-xs">
-                  <div className="p-2.5 rounded bg-bg-secondary border border-border-subtle">
-                    <span className="text-text-muted text-[10px]">CURRENT ROLE</span>
-                    <div className="font-bold text-text-primary mt-0.5">Software Dev Intern</div>
-                  </div>
+                <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 font-mono text-xs">
                   <div className="p-2.5 rounded bg-bg-secondary border border-border-subtle">
                     <span className="text-text-muted text-[10px]">ACADEMIC YEAR</span>
                     <div className="font-bold text-accent-red mt-0.5">3rd-Year B.Tech AIML</div>
@@ -176,10 +172,6 @@ export function ProfileSection() {
                   <div className="p-2.5 rounded bg-bg-secondary border border-border-subtle">
                     <span className="text-text-muted text-[10px]">STARTED</span>
                     <div className="font-bold text-text-primary mt-0.5">2024</div>
-                  </div>
-                  <div className="p-2.5 rounded bg-bg-secondary border border-border-subtle">
-                    <span className="text-text-muted text-[10px]">COMMUNITY</span>
-                    <div className="font-bold text-emerald-400 mt-0.5">MSFT Ambassador</div>
                   </div>
                 </div>
               </div>
