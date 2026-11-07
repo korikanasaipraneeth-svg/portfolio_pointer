@@ -189,19 +189,31 @@ export function SkillsMatrix() {
 
           {/* Active Architectural Node Banner */}
           <div
-            className="flex items-start gap-4 p-4 rounded-2xl border backdrop-blur-md transition-all"
+            className="flex items-start gap-4 p-4 rounded-2xl border backdrop-blur-md transition-all relative overflow-hidden group"
             style={{
               backgroundColor: activeTheme.bg,
               borderColor: activeTheme.glow,
-              boxShadow: `0 0 24px ${activeTheme.glow}`,
+              boxShadow: `0 0 28px ${activeTheme.glow}`,
             }}
           >
-            <div className="w-16 h-16 rounded-2xl bg-black/60 border border-white/15 p-3 flex items-center justify-center flex-shrink-0 shadow-lg">
+            {/* Ambient Corner Flare */}
+            <div
+              className="absolute -top-12 -right-12 w-28 h-28 rounded-full blur-2xl opacity-40 pointer-events-none"
+              style={{ backgroundColor: activeTheme.glow }}
+            />
+
+            <div className="w-16 h-16 rounded-2xl bg-black/70 border border-white/20 p-3 flex items-center justify-center flex-shrink-0 shadow-lg relative">
               <TechIcon name={activeSkill.name} className="w-full h-full drop-shadow-md" />
+              <div
+                className="absolute -inset-1 rounded-2xl opacity-20 animate-pulse pointer-events-none"
+                style={{ backgroundColor: activeTheme.glow }}
+              />
             </div>
-            <div className="space-y-1 min-w-0">
-              <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-widest block">
-                ACTIVE ARCHITECTURAL NODE
+
+            <div className="space-y-1 min-w-0 flex-1">
+              <span className="font-mono text-[10px] text-zinc-400 uppercase tracking-widest block flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span>ACTIVE ARCHITECTURAL NODE</span>
               </span>
               <h3 className="font-heading font-black text-2xl sm:text-3xl text-white tracking-tight truncate">
                 {activeSkill.name}
@@ -223,6 +235,66 @@ export function SkillsMatrix() {
                 <span className="font-mono text-[10px] text-zinc-400">
                   {activeSkill.category}
                 </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Real-Time Architectural Mastery & Efficiency Gauge */}
+          <div className="p-4 rounded-xl border border-white/10 bg-black/60 flex items-center justify-between font-mono text-xs shadow-md">
+            <div className="space-y-1">
+              <span className="text-[10px] text-zinc-400 uppercase tracking-wider block font-semibold">
+                SYSTEM EFFICIENCY &amp; MASTERY
+              </span>
+              <div className="text-white font-bold text-sm flex items-center gap-2">
+                <span>
+                  {activeSkill.level === "Advanced Architecture"
+                    ? "96% CORE EFFICIENCY"
+                    : activeSkill.level === "Active Production"
+                    ? "92% PRODUCTION MASTERY"
+                    : "88% ENGINEERING PROFICIENCY"}
+                </span>
+              </div>
+              <p className="text-[10.5px] text-zinc-400 font-sans">
+                Verified through production codebases and practical implementations.
+              </p>
+            </div>
+
+            {/* Circular HUD Progress Meter */}
+            <div className="relative w-14 h-14 flex items-center justify-center flex-shrink-0">
+              <svg viewBox="0 0 36 36" className="w-14 h-14 -rotate-90">
+                <circle
+                  cx="18"
+                  cy="18"
+                  r="14"
+                  fill="none"
+                  stroke="rgba(255, 255, 255, 0.08)"
+                  strokeWidth="3"
+                />
+                <circle
+                  cx="18"
+                  cy="18"
+                  r="14"
+                  fill="none"
+                  stroke={activeTheme.glow}
+                  strokeWidth="3"
+                  strokeDasharray="88"
+                  strokeDashoffset={
+                    activeSkill.level === "Advanced Architecture"
+                      ? "3.5"
+                      : activeSkill.level === "Active Production"
+                      ? "7"
+                      : "10.5"
+                  }
+                  strokeLinecap="round"
+                  className="transition-all duration-700 ease-out"
+                />
+              </svg>
+              <div className="absolute inset-0 flex items-center justify-center font-mono text-[11px] font-bold text-white">
+                {activeSkill.level === "Advanced Architecture"
+                  ? "96%"
+                  : activeSkill.level === "Active Production"
+                  ? "92%"
+                  : "88%"}
               </div>
             </div>
           </div>

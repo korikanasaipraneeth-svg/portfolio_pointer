@@ -85,13 +85,14 @@ export function NavigationDock() {
                   href={item.href}
                   onClick={() => handleNavClick(item.href)}
                   onMouseEnter={() => sound.playHover()}
-                  className={`px-3 py-1 rounded-full text-xs font-sans tracking-wide transition-all duration-150 ${
+                  className={`px-3 py-1 rounded-full text-xs font-sans tracking-wide transition-all duration-150 flex items-center gap-1.5 ${
                     isActive
                       ? "text-white bg-accent-red font-medium shadow-crimson-glow"
                       : "text-text-secondary hover:text-text-primary hover:bg-white/[0.05]"
                   }`}
                 >
-                  {item.label}
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />}
+                  <span>{item.label}</span>
                 </a>
               );
             })}

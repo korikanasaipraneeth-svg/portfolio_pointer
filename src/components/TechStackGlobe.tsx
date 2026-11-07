@@ -848,9 +848,17 @@ export function TechStackGlobe({
                     : "pointer-events-auto"
                 }`}
               >
+                {/* Active Dynamic Pulse Ripple */}
+                {isSelected && (
+                  <div
+                    className="absolute -inset-2 rounded-2xl border border-accent-red/60 animate-ping opacity-35 pointer-events-none"
+                    aria-hidden="true"
+                  />
+                )}
+
                 {/* Compact, Sleek 3D Squircle Cube */}
                 <div
-                  className={`w-11 h-11 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-2xl p-2 sm:p-2.5 flex flex-col items-center justify-center border transition-all duration-200 backdrop-blur-md ${
+                  className={`w-11 h-11 sm:w-13 sm:h-13 md:w-14 md:h-14 rounded-2xl p-2 sm:p-2.5 flex flex-col items-center justify-center border transition-all duration-200 backdrop-blur-md relative ${
                     isSelected
                       ? "ring-2 ring-accent-red border-accent-red bg-[#0E131F]/90 scale-105"
                       : isInFront

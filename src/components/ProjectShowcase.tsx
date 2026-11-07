@@ -104,12 +104,22 @@ function ProjectCard3D({
             <span className="px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/35 font-semibold flex items-center gap-1">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               {project.status === "ACTIVE PRODUCTION" ? "LIVE" : project.status}
+              {project.status === "ACTIVE PRODUCTION" && (
+                <span className="hidden sm:inline-flex items-center gap-0.5 ml-1" aria-hidden="true">
+                  <span className="w-0.5 h-2 bg-emerald-400 animate-pulse" />
+                  <span className="w-0.5 h-3 bg-emerald-400 animate-pulse" style={{ animationDelay: "150ms" }} />
+                  <span className="w-0.5 h-1.5 bg-emerald-400 animate-pulse" style={{ animationDelay: "300ms" }} />
+                </span>
+              )}
             </span>
           </div>
         </div>
 
         {/* Crisp Application Mockup/Screenshot Viewport */}
         <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-black flex items-center justify-center">
+          {/* Subtle Cyber Holographic Scanline */}
+          <div className="absolute inset-0 pointer-events-none bg-gradient-to-b from-transparent via-white/[0.04] to-transparent h-16 w-full animate-laser-flow opacity-70 z-10" />
+
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={project.image}

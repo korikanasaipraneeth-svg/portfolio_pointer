@@ -99,17 +99,17 @@ export function HeroSection() {
               href="#contact"
               onClick={() => sound.playClick()}
               onMouseEnter={() => sound.playHover()}
-              className="font-mono text-xs sm:text-sm tracking-wider font-bold text-purple-400 hover:text-purple-300 flex items-center gap-2 transition-colors py-2 group"
+              className="font-mono text-xs sm:text-sm tracking-wider font-bold text-purple-400 hover:text-purple-300 flex items-center gap-2 transition-all py-2.5 px-3.5 rounded border border-purple-500/30 hover:border-purple-400/60 bg-purple-500/10 hover:shadow-[0_0_20px_rgba(168,85,247,0.3)] group"
             >
               <span>INITIATE DISPATCH</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </a>
 
             <a
               href="#projects"
               onClick={() => sound.playClick()}
               onMouseEnter={() => sound.playHover()}
-              className="px-5 py-3 border border-white/20 bg-white/5 hover:bg-white/10 text-white font-mono text-xs sm:text-sm tracking-wider transition-all duration-200"
+              className="px-5 py-3 border border-white/20 bg-white/5 hover:bg-white/10 text-white font-mono text-xs sm:text-sm tracking-wider hover:border-accent-red/60 hover:shadow-crimson-glow/30 hover:-translate-y-0.5 transition-all duration-200"
             >
               EXPLORE PROJECTS
             </a>
@@ -120,7 +120,7 @@ export function HeroSection() {
                 setResumeModalOpen(true);
               }}
               onMouseEnter={() => sound.playHover()}
-              className="p-3 border border-white/20 bg-white/5 hover:bg-white/10 text-text-muted hover:text-white transition-colors"
+              className="p-3 border border-white/20 bg-white/5 hover:bg-white/10 text-text-muted hover:text-white hover:border-white/40 hover:-translate-y-0.5 transition-all"
               title="View & Download Verified Resume"
             >
               <Download className="w-4 h-4" />
