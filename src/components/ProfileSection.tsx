@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { sound } from "@/lib/audio";
-import { User, GraduationCap, Cpu, Layers, Rocket, Briefcase, Award, Target, Sparkles, BookOpen, HeartHandshake } from "lucide-react";
+import { User, GraduationCap, Cpu, Layers, Rocket, Briefcase, Target } from "lucide-react";
 
 export function ProfileSection() {
   const [activeTab, setActiveTab] = useState<"who" | "academic" | "internship" | "philosophy" | "what-i-build" | "future">("who");
@@ -13,7 +13,7 @@ export function ProfileSection() {
   };
 
   return (
-    <section id="profile" className="py-24 px-4 sm:px-6 md:px-8 border-b border-border-subtle relative">
+    <section id="profile" className="py-24 px-4 sm:px-6 md:px-8 border-b border-border-subtle relative bg-[#04060A]">
       <div className="w-full max-w-6xl mx-auto space-y-12">
         {/* Technical Section Subhead */}
         <div className="space-y-1">
@@ -28,26 +28,38 @@ export function ProfileSection() {
           </h2>
         </div>
 
-        {/* 2-Column Overview */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column (7 cols): Narrative Bio in Exact Authentic Voice */}
-          <div className="lg:col-span-7 space-y-5 text-sm sm:text-base font-sans text-text-secondary leading-relaxed">
-            <p>
-              Hi, I&apos;m <strong className="text-text-primary">Korikana Sai Praneeth</strong>, a passionate Software Developer and a 3rd-year B.Tech student specializing in <strong className="text-text-primary">Artificial Intelligence and Machine Learning (AIML)</strong> at <strong className="text-text-primary">Sri Sivani College of Engineering</strong>.
-            </p>
-            <p>
-              I started my B.Tech journey in 2024. I am interested in technology, software development, and creating useful digital products. I enjoy learning new things, exploring modern technologies, building websites, and turning ideas into real-world applications.
-            </p>
-            <p>
-              I believe in <strong className="text-text-primary">learning by doing</strong>. I continuously improve my technical skills through practical projects, teamwork, technical events, and hands-on experience across <strong className="text-text-primary">Python, Java, C, C++, HTML, CSS, JavaScript, SQL</strong>, and modern frameworks like <strong className="text-text-primary">Flutter, FastAPI, and React 19</strong>.
-            </p>
-            <p>
-              I also have industry experience as a <strong className="text-text-primary">Software Developer Intern at HRX Tech Solution</strong> (September 2026), where I had the opportunity to learn and work on real-world development workflows.
-            </p>
+        {/* 2-Column Overview with Professional Portrait */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          {/* Left Column (5 cols): Professional Portrait Card (matching reference Image 2) + Philosophy & Objectives */}
+          <div className="lg:col-span-5 space-y-4">
+            {/* Elegant Portrait Frame */}
+            <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#0B0F17] shadow-2xl shadow-black/80 group">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <img
+                  src="/praneeth-portrait.jpg"
+                  alt="Korikana Sai Praneeth - AI System Architect & Software Developer"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                />
+                {/* Subtle dark gradient overlay at the bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+
+                {/* Floating HUD Badge on Portrait */}
+                <div className="absolute bottom-3.5 left-3.5 right-3.5 p-3 rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-between font-mono text-xs text-white">
+                  <div>
+                    <span className="font-bold text-sm block">KORIKANA SAI PRANEETH</span>
+                    <span className="text-[10px] text-accent-red font-semibold">AI SYSTEM ARCHITECT · VIBE CODER</span>
+                  </div>
+                  <span className="flex items-center gap-1.5 text-[10px] text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2.5 py-0.5 rounded-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>ONLINE</span>
+                  </span>
+                </div>
+              </div>
+            </div>
 
             {/* Core Objective & Professional Identity */}
-            <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
-              <div className="p-3.5 rounded-sm border border-accent-red/30 bg-accent-red/5 space-y-1.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs">
+              <div className="p-3.5 rounded-xl border border-accent-red/30 bg-accent-red/5 space-y-1.5">
                 <div className="flex items-center gap-1.5 text-accent-red font-bold">
                   <Target className="w-3.5 h-3.5" />
                   <span>CAREER OBJECTIVE</span>
@@ -57,7 +69,7 @@ export function ProfileSection() {
                 </p>
               </div>
 
-              <div className="p-3.5 rounded-sm border border-emerald-500/30 bg-emerald-500/5 space-y-1.5">
+              <div className="p-3.5 rounded-xl border border-emerald-500/30 bg-emerald-500/5 space-y-1.5">
                 <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
                   <Cpu className="w-3.5 h-3.5" />
                   <span>VIBE CODER IDENTITY</span>
@@ -69,7 +81,7 @@ export function ProfileSection() {
             </div>
 
             {/* Philosophy Banner */}
-            <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel space-y-1.5 font-mono text-xs">
+            <div className="p-4 rounded-xl border border-border-subtle bg-bg-panel space-y-1.5 font-mono text-xs">
               <div className="text-text-muted text-[10px] uppercase">My Philosophy</div>
               <div className="text-text-primary font-bold text-sm">
                 &quot;Keep Learning. Keep Building. Keep Growing.&quot;
@@ -80,46 +92,65 @@ export function ProfileSection() {
             </div>
           </div>
 
-          {/* Right Column (5 cols): Numbered Pillars */}
-          <div className="lg:col-span-5 space-y-3 font-mono text-xs">
-            <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/80 space-y-1.5">
-              <div className="flex items-center gap-2">
-                <span className="text-accent-red font-bold text-sm">01</span>
-                <span className="font-bold text-text-primary text-sm">HRX Tech Solution (Sept 2026)</span>
-              </div>
-              <p className="font-sans text-xs text-text-secondary leading-relaxed">
-                Working on software development activities, learning practical development workflows, exploring real-world technical challenges, and improving programming skills.
+          {/* Right Column (7 cols): Narrative Bio & 4 Pillars from Image 1 */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* Narrative Bio in Exact Authentic Voice */}
+            <div className="space-y-4 text-sm sm:text-base font-sans text-text-secondary leading-relaxed">
+              <p>
+                Hi, I&apos;m <strong className="text-text-primary">Korikana Sai Praneeth</strong>, a passionate Software Developer and a 3rd-year B.Tech student specializing in <strong className="text-text-primary">Artificial Intelligence and Machine Learning (AIML)</strong> at <strong className="text-text-primary">Sri Sivani College of Engineering</strong>.
+              </p>
+              <p>
+                I started my B.Tech journey in 2024. I am interested in technology, software development, and creating useful digital products. I enjoy learning new things, exploring modern technologies, building websites, and turning ideas into real-world applications.
+              </p>
+              <p>
+                I believe in <strong className="text-text-primary">learning by doing</strong>. I continuously improve my technical skills through practical projects, teamwork, technical events, and hands-on experience across <strong className="text-text-primary">Python, Java, C, C++, HTML, CSS, JavaScript, SQL</strong>, and modern frameworks like <strong className="text-text-primary">Flutter, FastAPI, and React 19</strong>.
+              </p>
+              <p>
+                I also have industry experience as a <strong className="text-text-primary">Software Developer Intern at HRX Tech Solution</strong> (September 2026), where I had the opportunity to learn and work on real-world development workflows.
               </p>
             </div>
 
-            <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/80 space-y-1.5">
-              <div className="flex items-center gap-2">
-                <span className="text-emerald-400 font-bold text-sm">02</span>
-                <span className="font-bold text-text-primary text-sm">1st Prize in Brainovision Hackathon</span>
+            {/* 4 Numbered Pillars (2x2 Grid) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-xs pt-2">
+              <div className="p-4 rounded-xl border border-border-subtle bg-bg-panel/80 space-y-1.5 hover:border-white/20 transition-colors">
+                <div className="flex items-center gap-2">
+                  <span className="text-accent-red font-bold text-sm">01</span>
+                  <span className="font-bold text-text-primary text-sm">HRX Tech Solution (Sept 2026)</span>
+                </div>
+                <p className="font-sans text-xs text-text-secondary leading-relaxed">
+                  Working on software development activities, learning practical development workflows, exploring real-world technical challenges, and improving programming skills.
+                </p>
               </div>
-              <p className="font-sans text-xs text-text-secondary leading-relaxed">
-                Secured 1st Prize for developing the Portfolio &amp; Stock Market Analyzer application — real-time market trends, stock tracking, and financial analytics.
-              </p>
-            </div>
 
-            <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/80 space-y-1.5">
-              <div className="flex items-center gap-2">
-                <span className="text-cyan-400 font-bold text-sm">03</span>
-                <span className="font-bold text-text-primary text-sm">Technical Event Organizer &amp; Mentor</span>
+              <div className="p-4 rounded-xl border border-border-subtle bg-bg-panel/80 space-y-1.5 hover:border-white/20 transition-colors">
+                <div className="flex items-center gap-2">
+                  <span className="text-emerald-400 font-bold text-sm">02</span>
+                  <span className="font-bold text-text-primary text-sm">1st Prize in Brainovision Hackathon</span>
+                </div>
+                <p className="font-sans text-xs text-text-secondary leading-relaxed">
+                  Secured 1st Prize for developing the Portfolio &amp; Stock Market Analyzer application — real-time market trends, stock tracking, and financial analytics.
+                </p>
               </div>
-              <p className="font-sans text-xs text-text-secondary leading-relaxed">
-                Organizing technical events and sessions, collaborating with student developer teams, and sharing practical engineering knowledge.
-              </p>
-            </div>
 
-            <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/80 space-y-1.5">
-              <div className="flex items-center gap-2">
-                <span className="text-purple-400 font-bold text-sm">04</span>
-                <span className="font-bold text-text-primary text-sm">B.Tech AIML (Sri Sivani COE)</span>
+              <div className="p-4 rounded-xl border border-border-subtle bg-bg-panel/80 space-y-1.5 hover:border-white/20 transition-colors">
+                <div className="flex items-center gap-2">
+                  <span className="text-cyan-400 font-bold text-sm">03</span>
+                  <span className="font-bold text-text-primary text-sm">Technical Event Organizer &amp; Mentor</span>
+                </div>
+                <p className="font-sans text-xs text-text-secondary leading-relaxed">
+                  Organizing technical events and sessions, collaborating with student developer teams, and sharing practical engineering knowledge.
+                </p>
               </div>
-              <p className="font-sans text-xs text-text-secondary leading-relaxed">
-                3rd-year undergraduate specializing in Artificial Intelligence and Machine Learning. Started 2024.
-              </p>
+
+              <div className="p-4 rounded-xl border border-border-subtle bg-bg-panel/80 space-y-1.5 hover:border-white/20 transition-colors">
+                <div className="flex items-center gap-2">
+                  <span className="text-purple-400 font-bold text-sm">04</span>
+                  <span className="font-bold text-text-primary text-sm">B.Tech AIML (Sri Sivani COE)</span>
+                </div>
+                <p className="font-sans text-xs text-text-secondary leading-relaxed">
+                  3rd-year undergraduate specializing in Artificial Intelligence and Machine Learning. Started 2024.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -142,7 +173,7 @@ export function ProfileSection() {
                   key={tab.id}
                   onClick={() => handleTabChange(tab.id as any)}
                   onMouseEnter={() => sound.playHover()}
-                  className={`px-4 py-2 rounded-sm border transition-all duration-150 flex items-center gap-2 ${
+                  className={`px-4 py-2 rounded-lg border transition-all duration-150 flex items-center gap-2 ${
                     isActive
                       ? "border-accent-red bg-accent-red/20 text-text-primary font-semibold shadow-crimson-glow"
                       : "border-border-subtle bg-bg-panel/50 text-text-secondary hover:text-text-primary hover:border-border-subtle/80"
@@ -155,7 +186,7 @@ export function ProfileSection() {
             })}
           </div>
 
-          <div className="rounded-sm border border-border-subtle bg-bg-panel p-6 sm:p-8 space-y-4 shadow-panel-subtle">
+          <div className="rounded-2xl border border-border-subtle bg-bg-panel p-6 sm:p-8 space-y-4 shadow-panel-subtle">
             {activeTab === "who" && (
               <div className="space-y-3">
                 <h3 className="font-heading font-bold text-xl text-text-primary">
