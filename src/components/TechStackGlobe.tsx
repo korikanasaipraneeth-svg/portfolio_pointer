@@ -1,0 +1,458 @@
+"use client";
+
+import React, { useEffect, useRef, useState, useMemo, useCallback } from "react";
+import { sound } from "@/lib/audio";
+import { SkillItem } from "@/data/skills";
+
+// Authentic Brand Icons for Tech Stack
+export function TechIcon({ name, className = "w-6 h-6" }: { name: string; className?: string }) {
+  switch (name.toLowerCase()) {
+    case "python":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#387EB8" d="M63.7 3.5c-15.6 0-25 6.7-25 15.6v11.4h25.7v3.7H29.1c-9.1 0-16.7 5.5-19.2 16-2.9 12.1-3 19.7 0 32.3 2.2 9.2 7.6 16 16.7 16h9.9v-14.3c0-10.3 8.8-19.4 19.4-19.4h25.4V39.4c0-8.9-9.5-15.6-25.1-15.6h-2.1V3.5h9.6zm-13.8 9.3c2.6 0 4.7 2.1 4.7 4.7s-2.1 4.7-4.7 4.7-4.7-2.1-4.7-4.7 2.1-4.7 4.7-4.7z"/>
+          <path fill="#FFE052" d="M64.3 124.5c15.6 0 25-6.7 25-15.6v-11.4H63.6v-3.7h35.3c9.1 0 16.7-5.5 19.2-16 2.9-12.1 3-19.7 0-32.3-2.2-9.2-7.6-16-16.7-16h-9.9v14.3c0 10.3-8.8 19.4-19.4 19.4H46.7v25.4c0 8.9 9.5 15.6 25.1 15.6h2.1v20.3h-9.6zm13.8-9.3c-2.6 0-4.7-2.1-4.7-4.7s2.1-4.7 4.7-4.7 4.7 2.1 4.7 4.7-2.1 4.7-4.7 4.7z"/>
+        </svg>
+      );
+    case "javascript":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <rect width="128" height="128" rx="20" fill="#F7DF1E"/>
+          <path d="M78.6 92.2c3.4 5.9 7.9 10.3 15.7 10.3 6.6 0 10.9-3.3 10.9-7.9 0-5.5-4.4-7.5-11.8-10.7l-4.1-1.8c-11.7-5-19.5-11.4-19.5-24.8 0-12.3 9.4-21.7 24.2-21.7 10.5 0 18 4.2 23.3 13.5l-10.7 6.8c-2.4-4.3-5.2-6.1-9.9-6.1-4.6 0-7.8 2.9-7.8 6.7 0 4.6 3.1 6.5 10.1 9.5l4.1 1.8c13.8 5.9 21.4 12.1 21.4 25.7 0 14.7-11.6 22.8-26.6 22.8-14.7 0-23.7-6.9-28.5-16.5l9.2-9.7zm-40.4 1.2c2.2 3.8 4.2 7 8.5 7 4.4 0 7.2-1.8 7.2-8.7V56.2h15.4v36.1c0 14.9-8.7 21.7-22 21.7-12.1 0-19.2-6.1-23.1-15.1l14-5.5z" fill="#000000"/>
+        </svg>
+      );
+    case "typescript":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <rect width="128" height="128" rx="20" fill="#3178C6"/>
+          <path d="M42 98.7V61.1H26.3v-10h47.1v10H57.7v37.6H42zm39.1-3.2c3 4.2 7.8 7.2 13.8 7.2 6.5 0 10.6-3.2 10.6-7.8 0-5.1-4.1-7-11.3-9.9l-3.9-1.6c-11.2-4.5-18.7-10.3-18.7-22.3 0-11.1 8.5-19.6 21.8-19.6 9.5 0 16.3 3.8 21.1 12.2l-9.6 6.1c-2.2-3.9-4.7-5.5-8.9-5.5-4.2 0-7 2.6-7 6 0 4.1 2.8 5.9 9.1 8.5l3.9 1.6c12.4 5.3 19.3 10.9 19.3 23.1 0 13.2-10.4 20.5-23.9 20.5-13.2 0-21.3-6.2-25.6-14.8l9.3-3.7z" fill="#FFFFFF"/>
+        </svg>
+      );
+    case "react":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <ellipse cx="64" cy="64" rx="14" ry="14" fill="#61DAFB"/>
+          <g stroke="#61DAFB" strokeWidth="5.5" fill="none">
+            <ellipse cx="64" cy="64" rx="54" ry="20"/>
+            <ellipse cx="64" cy="64" rx="54" ry="20" transform="rotate(60 64 64)"/>
+            <ellipse cx="64" cy="64" rx="54" ry="20" transform="rotate(120 64 64)"/>
+          </g>
+        </svg>
+      );
+    case "html":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#E44D26" d="M19.1 115.4L8.4 0h111.2l-10.7 115.4L63.9 128"/>
+          <path fill="#F16529" d="M64 117.5l37.8-10.5 9-97.4H64"/>
+          <path fill="#EBEBEB" d="M64 52.8H46.4l-1.2-13.6H64V26.4H31.1l3.6 40h29.3v-13.6zm0 37.1l-.2.1-16.7-4.5-1.1-12H32.4l2.1 23.5 29.3 8.1.2-.1V89.9z"/>
+          <path fill="#FFFFFF" d="M63.9 52.8h17.6l-1.6 18.5-16 4.3v14.3l28.6-7.9 3.9-42.8H63.9v13.6zm0-26.4h32.7l-1.2 12.8H63.9V26.4z"/>
+        </svg>
+      );
+    case "css":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#1572B6" d="M19.1 115.4L8.4 0h111.2l-10.7 115.4L63.9 128"/>
+          <path fill="#33A9DC" d="M64 117.5l37.8-10.5 9-97.4H64"/>
+          <path fill="#EBEBEB" d="M64 53.6H46.6l-1.2-13.6H64V26.4H31.1l1.2 13.6 2.4 27.2H64V53.6zm0 36.3l-.2.1-16.7-4.5-1.1-12H32.4l2.1 23.5 29.3 8.1.2-.1V89.9z"/>
+          <path fill="#FFFFFF" d="M64 53.6h17.6l-1.6 18.5-16 4.3v14.3l28.6-7.9 3.9-42.8H64v13.6zm0-27.2h33.8l-1.2 13.6H64V26.4z"/>
+        </svg>
+      );
+    case "fastapi":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <circle cx="64" cy="64" r="60" fill="#009688"/>
+          <path d="M72 16L32 72h24l-8 40 48-60H68l8-36h-4z" fill="#FFFFFF"/>
+        </svg>
+      );
+    case "node.js (basic)":
+    case "node.js":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#339933" d="M64 8l54 31.2v62.4L64 122.8 10 101.6V39.2L64 8z"/>
+          <path fill="#FFFFFF" d="M64 36c-15.5 0-28 8.1-28 20 0 11.2 11.1 17.5 22.8 19.8 11.2 2.2 15.2 4.6 15.2 8.4 0 4.3-5.2 7-12 7-8.2 0-14.4-3.5-18-8.2l-6.8 5.6c5.2 6.8 14.1 11.6 24.8 11.6 16.5 0 29-8.4 29-21 0-11.8-10.8-17.7-22.8-20-11-2.1-15.2-4.4-15.2-8.2 0-3.8 4.6-6 11-6 7.4 0 12.8 2.8 16.2 6.8l6.8-5.8C80 40.5 72.8 36 64 36z"/>
+        </svg>
+      );
+    case "git":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#F05032" d="M124.7 54.8L73.2 3.3c-4.4-4.4-11.6-4.4-16 0L3.3 57.2c-4.4 4.4-4.4 11.6 0 16l51.5 51.5c4.4 4.4 11.6 4.4 16 0l53.9-53.9c4.4-4.4 4.4-11.6 0-16z"/>
+          <path fill="#FFFFFF" d="M83.4 56.4c-3.1-3.1-7.8-3.6-11.4-1.7L60.6 43.3V34c2.9-1.8 4.8-5 4.8-8.6 0-5.7-4.6-10.3-10.3-10.3s-10.3 4.6-10.3 10.3c0 3.6 1.9 6.8 4.8 8.6v35.4c-2.9 1.8-4.8 5-4.8 8.6 0 5.7 4.6 10.3 10.3 10.3s10.3-4.6 10.3-10.3c0-3.3-1.6-6.2-4.1-8.1l11.1-11.1c2 1 4.4 1.6 7 1.6 8 0 14.5-6.5 14.5-14.5 0-3.9-1.5-7.4-4.2-9.9z"/>
+        </svg>
+      );
+    case "github":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#FFFFFF" fillRule="evenodd" clipRule="evenodd" d="M64 0C28.7 0 0 28.7 0 64c0 28.3 18.3 52.3 43.8 60.8 3.2.6 4.4-1.4 4.4-3.1v-11.7c-17.8 3.9-21.6-8.6-21.6-8.6-2.9-7.4-7.1-9.4-7.1-9.4-5.8-4 .4-3.9.4-3.9 6.4.5 9.8 6.6 9.8 6.6 5.7 9.8 15 7 18.6 5.3 0.6-4.1 2.2-7 4.1-8.6-14.2-1.6-29.2-7.1-29.2-31.6 0-7 2.5-12.7 6.6-17.2-.7-1.6-2.9-8.1.6-17 0 0 5.4-1.7 17.6 6.6 5.1-1.4 10.6-2.2 16.1-2.2s11 0.7 16.1 2.2c12.2-8.3 17.6-6.6 17.6-6.6 3.5 8.9 1.3 15.4.6 17 4.1 4.5 6.6 10.2 6.6 17.2 0 24.6-15 30-29.3 31.6 2.3 2 4.3 5.9 4.3 11.9v17.6c0 1.7 1.2 3.7 4.5 3.1C109.7 116.3 128 92.3 128 64c0-35.3-28.7-64-64-64z"/>
+        </svg>
+      );
+    case "tailwind":
+    case "tailwind css":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#06B6D4" d="M64 32c-17.6 0-28.8 8.8-33.6 26.4 6.4-8.8 14.4-12 24-9.6 5.5 1.4 9.4 5.3 13.8 9.7 7.1 7.2 15.3 15.5 33.4 15.5 17.6 0 28.8-8.8 33.6-26.4-6.4 8.8-14.4 12-24 9.6-5.5-1.4-9.4-5.3-13.8-9.7-7.1-7.2-15.3-15.5-33.4-15.5zM30.4 64C12.8 64 1.6 72.8-3.2 90.4c6.4-8.8 14.4-12 24-9.6 5.5 1.4 9.4 5.3 13.8 9.7 7.1 7.2 15.3 15.5 33.4 15.5 17.6 0 28.8-8.8 33.6-26.4-6.4 8.8-14.4 12-24 9.6-5.5-1.4-9.4-5.3-13.8-9.7-7.1-7.2-15.3-15.5-33.4-15.5z"/>
+        </svg>
+      );
+    case "next.js":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <circle cx="64" cy="64" r="62" fill="#000000" stroke="#FFFFFF" strokeWidth="4"/>
+          <path fill="#FFFFFF" d="M89.4 100.8L47 43.2h-7.6v41.6h6.8V53.8l39.1 53.6c1.4-2.1 2.8-4.3 4.1-6.6zM81.2 43.2h6.8v28.8h-6.8z"/>
+        </svg>
+      );
+    case "java":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#5382A1" d="M47.8 97.4c13.7 1.8 31.9 1.1 43.9-6.3-12.3 2.1-27.4.9-38.4-1.8-1.9-.4-3.7-.8-5.5-1.2v9.3zm-1.8 15.8c15 1.4 34.6 1.1 48.7-5.3-12.7 1.8-28.5 1.1-41.2-1.2-2.5-.5-5.1-1.1-7.5-1.8v8.3z"/>
+          <path fill="#E76F00" d="M72.2 15.5c-7.9 12-3.1 22.8 4.2 32.5 4.8 6.4 7.2 12.8 5 19.8-1.5 4.8-4.7 8.8-8.9 11.8 8.1-4.8 12.8-11.7 12.8-20.2 0-10.4-8.8-18.4-13.1-24.9-3.7-5.5-3.3-11.9 0-19z"/>
+          <path fill="#E76F00" d="M54.8 28.5c-4.9 9.8-1.6 18.2 4.1 25.8 4.1 5.4 5.9 10.7 4.1 16.5-1.2 3.9-3.9 7.2-7.4 9.6 6.8-3.9 10.6-9.6 10.6-16.5 0-8.5-7.2-15-10.7-20.3-3.1-4.6-2.7-9.8-.7-15.1z"/>
+        </svg>
+      );
+    case "docker":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#2496ED" d="M124.5 56.6c-1.8-1.3-4.5-1.7-6.8-1-1.3.4-2.5 1-3.6 1.8-4.2-3.8-10.2-5.7-18.1-5.7-1.1 0-2.2.1-3.3.2-3-8.8-9.4-15.1-18.4-18.2l-2.4 4.5c7.3 2.5 12.4 7.6 14.8 14.8-8.3.8-15.3 4.2-20.1 9.7H3.5C1.6 62.7 0 66.8 0 71.3c0 23.4 18.8 42.4 42 42.4 20.4 0 37.6-14.7 41.3-34.4 12.7 1.3 25-1.6 33.6-8 3.5-2.6 6.1-5.9 7.6-9.7 1.2-3.1 1.2-3.8 0-5zM22.2 46.8h11.7v11.7H22.2V46.8zm15.6 0h11.7v11.7H37.8V46.8zm15.6 0h11.7v11.7H53.4V46.8zm-31.2 15.6h11.7v11.7H22.2V62.4zm15.6 0h11.7v11.7H37.8V62.4zm15.6 0h11.7v11.7H53.4V62.4zm15.6 0h11.7v11.7H69V62.4zm-15.6-31.2h11.7v11.7H53.4V31.2z"/>
+        </svg>
+      );
+    case "mysql":
+    case "postgresql":
+    case "sql":
+    case "dbms":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <ellipse cx="64" cy="30" rx="46" ry="16" fill="#336791"/>
+          <path d="M18 30v34c0 8.8 20.6 16 46 16s46-7.2 46-16V30c0 8.8-20.6 16-46 16S18 38.8 18 30z" fill="#4B89BC"/>
+          <path d="M18 64v34c0 8.8 20.6 16 46 16s46-7.2 46-16V64c0 8.8-20.6 16-46 16S18 72.8 18 64z" fill="#295475"/>
+        </svg>
+      );
+    case "flutter":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <polygon points="78,4 18,64 38,84 118,4" fill="#47C5FB"/>
+          <polygon points="78,64 48,94 68,114 118,64" fill="#02569B"/>
+          <polygon points="48,94 68,74 88,94 68,114" fill="#0175C2"/>
+        </svg>
+      );
+    case "vs code":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#007ACC" d="M96.7 125.8l24.7-12c4.4-2.1 7.2-6.5 7.2-11.4V25.6c0-4.9-2.8-9.3-7.2-11.4l-24.7-12c-3.7-1.8-8.1-1.3-11.4 1.3L37.2 43.6 18.5 29.4c-3.4-2.6-8.2-2.3-11.3.8L1.6 35.8c-2.1 2.1-2.1 5.5 0 7.6l23.5 20.6L1.6 84.6c-2.1 2.1-2.1 5.5 0 7.6l5.6 5.6c3.1 3.1 7.9 3.4 11.3.8l18.7-14.2 48.1 40.1c3.3 2.6 7.7 3.1 11.4 1.3zM96 36.3L56.9 64 96 91.7V36.3z"/>
+        </svg>
+      );
+    case "postman":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <circle cx="64" cy="64" r="60" fill="#FF6C37"/>
+          <path d="M92 48c-4.4-4.4-11.6-4.4-16 0L52 72l-12-12c-4.4-4.4-11.6-4.4-16 0s-4.4 11.6 0 16l20 20c4.4 4.4 11.6 4.4 16 0l32-32c4.4-4.4 4.4-11.6 0-16z" fill="#FFFFFF"/>
+        </svg>
+      );
+    case "vite":
+      return (
+        <svg viewBox="0 0 128 128" className={className}>
+          <path fill="#BD34FE" d="M118.2 14.5L66.7 122.3c-1.1 2.3-4.3 2.3-5.4 0L9.8 14.5c-1.3-2.6.9-5.6 3.8-5l50.4 10.7 50.4-10.7c2.9-.6 5.1 2.4 3.8 5z"/>
+          <path fill="#FFD62E" d="M72 16L38 68h24l-8 40 46-58H76l8-34h-12z"/>
+        </svg>
+      );
+    default:
+      return (
+        <svg viewBox="0 0 24 24" className={className} fill="none" stroke="#E05269" strokeWidth="2">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <path d="M7 12h10M12 7v10"/>
+        </svg>
+      );
+  }
+}
+
+interface Point3D {
+  skill: SkillItem;
+  x0: number;
+  y0: number;
+  z0: number;
+  x: number;
+  y: number;
+  z: number;
+  screenX: number;
+  screenY: number;
+  scale: number;
+  alpha: number;
+  zIndex: number;
+}
+
+export function TechStackGlobe({
+  skills,
+  activeSkill,
+  onSelectSkill,
+}: {
+  skills: SkillItem[];
+  activeSkill: SkillItem;
+  onSelectSkill: (skill: SkillItem) => void;
+}) {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [points, setPoints] = useState<Point3D[]>([]);
+  
+  // Dynamic rotation state with inertia & mouse-following direction
+  const rotationRef = useRef<{
+    angleX: number;
+    angleY: number;
+    velX: number;
+    velY: number;
+    isDragging: boolean;
+    lastMouseX: number;
+    lastMouseY: number;
+    pointerX: number;
+    pointerY: number;
+    hasMouseOver: boolean;
+  }>({
+    angleX: 0.15,
+    angleY: 0.25,
+    velX: 0.001,
+    velY: 0.0035, // smooth natural auto-rotation
+    isDragging: false,
+    lastMouseX: 0,
+    lastMouseY: 0,
+    pointerX: 0,
+    pointerY: 0,
+    hasMouseOver: false,
+  });
+
+  // Initialize spherical Fibonacci distribution
+  const sphereRadius = 195; // Radius of 3D globe
+
+  useEffect(() => {
+    const N = skills.length;
+    const initialPoints: Point3D[] = skills.map((skill, i) => {
+      // Golden Spiral on sphere
+      const phi = Math.acos(1 - (2 * (i + 0.5)) / N);
+      const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+      
+      const x0 = sphereRadius * Math.cos(theta) * Math.sin(phi);
+      const y0 = sphereRadius * Math.sin(theta) * Math.sin(phi);
+      const z0 = sphereRadius * Math.cos(phi);
+
+      return {
+        skill,
+        x0,
+        y0,
+        z0,
+        x: x0,
+        y: y0,
+        z: z0,
+        screenX: 0,
+        screenY: 0,
+        scale: 1,
+        alpha: 1,
+        zIndex: 10,
+      };
+    });
+
+    setPoints(initialPoints);
+  }, [skills]);
+
+  // Animation render loop
+  useEffect(() => {
+    let animId: number;
+
+    const render = () => {
+      const rot = rotationRef.current;
+      const container = containerRef.current;
+      const w = container ? container.clientWidth : 500;
+      const h = container ? container.clientHeight : 480;
+      const centerX = w / 2;
+      const centerY = h / 2;
+
+      // Mouse-directed angular velocity:
+      // If mouse is inside the canvas, gently steer rotation towards the mouse pointer direction
+      if (rot.hasMouseOver && !rot.isDragging) {
+        const dx = rot.pointerX - centerX;
+        const dy = rot.pointerY - centerY;
+        // Target velocity derived from mouse offset
+        const targetVelY = (dx / centerX) * 0.016;
+        const targetVelX = -(dy / centerY) * 0.016;
+        
+        rot.velY += (targetVelY - rot.velY) * 0.08;
+        rot.velX += (targetVelX - rot.velX) * 0.08;
+      } else if (!rot.isDragging) {
+        // Natural gentle idle orbit
+        rot.velY += (0.003 - rot.velY) * 0.03;
+        rot.velX += (0.0008 - rot.velX) * 0.03;
+      }
+
+      // Update angles
+      rot.angleY += rot.velY;
+      rot.angleX += rot.velX;
+
+      // Keep angles in range
+      if (rot.angleY > Math.PI * 2) rot.angleY -= Math.PI * 2;
+      if (rot.angleY < -Math.PI * 2) rot.angleY += Math.PI * 2;
+      rot.angleX = Math.max(-Math.PI / 2.3, Math.min(Math.PI / 2.3, rot.angleX));
+
+      const sinX = Math.sin(rot.angleX);
+      const cosX = Math.cos(rot.angleX);
+      const sinY = Math.sin(rot.angleY);
+      const cosY = Math.cos(rot.angleY);
+
+      const fov = 380; // Field of view depth perspective
+
+      setPoints((prev) =>
+        prev.map((pt) => {
+          // 3D Rotation matrices (rotate around Y then X)
+          // Rotate around Y
+          const x1 = pt.x0 * cosY + pt.z0 * sinY;
+          const y1 = pt.y0;
+          const z1 = -pt.x0 * sinY + pt.z0 * cosY;
+
+          // Rotate around X
+          const x = x1;
+          const y = y1 * cosX - z1 * sinX;
+          const z = y1 * sinX + z1 * cosX;
+
+          // Perspective screen projection
+          const scale = Math.max(0.55, Math.min(1.22, (fov + z) / fov));
+          const screenX = centerX + x * scale;
+          const screenY = centerY + y * scale;
+
+          // Depth based opacity: items in front are bright (0.95 - 1.0), items in back are translucent (0.35 - 0.45)
+          const normZ = (z + sphereRadius) / (2 * sphereRadius);
+          const alpha = Math.max(0.32, Math.min(1, normZ * 0.72 + 0.28));
+          const zIndex = Math.round((z + sphereRadius) * 2);
+
+          return {
+            ...pt,
+            x,
+            y,
+            z,
+            screenX,
+            screenY,
+            scale,
+            alpha,
+            zIndex,
+          };
+        })
+      );
+
+      animId = requestAnimationFrame(render);
+    };
+
+    animId = requestAnimationFrame(render);
+    return () => cancelAnimationFrame(animId);
+  }, []);
+
+  // Mouse / Pointer Event Listeners
+  const handlePointerDown = (e: React.PointerEvent) => {
+    const rot = rotationRef.current;
+    rot.isDragging = true;
+    rot.lastMouseX = e.clientX;
+    rot.lastMouseY = e.clientY;
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    const rot = rotationRef.current;
+    const rect = containerRef.current?.getBoundingClientRect();
+    if (rect) {
+      rot.pointerX = e.clientX - rect.left;
+      rot.pointerY = e.clientY - rect.top;
+      rot.hasMouseOver = true;
+    }
+
+    if (rot.isDragging) {
+      const deltaX = e.clientX - rot.lastMouseX;
+      const deltaY = e.clientY - rot.lastMouseY;
+      rot.lastMouseX = e.clientX;
+      rot.lastMouseY = e.clientY;
+
+      rot.velY = deltaX * 0.007;
+      rot.velX = -deltaY * 0.007;
+      rot.angleY += rot.velY;
+      rot.angleX += rot.velX;
+    }
+  };
+
+  const handlePointerUp = () => {
+    rotationRef.current.isDragging = false;
+  };
+
+  const handlePointerLeave = () => {
+    const rot = rotationRef.current;
+    rot.isDragging = false;
+    rot.hasMouseOver = false;
+  };
+
+  return (
+    <div className="relative w-full flex flex-col items-center">
+      {/* 3D Globe Interactive Canvas */}
+      <div
+        ref={containerRef}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerLeave={handlePointerLeave}
+        className="relative w-full h-[460px] sm:h-[520px] rounded-2xl bg-radial-gradient overflow-hidden border border-white/10 select-none cursor-grab active:cursor-grabbing shadow-[inset_0_0_80px_rgba(0,0,0,0.8)]"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 50%, rgba(224, 82, 105, 0.07) 0%, rgba(8, 10, 15, 0.95) 60%, #06070B 100%)",
+        }}
+      >
+        {/* Subtle Cyber Grid & Ambient Glowing Sphere Silhouette */}
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
+          {/* Concentric subtle depth rings */}
+          <div className="w-[360px] h-[360px] rounded-full border border-white/[0.04] animate-pulse" />
+          <div className="w-[280px] h-[280px] rounded-full border border-accent-red/[0.06] absolute" />
+          <div className="w-[180px] h-[180px] rounded-full border border-white/[0.03] absolute" />
+        </div>
+
+        {/* Floating 3D Tech Tiles */}
+        {points.map((pt) => {
+          const isSelected = activeSkill.name === pt.skill.name;
+          const isInFront = pt.z > 0;
+
+          return (
+            <div
+              key={pt.skill.name}
+              onClick={(e) => {
+                e.stopPropagation();
+                sound.playClick();
+                onSelectSkill(pt.skill);
+              }}
+              style={{
+                transform: `translate3d(${pt.screenX}px, ${pt.screenY}px, 0px) translate(-50%, -50%) scale(${pt.scale})`,
+                opacity: isSelected ? 1 : pt.alpha,
+                zIndex: isSelected ? 999 : pt.zIndex,
+              }}
+              className={`absolute flex flex-col items-center justify-center transition-all duration-75 cursor-pointer group ${
+                isSelected
+                  ? "ring-2 ring-accent-red shadow-[0_0_30px_rgba(224,82,105,0.7)]"
+                  : isInFront
+                  ? "hover:ring-1 hover:ring-white/40 shadow-[0_8px_20px_rgba(0,0,0,0.6)]"
+                  : "opacity-40"
+              }`}
+            >
+              {/* Tile Container matching User Reference Images */}
+              <div
+                className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl p-2.5 flex flex-col items-center justify-center border transition-all backdrop-blur-md ${
+                  isSelected
+                    ? "bg-[#161B29] border-accent-red/90 text-white"
+                    : "bg-[#0E121B]/90 border-white/10 hover:border-accent-red/50 text-zinc-300 hover:text-white"
+                }`}
+              >
+                <div className="w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center">
+                  <TechIcon name={pt.skill.name} className="w-full h-full drop-shadow-md" />
+                </div>
+                <span className="font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-wider mt-1.5 text-center truncate w-full px-1">
+                  {pt.skill.name.split(" ")[0]}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* Subtle Guidance HUD Overlay */}
+        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between font-mono text-[10px] text-zinc-500 pointer-events-none">
+          <span className="flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent-red animate-pulse" />
+            <span>DRAG OR MOVE CURSOR TO ROTATE GLOBE</span>
+          </span>
+          <span className="hidden sm:inline-block">CLICK STACK TILE TO INSPECT</span>
+        </div>
+      </div>
+    </div>
+  );
+}
