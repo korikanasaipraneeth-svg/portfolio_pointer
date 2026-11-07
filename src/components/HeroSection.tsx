@@ -24,7 +24,7 @@ export function HeroSection() {
       {/* Massive Outlined PORTFOLIO Wordmark across top (Exact SAAI.pro SVG) */}
       <div
         aria-hidden="true"
-        className="w-full max-w-7xl mx-auto relative z-1 select-none pointer-events-none mb-[-3.6vw] pt-2"
+        className="w-full max-w-7xl mx-auto relative z-1 select-none pointer-events-none mb-2 sm:mb-4 lg:mb-6 pt-2 opacity-90"
       >
         <svg preserveAspectRatio="xMidYMid meet" viewBox="0 0 1000 215" className="w-full block">
           <text
@@ -33,7 +33,7 @@ export function HeroSection() {
             fontSize="270"
             textLength="1000"
             lengthAdjust="spacingAndGlyphs"
-            className="font-bebas fill-[#c93a3a]/[0.22] stroke-[#c93a3a] stroke-[1.5]"
+            className="font-bebas fill-[#c93a3a]/[0.15] stroke-[#c93a3a] stroke-[1.2]"
             style={{ paintOrder: "stroke" }}
           >
             PORTFOLIO
@@ -73,9 +73,12 @@ export function HeroSection() {
           </div>
 
           {/* Solid Red Name Box (Bebas Neue on #C72C46 / #DC2626) with SAI PRANEETH */}
-          <div>
-            <h1 className="hero-name-badge inline-block font-bebas text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl bg-accent-red px-3 sm:px-4 py-0.5 sm:py-1 tracking-wider leading-none shadow-crimson-glow border border-white/20">
-              SAI PRANEETH<span className="text-white">.</span>
+          <div className="flex flex-wrap items-baseline gap-2 sm:gap-3.5">
+            <span className="font-bebas text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-wider leading-none drop-shadow-md">
+              SAI
+            </span>
+            <h1 className="hero-name-badge inline-block font-bebas text-white text-5xl sm:text-6xl md:text-7xl lg:text-8xl bg-accent-red px-3 sm:px-4 py-0.5 sm:py-1 tracking-wider leading-none shadow-crimson-glow border border-white/20 whitespace-nowrap">
+              PRANEETH<span className="text-white">.</span>
             </h1>
           </div>
 

@@ -15,16 +15,16 @@ export function ProfileSection() {
   return (
     <section id="profile" className="py-24 px-4 sm:px-6 md:px-8 border-b border-border-subtle relative">
       <div className="w-full max-w-6xl mx-auto space-y-12">
-        {/* Technical Section Subhead (Exact SAAI.pro styling: // 01.00 SEC_ABOUT) */}
+        {/* Technical Section Subhead */}
         <div className="space-y-1">
           <div className="font-mono text-xs text-text-muted tracking-widest uppercase">
             {"// 01.00 SEC_ABOUT"}
           </div>
           <div className="font-mono text-xs text-accent-red font-semibold uppercase tracking-wider">
-            ENGINEER PROFILE
+            ABOUT ME
           </div>
           <h2 className="font-heading font-black text-3xl sm:text-5xl text-text-primary tracking-tight">
-            Background &amp; Philosophy
+            About Me
           </h2>
         </div>
 
@@ -95,10 +95,10 @@ export function ProfileSection() {
             <div className="p-4 rounded-sm border border-border-subtle bg-bg-panel/80 space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="text-emerald-400 font-bold text-sm">02</span>
-                <span className="font-bold text-text-primary text-sm">1st Place in Google Hackathon</span>
+                <span className="font-bold text-text-primary text-sm">1st Prize in Brainovision Hackathon</span>
               </div>
               <p className="font-sans text-xs text-text-secondary leading-relaxed">
-                Secured 1st Place for architecting STUDENT360 (Student Profile &amp; Job Search Platform with faculty verification).
+                Secured 1st Prize for developing the Portfolio &amp; Stock Market Analyzer application — real-time market trends, stock tracking, and financial analytics.
               </p>
             </div>
 
@@ -265,9 +265,9 @@ export function ProfileSection() {
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                   <div className="p-3.5 rounded bg-bg-secondary border border-border-subtle space-y-1">
-                    <div className="font-mono text-xs text-accent-red font-bold">STUDENT360 (1ST PLACE GOOGLE HACKATHON)</div>
+                    <div className="font-mono text-xs text-accent-red font-bold">PORTFOLIO &amp; STOCK ANALYZER (1ST PRIZE BRAINOVISION)</div>
                     <p className="text-xs text-text-secondary">
-                      Full-stack student profile &amp; faculty-verified job search platform with recruiter Kanban pipeline.
+                      Real-time stock trend monitoring, portfolio valuation, and predictive risk analytics built for the Brainovision National Hackathon.
                     </p>
                   </div>
                   <div className="p-3.5 rounded bg-bg-secondary border border-border-subtle space-y-1">
