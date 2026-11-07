@@ -6,6 +6,7 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { AmbientCanvas } from "@/components/AmbientCanvas";
 import { NavigationDock } from "@/components/NavigationDock";
 import { Footer } from "@/components/Footer";
+import { VisitorTracker } from "@/components/VisitorTracker";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -89,6 +90,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} ${bebasNeue.variable} ${caveat.variable} dark`}
     >
       <body className="min-h-screen bg-background text-text-primary selection:bg-accent-red selection:text-white font-sans antialiased relative">
+        <VisitorTracker />
         <CustomCursor />
         <AmbientCanvas />
         <NavigationDock />

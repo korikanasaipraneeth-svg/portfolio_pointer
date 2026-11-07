@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 import { sound } from "@/lib/audio";
-import { Volume2, VolumeX, Menu, X, MousePointer2 } from "lucide-react";
+import { Volume2, VolumeX, Menu, X, MousePointer2, Shield } from "lucide-react";
+import { VisitorTelemetryModal } from "@/components/VisitorTelemetryModal";
 
 const NAV_ITEMS = [
   { label: "About", href: "#profile" },
@@ -17,6 +18,7 @@ export function NavigationDock() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [telemetryOpen, setTelemetryOpen] = useState(false);
 
   useEffect(() => {
     setIsMuted(sound.getMuted());
@@ -118,6 +120,23 @@ export function NavigationDock() {
               <span>SWARM BUILD</span>
             </button>
 
+            {/* Live Visitor Intelligence Radar Button */}
+            <button
+              onClick={() => {
+                sound.playClick();
+                setTelemetryOpen(true);
+              }}
+              onMouseEnter={() => sound.playHover()}
+              title="View Real-Time Visitor Telemetry & Access Monitor"
+              className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-border-subtle bg-bg-panel/90 text-text-secondary hover:text-emerald-400 hover:border-emerald-500/50 text-[11px] font-mono transition-all duration-200 group"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="font-semibold text-zinc-300 group-hover:text-white">WATCHERS</span>
+              <span className="text-[9px] text-emerald-400 font-bold px-1 rounded bg-emerald-500/10 border border-emerald-500/30">
+                LIVE
+              </span>
+            </button>
+
             {/* Audio Toggle */}
             <button
               onClick={toggleMute}
@@ -191,6 +210,12 @@ export function NavigationDock() {
           </div>
         </div>
       )}
+
+      {/* Visitor Intelligence & Security Access Monitor Console */}
+      <VisitorTelemetryModal
+        isOpen={telemetryOpen}
+        onClose={() => setTelemetryOpen(false)}
+      />
     </>
   );
 }

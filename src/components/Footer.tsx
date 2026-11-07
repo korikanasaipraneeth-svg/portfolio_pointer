@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { sound } from "@/lib/audio";
 import { Github, Twitter, Instagram, ArrowUp, Terminal, Shield } from "lucide-react";
+import { VisitorTelemetryModal } from "@/components/VisitorTelemetryModal";
 
 export function Footer() {
+  const [telemetryOpen, setTelemetryOpen] = useState(false);
+
   const scrollToTop = () => {
     sound.playClick();
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -79,15 +82,28 @@ export function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center gap-4 text-[10px]">
-            <span className="flex items-center gap-1.5 text-emerald-400">
+            <button
+              onClick={() => {
+                sound.playClick();
+                setTelemetryOpen(true);
+              }}
+              className="flex items-center gap-1.5 text-emerald-400 hover:text-emerald-300 transition-colors cursor-pointer group"
+              title="Open Visitor Intelligence & Security Access Monitor"
+            >
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              STATUS: OPERATIONAL
-            </span>
+              <span className="group-hover:underline">STATUS: OPERATIONAL (ACCESS MONITOR)</span>
+            </button>
             <span>AIML UNDERGRADUATE // SRI SIVANI COE</span>
             <span>100% VERIFIED EVIDENCE</span>
           </div>
         </div>
       </div>
+
+      {/* Visitor Intelligence & Security Access Monitor Console */}
+      <VisitorTelemetryModal
+        isOpen={telemetryOpen}
+        onClose={() => setTelemetryOpen(false)}
+      />
     </footer>
   );
 }
